@@ -1,0 +1,27 @@
+{
+  "id": "ch04-02-copenhagen-wheel-coordination",
+  "title": "Copenhagen Wheel rider-terrain-motor coordination",
+  "summary": "Ratti's Copenhagen Wheel as the canonical three-body smart-city primitive: rider effort, terrain/context data, and motor assistance continuously coordinate through an on-wheel controller to create an augmented riding experience.",
+  "fmt": "cld",
+  "source": "Ch04 — \"Smart Cities That Actually Work\" (Ratti / Senseable City Lab)",
+  "nodes": [
+    { "id": "n1", "label": "Rider Effort",        "description": "Pedaling torque, heart rate, intent",                    "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Terrain Context",     "description": "Gradient, wind, route, environmental sensors",           "category": "driver",   "is_latent": false },
+    { "id": "n3", "label": "Controller Policy",   "description": "On-wheel algorithm coordinating assistance level",       "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Motor Assistance",    "description": "Torque delivered back to the wheel",                     "category": "mediator", "is_latent": false },
+    { "id": "n5", "label": "Ride Experience",     "description": "Symbiotic, adaptive augmentation of the rider",          "category": "outcome",  "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n3", "polarity": "positive", "description": "Effort signals feed the controller",           "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Terrain data feeds the controller",            "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Policy sets motor output",                     "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n1", "polarity": "negative", "description": "Assistance reduces required rider effort",     "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "positive", "description": "Assistance shapes perceived ride",             "has_delay": false, "is_confounding": false },
+    { "from": "n1", "to": "n5", "polarity": "positive", "description": "Rider engagement shapes experience directly",  "has_delay": false, "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "balancing", "label": "B1 — Effort-assistance equilibrium", "nodes": ["n1","n3","n4"], "minus_count": 1 }
+  ],
+  "identifiability": "identifiable",
+  "identifiability_note": "Controller is an engineered intervention; effort, terrain, and assistance are directly measured, so the coordination policy is fully observable."
+}

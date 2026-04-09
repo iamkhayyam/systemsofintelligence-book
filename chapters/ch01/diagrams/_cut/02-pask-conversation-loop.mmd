@@ -1,0 +1,20 @@
+%% Ch01 Diagram 02 — Pask Conversation Loop (Pangaro)
+%% Source: "intelligence emerges when systems learn to understand each other's understanding"
+flowchart LR
+    A["Agent A<br/>mental model"]
+    B["Agent B<br/>mental model"]
+    MA["A's model of B"]
+    MB["B's model of A"]
+
+    A -->|expresses| B
+    B -->|expresses| A
+    A --> MB
+    B --> MA
+    MA -->|refines| A
+    MB -->|refines| B
+
+    U((Shared<br/>understanding))
+    MA -.-> U
+    MB -.-> U
+    U -.->|feedback| A
+    U -.->|feedback| B

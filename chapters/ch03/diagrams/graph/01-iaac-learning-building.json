@@ -1,0 +1,28 @@
+{
+  "id": "ch03-01-iaac-learning-building",
+  "title": "IAAC learning building three-body",
+  "summary": "Sensors, an AI learning system, and human occupant behavior coordinate continuously, with reinforcement learning closing the loop so the building's coordination strategy improves over time.",
+  "fmt": "cld",
+  "source": "Ch03 — \"Building Sensors ↔ AI Learning System ↔ Human Occupant Behavior\" (IAAC Barcelona)",
+  "nodes": [
+    { "id": "n1", "label": "Environmental Sensors",  "description": "Temperature, CO2, light, humidity, sound", "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "AI Learning System",     "description": "Reinforcement learner coordinating inputs", "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Occupant Behavior",      "description": "Movement, calendars, implicit feedback",    "category": "driver",   "is_latent": false },
+    { "id": "n4", "label": "Adaptive Comfort",       "description": "Pre-emptive HVAC, lighting, energy use",    "category": "outcome",  "is_latent": false },
+    { "id": "n5", "label": "Coordination Policy",    "description": "Learned patterns reinforced by outcomes",   "category": "feedback", "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Sensor stream feeds the learner",               "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n2", "polarity": "positive", "description": "Occupancy and feedback shape inference",        "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n4", "polarity": "positive", "description": "Predictive coordination drives comfort",        "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "positive", "description": "Comfort outcomes evaluate the policy",          "has_delay": true,  "is_confounding": false },
+    { "from": "n5", "to": "n2", "polarity": "positive", "description": "Successful patterns reinforced in the learner", "has_delay": true,  "is_confounding": false },
+    { "from": "n4", "to": "n3", "polarity": "positive", "description": "Comfort changes how occupants use the space",   "has_delay": true,  "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Meta-learning loop",   "nodes": ["n2","n4","n5"], "minus_count": 0 },
+    { "type": "reinforcing", "label": "R2 — Occupant adaptation",  "nodes": ["n2","n4","n3"], "minus_count": 0 }
+  ],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Policy and occupant behavior co-evolve, confounding the direct causal effect of any single coordination decision on comfort."
+}

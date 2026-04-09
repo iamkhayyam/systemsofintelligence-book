@@ -1,0 +1,27 @@
+{
+  "id": "ch09-02-chollet-death-spiral",
+  "title": "Chollet coordination death spiral",
+  "summary": "Chollet's three bodies of technical debt form a reinforcing loop: more system complexity creates more integration overhead, which raises cognitive load, which spawns still more complexity. Good abstractions act as a latent balancing force that breaks the spiral when present.",
+  "fmt": "cld",
+  "source": "Ch09 §9.1 — Chollet interview; \"complexity creates coordination overhead, which creates cognitive load, which in turn creates more complexity.\"",
+  "nodes": [
+    { "id": "n1", "label": "System Complexity",     "description": "Components, features, dependencies",       "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Integration Overhead",  "description": "APIs, protocols, coordination tax",        "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Cognitive Load",        "description": "Mental models developers must hold",       "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Innovation Rate",       "description": "New capability shipped per unit effort",   "category": "outcome",  "is_latent": false },
+    { "id": "n5", "label": "Coordination Abstractions", "description": "Keras-style interfaces that hide complexity", "category": "latent", "is_latent": true }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "More components → more integration points", "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Coordination tax raises mental burden",      "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n1", "polarity": "positive", "description": "Overloaded devs add workarounds, complexity", "has_delay": true,  "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "negative", "description": "Cognitive load suppresses innovation",       "has_delay": false, "is_confounding": false },
+    { "from": "n5", "to": "n2", "polarity": "negative", "description": "Abstractions absorb integration overhead",   "has_delay": false, "is_confounding": false },
+    { "from": "n5", "to": "n3", "polarity": "negative", "description": "Abstractions lower cognitive load",          "has_delay": false, "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Coordination death spiral", "nodes": ["n1","n2","n3"], "minus_count": 0 }
+  ],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Coordination Abstractions (n5) act as a latent moderator on the overhead→load link; its absence is why the spiral dominates in most codebases."
+}

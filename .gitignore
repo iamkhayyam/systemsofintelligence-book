@@ -1,0 +1,54 @@
+# macOS
+.DS_Store
+**/.DS_Store
+*.swp
+
+# Legacy source folders — content is now in chapters/
+Chapter 01/
+Chapter 02/
+Chapter 03/
+Chapter 04/
+Chapter 05/
+Chapter 06/
+Chapter 07/
+Chapter 08/
+Chapter 09/
+Chapter X-TGC/
+An Introduction/
+Indexed Appendices/
+
+# Root PDFs (manuscript exports, too large for git)
+*.pdf
+knowware_book_index.html
+knowware_index.pdf
+
+# Legacy scaffolding
+_archived/
+_examples/
+_girhubRepo/
+_integrations/
+_outlines/
+_resources/
+
+# graphify temp files + cost tracker
+.graphify_*
+graphify-out/cache/
+graphify-out/cost.json
+graphify-out/memory/
+
+# Pencil editor working files
+*.pen.lock
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node (if preview ever gets a bundler)
+node_modules/
+dist/

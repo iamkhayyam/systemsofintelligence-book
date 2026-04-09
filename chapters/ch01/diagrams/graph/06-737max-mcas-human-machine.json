@@ -1,0 +1,24 @@
+{
+  "id": "06-737max-mcas-human-machine",
+  "title": "737 MAX MCAS three-body failure",
+  "summary": "MCAS software, operational stress, and pilot expectations failed to coordinate. Each component was 'safe' in isolation; the missing coordination layer (training + transparency) cost 346 lives.",
+  "fmt": "both",
+  "nodes": [
+    { "id": "n1", "label": "MCAS Software",      "description": "Auto nose-down system, single sensor","category": "driver","is_latent": false },
+    { "id": "n2", "label": "Sensor Failure",     "description": "AoA sensor malfunction",        "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Operational Stress", "description": "Takeoff, high workload",        "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Pilot Override",     "description": "Pilot's ability to counteract", "category": "mediator", "is_latent": false },
+    { "id": "n5", "label": "Crash Risk",         "description": "Catastrophic outcome",          "category": "outcome",  "is_latent": false },
+    { "id": "n6", "label": "Pilot Awareness",    "description": "Knowledge MCAS exists + how to disable","category": "latent","is_latent": true }
+  ],
+  "edges": [
+    { "from": "n2", "to": "n1", "polarity": "positive", "description": "Bad sensor activates MCAS spuriously", "has_delay": false, "is_confounding": false },
+    { "from": "n1", "to": "n5", "polarity": "positive", "description": "Repeated nose-down → loss of control", "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "negative", "description": "Stress reduces effective override", "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "negative", "description": "Override reduces crash risk", "has_delay": false, "is_confounding": false },
+    { "from": "n6", "to": "n4", "polarity": "positive", "description": "Awareness enables override", "has_delay": false, "is_confounding": true }
+  ],
+  "loops": [],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Pilot awareness (n6) was withheld from training docs — the absent coordination element makes the human-machine system unobservable from individual component tests."
+}

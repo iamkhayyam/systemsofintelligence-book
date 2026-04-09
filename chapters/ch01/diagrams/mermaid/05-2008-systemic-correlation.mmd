@@ -1,0 +1,18 @@
+%% Ch01 Diagram 05 — 2008 Crisis: hidden systemic correlation (CLD)
+%% Source: individual risk models + diversification → systemic correlation cascade
+flowchart LR
+    R["Individual<br/>risk models"]
+    D["Portfolio<br/>diversification"]
+    S["Similar models<br/>across institutions"]
+    C["Hidden systemic<br/>correlation"]
+    H["Housing market<br/>downturn"]
+    X["💥 Cascading<br/>collapse"]
+
+    R -->|"+"| D
+    D -->|"+"| S
+    S -->|"+"| C
+    H -->|"trigger"| C
+    C -->|"+"| X
+
+    M(["Missing: systemic<br/>correlation monitoring"])
+    C -.-> M

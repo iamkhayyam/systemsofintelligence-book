@@ -1,0 +1,26 @@
+{
+  "id": "02-pask-conversation-loop",
+  "title": "Pask Conversation Loop",
+  "summary": "Pangaro/Pask: intelligence emerges when two agents recursively refine their models of each other's understanding, producing shared meaning.",
+  "fmt": "cld",
+  "nodes": [
+    { "id": "n1", "label": "A Utterances",      "description": "Agent A expresses model",        "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "B Mental Model",    "description": "B's internal model of A",       "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "B Utterances",      "description": "Agent B responds",              "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "A Mental Model",    "description": "A's internal model of B",       "category": "mediator", "is_latent": false },
+    { "id": "n5", "label": "Shared Understanding","description": "Mutual coordination of meaning","category": "outcome", "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "A's words update B's model", "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "B speaks from refined model", "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "B's words update A's model", "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n1", "polarity": "positive", "description": "A speaks from refined model", "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n5", "polarity": "positive", "description": "Refined B-model contributes to shared meaning", "has_delay": true, "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "positive", "description": "Refined A-model contributes to shared meaning", "has_delay": true, "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Recursive understanding", "nodes": ["n1","n2","n3","n4"], "minus_count": 0 }
+  ],
+  "identifiability": "identifiable",
+  "identifiability_note": "Closed dyadic system; coordination quality is observable from utterance histories."
+}

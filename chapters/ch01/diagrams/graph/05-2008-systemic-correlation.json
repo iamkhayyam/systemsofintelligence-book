@@ -1,0 +1,27 @@
+{
+  "id": "05-2008-systemic-correlation",
+  "title": "2008 Crisis: hidden systemic correlation",
+  "summary": "Individual risk models + diversification appeared safe, but uniform models + interconnected products created hidden systemic correlation that cascaded into collapse.",
+  "fmt": "both",
+  "nodes": [
+    { "id": "n1", "label": "Individual Risk Models","description": "Per-asset / per-portfolio models","category": "driver","is_latent": false },
+    { "id": "n2", "label": "Diversification",     "description": "Spread across assets",          "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Model Convergence",   "description": "Everyone uses similar models",  "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Hidden Correlation",  "description": "Unmodeled systemic linkages",   "category": "mediator", "is_latent": false },
+    { "id": "n5", "label": "Cascade Collapse",    "description": "Global financial breakdown",    "category": "outcome",  "is_latent": false },
+    { "id": "n6", "label": "Systemic Monitoring", "description": "Coordination layer that didn't exist","category": "latent","is_latent": true }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Models prescribe diversification", "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Shared best-practice converges", "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Same models → same blind spots", "has_delay": true, "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "positive", "description": "Hidden correlation triggers cascade", "has_delay": true, "is_confounding": false },
+    { "from": "n5", "to": "n1", "polarity": "negative", "description": "Crisis tightens future risk models", "has_delay": true, "is_confounding": false },
+    { "from": "n6", "to": "n4", "polarity": "negative", "description": "Monitoring would reveal correlation early", "has_delay": false, "is_confounding": true }
+  ],
+  "loops": [
+    { "type": "balancing", "label": "B1 — Crisis correction", "nodes": ["n1","n2","n3","n4","n5"], "minus_count": 1 }
+  ],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Systemic monitoring (n6) is a missing latent confounder; correlation only becomes visible after cascade."
+}

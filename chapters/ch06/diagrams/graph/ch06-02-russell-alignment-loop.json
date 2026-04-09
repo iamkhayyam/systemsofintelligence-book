@@ -1,0 +1,26 @@
+{
+  "id": "ch06-02-russell-alignment-loop",
+  "title": "Russell's alignment three-body loop",
+  "summary": "Raw capability optimizing a stated objective diverges from true intent (King Midas). Inverse reinforcement learning closes a balancing loop: capability observes behavior, infers values, updates the objective.",
+  "fmt": "cld",
+  "source": "Ch06 — 'AI that learns to coordinate its capabilities with human values by understanding context.'",
+  "nodes": [
+    { "id": "n1", "label": "Ai Capability",       "description": "Optimization power",                "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Stated Objective",    "description": "Literal reward function",           "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Midas Divergence",    "description": "Gap between letter and intent",     "category": "outcome",  "is_latent": false },
+    { "id": "n4", "label": "Inferred Values",     "description": "IRL from observed behavior",        "category": "feedback", "is_latent": false },
+    { "id": "n5", "label": "Human Intent",        "description": "What humans actually want",         "category": "latent",   "is_latent": true  }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Capability executes the objective",    "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Literal goal amplifies divergence",    "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Divergence prompts value inference",   "has_delay": true,  "is_confounding": false },
+    { "from": "n4", "to": "n2", "polarity": "negative", "description": "Inferred values correct the objective","has_delay": true,  "is_confounding": false },
+    { "from": "n5", "to": "n4", "polarity": "positive", "description": "Intent grounds inference",             "has_delay": false, "is_confounding": true  }
+  ],
+  "loops": [
+    { "type": "balancing", "label": "B1 — Midas correction via IRL", "nodes": ["n2","n3","n4"], "minus_count": 1 }
+  ],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Human intent is latent; IRL only partially identifies it from behavior."
+}

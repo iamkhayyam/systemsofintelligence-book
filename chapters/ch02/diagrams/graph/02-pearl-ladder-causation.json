@@ -1,0 +1,27 @@
+{
+  "id": "ch02-02-pearl-ladder-causation",
+  "title": "Pearl's Ladder of Causation",
+  "summary": "Pearl: association works with two bodies, intervention requires three, counterfactuals require conscious coordination of all three plus the ability to imagine alternatives. Each rung adds a body to the coordination stack.",
+  "fmt": "dag",
+  "source": "Ch02 — \"Association works with two bodies. Intervention requires three. Counterfactuals require conscious coordination of all three plus the ability to imagine alternatives.\"",
+  "layout_hint": "three-level-stack",
+  "nodes": [
+    { "id": "n1", "label": "Observation",        "description": "Rung 1: seeing — correlations in data",        "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Intervention",       "description": "Rung 2: doing — effects of actions (do-calc)", "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Counterfactual",     "description": "Rung 3: imagining — what would have happened", "category": "outcome",  "is_latent": false },
+    { "id": "n4", "label": "Causal Model",       "description": "Structural assumptions linking the rungs",     "category": "feedback", "is_latent": false },
+    { "id": "n5", "label": "Hidden Confounders", "description": "Unobserved causes that block identifiability", "category": "latent",   "is_latent": true  }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Observation supports intervention only with a model", "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Intervention supports counterfactuals with a model", "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n1", "polarity": "positive", "description": "Model assigns causal meaning to correlations",       "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n2", "polarity": "positive", "description": "Model defines what 'intervention' means",            "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n3", "polarity": "positive", "description": "Model defines counterfactual worlds",                 "has_delay": false, "is_confounding": false },
+    { "from": "n5", "to": "n1", "polarity": "negative", "description": "Confounders corrupt pure observation",                "has_delay": false, "is_confounding": true  },
+    { "from": "n5", "to": "n2", "polarity": "negative", "description": "Confounders break naive intervention inference",     "has_delay": false, "is_confounding": true  }
+  ],
+  "loops": [],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Each rung has its own identifiability criteria; counterfactuals (rung 3) are unidentifiable without structural assumptions Pearl formalizes in do-calculus."
+}

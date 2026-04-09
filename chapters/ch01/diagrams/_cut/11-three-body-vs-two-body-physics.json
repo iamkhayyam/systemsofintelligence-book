@@ -1,0 +1,25 @@
+{
+  "id": "11-three-body-vs-two-body-physics",
+  "title": "Three-body coordination (vs two-body)",
+  "summary": "Two-body systems are predictable but cannot create emergence. Three bodies introduce coupling chaos — and with it, the possibility of adaptive coordination and novel capabilities.",
+  "fmt": "cld",
+  "nodes": [
+    { "id": "n1", "label": "Body 1",            "description": "First gravitational mass",      "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Body 2",            "description": "Second gravitational mass",     "category": "driver",   "is_latent": false },
+    { "id": "n3", "label": "Body 3",            "description": "Third gravitational mass",      "category": "driver",   "is_latent": false },
+    { "id": "n4", "label": "Coupling Chaos",    "description": "Mutual nonlinear interactions","category": "mediator", "is_latent": false },
+    { "id": "n5", "label": "Adaptive Trajectory","description": "Trisolaran-style coordination response","category": "outcome","is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n4", "polarity": "positive", "description": "Body 1 contributes coupling", "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n4", "polarity": "positive", "description": "Body 2 contributes coupling", "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Body 3 contributes coupling", "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "positive", "description": "Chaos forces adaptive navigation", "has_delay": true, "is_confounding": false },
+    { "from": "n5", "to": "n1", "polarity": "negative", "description": "Adaptation alters body trajectories", "has_delay": true, "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "balancing", "label": "B1 — Chaos → adaptation → restabilization", "nodes": ["n1","n4","n5"], "minus_count": 1 }
+  ],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Three-body systems are mathematically chaotic — long-term trajectories are not predictable from initial conditions, only navigated."
+}

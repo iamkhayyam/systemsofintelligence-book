@@ -1,0 +1,27 @@
+{
+  "id": "ch08-01-intelligence-explosion",
+  "title": "Intelligence explosion as three-body recursion",
+  "summary": "Recursive self-improvement is not one body but three: human intent, AI capability, and the coordination layer that preserves alignment. Capability rising without coordination breaks value alignment, which is the only check on runaway recursion.",
+  "fmt": "cld",
+  "source": "Ch08 8.1 — Human Design <-> AI Self-Improvement <-> Recursive Enhancement; Tegmark three-body intelligence explosion",
+  "nodes": [
+    { "id": "n1", "label": "Human Intent",           "description": "Values, goals, constraints set by designers", "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "AI Capability",          "description": "Recursive self-improvement of models",        "category": "driver",   "is_latent": false },
+    { "id": "n3", "label": "Coordination Layer",     "description": "Alignment preservation across recursion",     "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Value Alignment",        "description": "How well AI acts reflects human intent",      "category": "mediator", "is_latent": false },
+    { "id": "n5", "label": "Aligned Superintelligence","description": "Capability and values stay coordinated",    "category": "outcome",  "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n3", "polarity": "positive", "description": "Intent defines the coordination rules",              "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "negative", "description": "Faster capability growth strains the coordination layer", "has_delay": true,  "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Coordination preserves alignment through recursion",  "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n2", "polarity": "positive", "description": "Aligned recursion authorizes further capability",     "has_delay": true,  "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "positive", "description": "Alignment + capability yields aligned superintelligence", "has_delay": true, "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "balancing",  "label": "B1 — Coordination brake",   "nodes": ["n2","n3","n4"], "minus_count": 1 },
+    { "type": "reinforcing","label": "R1 — Aligned acceleration", "nodes": ["n3","n4","n2"], "minus_count": 1 }
+  ],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "The coordination layer is partially observable; alignment is only measurable after capability gains, introducing an unobserved delay confounder."
+}

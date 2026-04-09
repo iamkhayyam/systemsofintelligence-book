@@ -1,0 +1,26 @@
+{
+  "id": "ch02-01-netflix-recommendation-loop",
+  "title": "Netflix content-coordination loop",
+  "summary": "Netflix's recommendation system is a self-optimizing three-body coordination: viewing data, algorithmic ranking, and content production decisions continuously reshape each other to drive emergent engagement.",
+  "fmt": "cld",
+  "source": "Ch02 — \"viewing data influences production decisions, which creates new content, which generates new viewing patterns…\"",
+  "nodes": [
+    { "id": "n1", "label": "Viewing Data",         "description": "Watch history, dwell time, completion signals", "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Ranking Algorithm",    "description": "Personalized recommendation engine",            "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Content Production",   "description": "Greenlighting and commissioning decisions",     "category": "feedback", "is_latent": false },
+    { "id": "n4", "label": "User Engagement",      "description": "Emergent personalization + retention",          "category": "outcome",  "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Data trains the ranker",                    "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n4", "polarity": "positive", "description": "Better recommendations → more engagement", "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n1", "polarity": "positive", "description": "Engagement generates new viewing data",    "has_delay": false, "is_confounding": false },
+    { "from": "n1", "to": "n3", "polarity": "positive", "description": "Aggregate data reveals content demand",    "has_delay": true,  "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "New content expands engagement surface",  "has_delay": true,  "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Engagement-data spiral",    "nodes": ["n1","n2","n4"],     "minus_count": 0 },
+    { "type": "reinforcing", "label": "R2 — Content-demand learning",   "nodes": ["n1","n3","n4"],     "minus_count": 0 }
+  ],
+  "identifiability": "identifiable",
+  "identifiability_note": "Netflix has instrumented this end-to-end with A/B testing; effects are measurable from observational data."
+}

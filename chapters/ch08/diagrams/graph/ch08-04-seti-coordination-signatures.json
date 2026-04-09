@@ -1,0 +1,29 @@
+{
+  "id": "ch08-04-seti-coordination-signatures",
+  "title": "SETI: searching for coordination signatures",
+  "summary": "Tarter and Seager reframe SETI: stop listening for intentional radio messages and start looking for the byproducts of intelligence coordinating with physical laws. Human hypothesis + AI pattern detection + physical reality form the three-body search.",
+  "fmt": "both",
+  "source": "Ch08 8.2 — Human Search <-> AI Pattern Detection <-> Alien Intelligence Signals (Tarter, Seager)",
+  "nodes": [
+    { "id": "n1", "label": "Human Hypothesis",       "description": "What coordination patterns to look for", "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "AI Pattern Detection",   "description": "ML anomaly search over massive datasets","category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Physical Reality",       "description": "What is actually in the universe",       "category": "driver",   "is_latent": false },
+    { "id": "n4", "label": "Coordination Signatures","description": "Dyson excess, biosignatures, transits",  "category": "mediator", "is_latent": false },
+    { "id": "n5", "label": "Intelligence Detection", "description": "Verified discovery of coordination",     "category": "outcome",  "is_latent": false },
+    { "id": "n6", "label": "Alien Coordination Mode","description": "How aliens actually couple to physics",  "category": "latent",   "is_latent": true  }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Hypotheses define AI search targets",    "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Physics emits observable patterns",     "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n4", "polarity": "positive", "description": "AI surfaces candidate signatures",      "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "positive", "description": "Verified signatures -> detection",      "has_delay": true,  "is_confounding": false },
+    { "from": "n5", "to": "n1", "polarity": "positive", "description": "Each detection refines hypotheses",     "has_delay": true,  "is_confounding": false },
+    { "from": "n6", "to": "n4", "polarity": "positive", "description": "Alien mode determines what is emitted", "has_delay": false, "is_confounding": true  },
+    { "from": "n6", "to": "n1", "polarity": "positive", "description": "Alien mode shapes which guesses work",  "has_delay": false, "is_confounding": true  }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Hypothesis-detection flywheel", "nodes": ["n1","n2","n4","n5"], "minus_count": 0 }
+  ],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Alien coordination mode (n6) is a latent confounder on both hypothesis and signature; any null result is consistent with 'wrong mode' rather than 'no intelligence'."
+}

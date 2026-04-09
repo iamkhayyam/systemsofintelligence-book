@@ -1,0 +1,26 @@
+{
+  "id": "01-facebook-three-body",
+  "title": "Facebook three-body system",
+  "summary": "The chapter's opening lesson: human behavior, algorithmic curation, and emergent social contagion form a three-body system. Optimizing any two while ignoring the third creates a coordination crisis.",
+  "fmt": "both",
+  "source": "Ch01 — \"Human behavior ↔ Algorithm optimization ↔ Social system dynamics\"",
+  "nodes": [
+    { "id": "n1", "label": "Human Behavior",      "description": "User emotion, attention, posting", "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Algorithmic Curation","description": "News Feed ranker",                  "category": "driver",   "is_latent": false },
+    { "id": "n3", "label": "Emergent Contagion",  "description": "Collective emotional propagation", "category": "outcome",  "is_latent": false },
+    { "id": "n4", "label": "Coordination Wisdom", "description": "Missing third element: norms",     "category": "latent",   "is_latent": true  }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Reactions train the ranker",               "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n1", "polarity": "positive", "description": "Curated feed amplifies emotion",           "has_delay": false, "is_confounding": false },
+    { "from": "n1", "to": "n3", "polarity": "positive", "description": "Behavior seeds contagion",                 "has_delay": true,  "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Algorithm amplifies contagion",            "has_delay": true,  "is_confounding": false },
+    { "from": "n4", "to": "n2", "polarity": "negative", "description": "Wisdom would dampen pure-engagement",      "has_delay": false, "is_confounding": true  },
+    { "from": "n4", "to": "n3", "polarity": "negative", "description": "Wisdom would dampen runaway contagion",    "has_delay": false, "is_confounding": true  }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Engagement spiral", "nodes": ["n1","n2"], "minus_count": 0 }
+  ],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Coordination wisdom (n4) is a latent confounder on both algorithm and contagion pathways; the curation→emotion effect is not estimable from observational data alone."
+}

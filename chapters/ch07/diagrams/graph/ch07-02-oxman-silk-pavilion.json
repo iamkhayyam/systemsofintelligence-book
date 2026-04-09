@@ -1,0 +1,25 @@
+{
+  "id": "ch07-02-oxman-silk-pavilion",
+  "title": "Silk Pavilion: material ecology coordination",
+  "summary": "Oxman's Silk Pavilion coordinates biological fabricators, computational scaffold design, and robotic fabrication—form emerges from the coordination rather than control.",
+  "fmt": "cld",
+  "source": "Ch07 §7.1 — Neri Oxman / Silk Pavilion",
+  "nodes": [
+    { "id": "n1", "label": "Biological Agents",     "description": "Silkworms spinning toward light/heat",    "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Computational Design",  "description": "Algorithmic scaffold geometry",           "category": "driver",   "is_latent": false },
+    { "id": "n3", "label": "Robotic Fabrication",   "description": "Physical scaffold construction",          "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Emergent Structure",    "description": "Form neither method could build alone",   "category": "outcome",  "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Geometry instructs the robot",         "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n1", "polarity": "positive", "description": "Scaffold guides worm behavior",        "has_delay": false, "is_confounding": false },
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Worm patterns inform next iteration", "has_delay": true,  "is_confounding": false },
+    { "from": "n1", "to": "n4", "polarity": "positive", "description": "Biology completes the structure",     "has_delay": true,  "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Robot lays the substrate",            "has_delay": false, "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Bio-computational loop", "nodes": ["n1","n2","n3"], "minus_count": 0 }
+  ],
+  "identifiability": "identifiable",
+  "identifiability_note": "Each layer is directly observable in the pavilion build process."
+}

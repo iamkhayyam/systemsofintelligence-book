@@ -1,0 +1,25 @@
+{
+  "id": "ch09-03-yang-automation-distribution",
+  "title": "Yang automation–distribution coordination break",
+  "summary": "Automation raises productivity but the wage-based distribution mechanism ties income to jobs. As displacement eliminates jobs, income collapses even as abundance grows. UBI is modeled as a latent distribution channel that would re-couple capability to human security.",
+  "fmt": "both",
+  "source": "Ch09 §9.2 — Yang interview; \"productivity increases, wages decrease; wealth increases, but inequality rises.\"",
+  "nodes": [
+    { "id": "n1", "label": "Automation Capability", "description": "AI and robots replacing human labor",    "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Job Displacement",      "description": "Wage-earning roles eliminated",          "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Wage Income",           "description": "Household income from employment",       "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Economic Security",     "description": "Ability to meet needs, pursue purpose",  "category": "outcome",  "is_latent": false },
+    { "id": "n5", "label": "Universal Basic Income","description": "Distribution channel decoupled from jobs","category": "latent",  "is_latent": true  }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Capability displaces labor",             "has_delay": true,  "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "negative", "description": "Displacement collapses wage income",     "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Wage income funds security",             "has_delay": false, "is_confounding": false },
+    { "from": "n1", "to": "n4", "polarity": "positive", "description": "Capability should enable abundance",     "has_delay": true,  "is_confounding": false },
+    { "from": "n5", "to": "n4", "polarity": "positive", "description": "UBI re-couples capability to security",  "has_delay": false, "is_confounding": true  },
+    { "from": "n5", "to": "n3", "polarity": "positive", "description": "UBI supplements wage income directly",   "has_delay": false, "is_confounding": true  }
+  ],
+  "loops": [],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "UBI (n5) is the unobserved distribution channel; the net effect of automation on security depends on whether this latent channel is activated."
+}

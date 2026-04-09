@@ -1,0 +1,28 @@
+{
+  "id": "ch03-04-alphago-three-networks",
+  "title": "AlphaGo three-network coordination",
+  "summary": "AlphaGo's breakthrough came not from any single network but from coordination between a policy network, a value network, and Monte Carlo Tree Search — with self-play feedback tuning their joint behavior.",
+  "fmt": "cld",
+  "source": "Ch03 — Demis Hassabis: \"Policy Network · Value Network · Monte Carlo Tree Search\"",
+  "nodes": [
+    { "id": "n1", "label": "Policy Network",  "description": "Priors over likely moves",             "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Value Network",   "description": "Estimates win probability of a state", "category": "driver",   "is_latent": false },
+    { "id": "n3", "label": "Tree Search",     "description": "MCTS exploration of move sequences",   "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Emergent Move",   "description": "Coordinated choice (e.g. Move 37)",    "category": "outcome",  "is_latent": false },
+    { "id": "n5", "label": "Self-Play Signal","description": "Outcomes retrain both networks",       "category": "feedback", "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n3", "polarity": "positive", "description": "Policy narrows search branches",           "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Value guides node evaluation",             "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Search selects the emergent move",        "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "positive", "description": "Game outcome generates training signal",  "has_delay": true,  "is_confounding": false },
+    { "from": "n5", "to": "n1", "polarity": "positive", "description": "Policy updated from self-play",           "has_delay": true,  "is_confounding": false },
+    { "from": "n5", "to": "n2", "polarity": "positive", "description": "Value updated from self-play",            "has_delay": true,  "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Policy self-improvement", "nodes": ["n1","n3","n4","n5"], "minus_count": 0 },
+    { "type": "reinforcing", "label": "R2 — Value self-improvement",  "nodes": ["n2","n3","n4","n5"], "minus_count": 0 }
+  ],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Policy and value networks are jointly trained on the same self-play trajectories, so their individual contributions to emergent moves are confounded by shared training data."
+}

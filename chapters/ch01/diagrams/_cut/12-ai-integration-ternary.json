@@ -1,0 +1,25 @@
+{
+  "id": "12-ai-integration-ternary",
+  "title": "AI integration as ternary coordination",
+  "summary": "Don't deploy AI and expect humans to adapt. The third element is a dynamic trust + learning loop where both AI and operator continuously update on each other.",
+  "fmt": "cld",
+  "nodes": [
+    { "id": "n1", "label": "AI System",         "description": "Model + interface",             "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Human Operator",    "description": "User with intent + context",    "category": "driver",   "is_latent": false },
+    { "id": "n3", "label": "Trust Loop",        "description": "Explanations + override + feedback","category": "mediator","is_latent": false },
+    { "id": "n4", "label": "Mutual Adaptation", "description": "Both update from outcomes",     "category": "feedback", "is_latent": false },
+    { "id": "n5", "label": "Task Performance",  "description": "Coordinated capability",        "category": "outcome",  "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n3", "polarity": "positive", "description": "AI offers explanations + signals", "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Operator offers feedback + override", "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n5", "polarity": "positive", "description": "Trust enables effective collaboration", "has_delay": false, "is_confounding": false },
+    { "from": "n5", "to": "n4", "polarity": "positive", "description": "Outcomes drive learning", "has_delay": true, "is_confounding": false },
+    { "from": "n4", "to": "n3", "polarity": "positive", "description": "Updates reinforce trust loop", "has_delay": false, "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Trust + learning loop", "nodes": ["n3","n5","n4"], "minus_count": 0 }
+  ],
+  "identifiability": "identifiable",
+  "identifiability_note": "Closed sociotechnical system; trust calibration is measurable via override frequency and accepted-suggestion ratios."
+}

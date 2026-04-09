@@ -1,0 +1,27 @@
+{
+  "id": "ch03-02-constitutional-ai-rlaif",
+  "title": "Constitutional AI self-critique loop",
+  "summary": "Anthropic's Constitutional AI coordinates raw capability with human values through a constitutional framework, using a critique model to drive iterative self-revision (RLAIF).",
+  "fmt": "cld",
+  "source": "Ch03 — Dario Amodei: \"capability, human values, and the constitutional framework that coordinates them\"",
+  "nodes": [
+    { "id": "n1", "label": "AI Capability",          "description": "Generative LLM producing candidate responses", "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Human Values",           "description": "Harmlessness, helpfulness, honesty principles", "category": "driver",   "is_latent": false },
+    { "id": "n3", "label": "Constitutional Framework","description": "Principle set guiding the critique model",      "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Critique Signal",        "description": "AI feedback flagging principle violations",      "category": "feedback", "is_latent": false },
+    { "id": "n5", "label": "Aligned Response",       "description": "Revised output after self-correction",           "category": "outcome",  "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n5", "polarity": "positive", "description": "Capability generates the initial response",         "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Values are encoded into the framework",             "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Framework drives the critique model",               "has_delay": false, "is_confounding": false },
+    { "from": "n5", "to": "n4", "polarity": "positive", "description": "Response is evaluated against principles",          "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n1", "polarity": "negative", "description": "Critique suppresses misaligned capability patterns", "has_delay": true,  "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "positive", "description": "Critique drives revised response",                  "has_delay": false, "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "balancing", "label": "B1 — Self-critique correction", "nodes": ["n1","n5","n4"], "minus_count": 1 }
+  ],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "The constitution itself is a latent design choice confounded with human values; the effect of the framework on alignment is not separable from the values it encodes without intervention on the principle set."
+}

@@ -1,0 +1,29 @@
+{
+  "id": "preface-00-reading-legend",
+  "title": "Reading Legend — how to parse every diagram in this book",
+  "summary": "A pedagogical key — the one diagram in this book that isn't a real causal system. Every visual convention the reader will encounter 62 times is shown exactly once: the five node categories (driver, mediator, outcome, feedback, latent), the two edge polarities (+ solid green, − solid red), delay marks (double ticks on the arrow path), confounding arcs (dashed, from a latent node), and the two loop types (R reinforcing when negative edges are even, B balancing when odd). Read this figure once, then every other figure in the book will be legible.",
+  "fmt": "both",
+  "source": "Preface §How to Read This Book — the visual vocabulary used across all 62 figures",
+  "nodes": [
+    { "id": "n1", "label": "Driver Node",   "description": "An input variable. Starts a causal chain. Rendered dark blue.",                                     "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Mediator Node", "description": "A pass-through variable. Sits in the middle of a causal chain. Rendered purple.",                    "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Outcome Node",  "description": "The result of the system. Rendered orange. Gets the identifiability badge (✓ or ✗).",                "category": "outcome",  "is_latent": false },
+    { "id": "n4", "label": "Feedback Node", "description": "A homeostatic regulator. Closes a loop by correcting deviations. Rendered dark green.",              "category": "feedback", "is_latent": false },
+    { "id": "n5", "label": "Latent Node",   "description": "An unobserved variable. Dashed gray ellipse. Hidden in CLD mode, visible in DAG mode.",               "category": "latent",   "is_latent": true  }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Positive edge: 'when A rises, B rises'. Solid green line with a + badge.",      "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Another positive edge, closing the forward chain driver → mediator → outcome.", "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Positive edge with a delay (double-tick marks on the arrow path).",              "has_delay": true,  "is_confounding": false },
+    { "from": "n4", "to": "n1", "polarity": "positive", "description": "Closes the reinforcing loop R1 back to the driver.",                              "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n1", "polarity": "negative", "description": "Negative edge: 'when A rises, B falls'. Solid red line with a − badge.",         "has_delay": false, "is_confounding": false },
+    { "from": "n5", "to": "n2", "polarity": "positive", "description": "Confounding arc from a latent node. Dashed gray, shown only in DAG or Both mode.","has_delay": false, "is_confounding": true  },
+    { "from": "n5", "to": "n3", "polarity": "negative", "description": "Another confounding arc — latent nodes usually confound multiple downstream nodes.","has_delay": false, "is_confounding": true  }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — example reinforcing loop (0 negative edges)", "nodes": ["n1","n2","n3","n4"], "minus_count": 0 },
+    { "type": "balancing",   "label": "B1 — example balancing loop (1 negative edge)",    "nodes": ["n1","n2"],           "minus_count": 1 }
+  ],
+  "identifiability": "identifiable",
+  "identifiability_note": "This is a pedagogical legend, not a real causal system. Its 'identifiability' is that all five node categories, both edge polarities, delay marks, confounding arcs, and both loop types are demonstrated once in a single figure. Read this legend first; every other figure in the book uses the same conventions."
+}

@@ -1,0 +1,24 @@
+{
+  "id": "ch03-05-alphafold-coordination",
+  "title": "AlphaFold three-body folding",
+  "summary": "AlphaFold predicts protein structure by coordinating evolutionary co-variation, physical constraints, and an attention architecture that learns how amino acids interact in 3D — a DAG from three independent information sources to a single structural prediction.",
+  "fmt": "dag",
+  "source": "Ch03 — Demis Hassabis: \"Evolutionary Information · Physical Constraints · Attention Architecture\"",
+  "nodes": [
+    { "id": "n1", "label": "Amino Acid Sequence",   "description": "Primary structure input",                       "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Evolutionary Signal",   "description": "Multiple sequence alignments, co-variation",    "category": "driver",   "is_latent": false },
+    { "id": "n3", "label": "Physical Constraints",  "description": "Bond angles, steric limits, chemistry",        "category": "driver",   "is_latent": false },
+    { "id": "n4", "label": "Attention Architecture","description": "Pair and triangle attention over residues",    "category": "mediator", "is_latent": false },
+    { "id": "n5", "label": "Predicted Structure",   "description": "Accurate 3D coordinates",                        "category": "outcome",  "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Sequence queries the MSA database",           "has_delay": false, "is_confounding": false },
+    { "from": "n1", "to": "n4", "polarity": "positive", "description": "Sequence tokens feed the attention stack",   "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n4", "polarity": "positive", "description": "Co-variation constrains residue pairs",      "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Physical priors shape the loss",             "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "positive", "description": "Attention outputs resolve 3D structure",     "has_delay": false, "is_confounding": false }
+  ],
+  "loops": [],
+  "identifiability": "identifiable",
+  "identifiability_note": "Treated as a feed-forward DAG: each input channel is independently controllable through ablation, and the attention mediator's contribution is identifiable by holding sequence and evolutionary inputs fixed."
+}

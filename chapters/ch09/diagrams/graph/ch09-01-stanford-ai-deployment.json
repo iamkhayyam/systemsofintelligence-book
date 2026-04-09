@@ -1,0 +1,25 @@
+{
+  "id": "ch09-01-stanford-ai-deployment",
+  "title": "Stanford AI deployment three-body failure",
+  "summary": "A 95%-accurate pneumonia diagnostic AI was shut down six months after deployment. The model worked; the coordination with radiologist workflow and hospital operations did not. Optimizing one body (capability) while ignoring the others produced resistance, liability ambiguity, and reimbursement refusal.",
+  "fmt": "both",
+  "source": "Ch09 opening — \"The technology worked. The coordination failed.\"",
+  "nodes": [
+    { "id": "n1", "label": "AI Capability",        "description": "Diagnostic accuracy, speed, scale", "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Radiologist Workflow", "description": "Expertise, judgment, trust",        "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Hospital Operations",  "description": "Liability, insurance, integration", "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Deployment Outcome",   "description": "Sustained clinical use (or shutdown)", "category": "outcome", "is_latent": false },
+    { "id": "n5", "label": "Integration Coordination", "description": "Missing third-body layer that would align all three", "category": "latent", "is_latent": true }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "negative", "description": "Unilateral AI accuracy undermines radiologist trust",          "has_delay": false, "is_confounding": false },
+    { "from": "n1", "to": "n3", "polarity": "negative", "description": "Capability without protocol creates liability ambiguity",     "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n4", "polarity": "positive", "description": "Workflow acceptance sustains deployment",                     "has_delay": true,  "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Operational fit (reimbursement, legal) sustains deployment", "has_delay": true,  "is_confounding": false },
+    { "from": "n5", "to": "n2", "polarity": "positive", "description": "Coordination layer would align workflow with AI",             "has_delay": false, "is_confounding": true  },
+    { "from": "n5", "to": "n3", "polarity": "positive", "description": "Coordination layer would align operations with AI",          "has_delay": false, "is_confounding": true  }
+  ],
+  "loops": [],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Integration Coordination (n5) is a latent confounder on both the workflow and operations pathways; the marginal effect of AI capability on deployment outcome cannot be estimated without measuring the coordination layer."
+}

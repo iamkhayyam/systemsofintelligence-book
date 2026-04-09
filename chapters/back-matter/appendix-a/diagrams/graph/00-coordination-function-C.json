@@ -1,0 +1,30 @@
+{
+  "id": "appA-00-coordination-function-C",
+  "title": "C(A, B, Θ) → E — the fundamental operator",
+  "summary": "The book's root equation. Appendix A.1 defines the coordination function C: A × B × Θ → E, where two elements coordinate in a context to produce emergence that neither could produce alone. Every other diagram in this book — Hardware/Software/Knowware, Facebook three-body, Netflix, AlphaFold, Pearl's Ladder, π/φ balance — is an instantiation of this single operator with different (A, B, Θ) bindings. The crucial property: E ≠ f(A) ∪ f(B). Emergence cannot be decomposed back into individual contributions.",
+  "fmt": "cld",
+  "source": "Appendix A.1 — \"C: A × B × Θ → E, where E ∉ {f(A) ∪ f(B)} for any functions f\"",
+  "nodes": [
+    { "id": "n1", "label": "Element A",              "description": "First coordinating element, state space S_A",                                  "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Element B",              "description": "Second coordinating element, state space S_B",                                 "category": "driver",   "is_latent": false },
+    { "id": "n3", "label": "Context Θ",              "description": "The third body — environmental and relational parameters that shape coordination", "category": "driver",   "is_latent": false },
+    { "id": "n4", "label": "Coordination Function C","description": "The operator C: A × B × Θ → E. Not commutative; not decomposable.",             "category": "mediator", "is_latent": false },
+    { "id": "n5", "label": "Emergence E",            "description": "The output. E ≠ f(A) ∪ f(B). Irreducible to individual contributions.",         "category": "outcome",  "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n4", "polarity": "positive", "description": "A enters the operator",                                                   "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n4", "polarity": "positive", "description": "B enters the operator",                                                   "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Θ shapes how A and B compose — changes the operator itself",               "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "positive", "description": "Operator application produces irreducible emergence",                      "has_delay": true,  "is_confounding": false },
+    { "from": "n5", "to": "n1", "polarity": "positive", "description": "Emergence reshapes A (learning, adaptation)",                              "has_delay": true,  "is_confounding": false },
+    { "from": "n5", "to": "n2", "polarity": "positive", "description": "Emergence reshapes B",                                                     "has_delay": true,  "is_confounding": false },
+    { "from": "n5", "to": "n3", "polarity": "positive", "description": "Emergence shifts the context — this is what makes coordination evolve",    "has_delay": true,  "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — A adaptation cycle",       "nodes": ["n1","n4","n5"], "minus_count": 0 },
+    { "type": "reinforcing", "label": "R2 — B adaptation cycle",       "nodes": ["n2","n4","n5"], "minus_count": 0 },
+    { "type": "reinforcing", "label": "R3 — Context evolution cycle",  "nodes": ["n3","n4","n5"], "minus_count": 0 }
+  ],
+  "identifiability": "identifiable",
+  "identifiability_note": "Meta-diagram: the operator itself is defined, not measured. Identifiability belongs to each specialization (HW/SW/Knowware, Facebook, Netflix, etc.), which bind A, B, Θ to specific observable variables and inherit identifiability from that binding."
+}

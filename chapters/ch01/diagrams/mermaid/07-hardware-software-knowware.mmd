@@ -1,0 +1,14 @@
+%% Ch01 Diagram 07 — Hardware / Software / Knowware (canonical book schema)
+flowchart LR
+    HW["Hardware<br/>physical computation"]
+    SW["Software<br/>logical frameworks"]
+    KW["Knowware<br/>adaptive intelligence"]
+
+    HW <--> SW
+    SW <--> KW
+    KW <--> HW
+
+    E((Emergence:<br/>learning, context,<br/>coordination))
+    HW -.-> E
+    SW -.-> E
+    KW -.-> E

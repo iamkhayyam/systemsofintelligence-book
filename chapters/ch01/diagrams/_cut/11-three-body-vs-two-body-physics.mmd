@@ -1,0 +1,18 @@
+%% Ch01 Diagram 11 — Two-body vs three-body comparison
+flowchart LR
+    subgraph TwoBody["Two-body (binary)"]
+        P1((Body 1)) <--> P2((Body 2))
+        OUT1[Predictable<br/>orbit]
+        P1 -.-> OUT1
+        P2 -.-> OUT1
+    end
+
+    subgraph ThreeBody["Three-body (ternary)"]
+        Q1((Body 1)) <--> Q2((Body 2))
+        Q2 <--> Q3((Body 3))
+        Q3 <--> Q1
+        OUT2[Chaotic →<br/>navigate via<br/>coordination]
+        Q1 -.-> OUT2
+        Q2 -.-> OUT2
+        Q3 -.-> OUT2
+    end

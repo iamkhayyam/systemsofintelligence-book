@@ -1,0 +1,24 @@
+{
+  "id": "ch09-04-turkle-conversation-erosion",
+  "title": "Turkle conversation erosion loop",
+  "summary": "Algorithmically-mediated communication trains fragmented attention and lowers tolerance for silence, eroding face-to-face conversation skill. Reduced skill makes in-person interaction less rewarding, driving still more mediated communication — a reinforcing loop Turkle calls the conversation crisis.",
+  "fmt": "cld",
+  "source": "Ch09 §9.3 — Turkle interview; \"technology coordinates with our habits in ways that make us worse at human connection.\"",
+  "nodes": [
+    { "id": "n1", "label": "Mediated Communication", "description": "Texts, DMs, algorithmic feeds",        "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Fragmented Attention",   "description": "Tolerance for sustained focus",        "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Conversation Skill",     "description": "Sustained, embodied, vulnerable talk", "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Empathy Capacity",       "description": "Perspective-taking, emotional reading","category": "outcome",  "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Interruptions fragment attention",               "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "negative", "description": "Fragmented attention erodes conversation skill", "has_delay": true,  "is_confounding": false },
+    { "from": "n3", "to": "n1", "polarity": "negative", "description": "Weaker skill makes face-to-face less rewarding → more mediated use", "has_delay": true, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Conversation skill builds empathy",              "has_delay": true,  "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Conversation erosion", "nodes": ["n1","n2","n3"], "minus_count": 2 }
+  ],
+  "identifiability": "identifiable",
+  "identifiability_note": "Closed observational loop; no latent confounder modeled. Intervention on mediated-communication exposure would be needed to estimate magnitudes."
+}

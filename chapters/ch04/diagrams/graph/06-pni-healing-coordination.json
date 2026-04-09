@@ -1,0 +1,26 @@
+{
+  "id": "ch04-06-pni-healing-coordination",
+  "title": "Psychoneuroimmunology healing three-body",
+  "summary": "Myss's healing frame grounded in PNI: physical treatment, emotional state, and spiritual meaning coordinate through immune function to produce (or block) durable healing. Chronic stress suppresses immunity — a balancing arm that can undo treatment when the other bodies are ignored.",
+  "fmt": "cld",
+  "source": "Ch04 — \"Healing as Coordination, Not Just Treatment\" (Myss / PNI)",
+  "nodes": [
+    { "id": "n1", "label": "Physical Treatment",    "description": "Surgery, medication, therapy protocols",              "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Emotional State",       "description": "Trauma load, chronic stress, relationships",          "category": "driver",   "is_latent": false },
+    { "id": "n3", "label": "Spiritual Meaning",     "description": "Purpose, identity, belief, placebo pathways",         "category": "driver",   "is_latent": false },
+    { "id": "n4", "label": "Immune Function",       "description": "Cortisol regulation, inflammation, PNI mediators",    "category": "mediator", "is_latent": false },
+    { "id": "n5", "label": "Durable Healing",       "description": "Remission, resilience, wholeness",                    "category": "outcome",  "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n5", "polarity": "positive", "description": "Direct clinical effect of treatment",              "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n4", "polarity": "negative", "description": "Chronic stress suppresses immune function",        "has_delay": true,  "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Meaning and belief upregulate immune response",    "has_delay": true,  "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "positive", "description": "Immune competence enables healing",                "has_delay": true,  "is_confounding": false },
+    { "from": "n5", "to": "n2", "polarity": "positive", "description": "Recovery improves emotional state",                "has_delay": true,  "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "balancing", "label": "B1 — Stress-immunity-healing feedback", "nodes": ["n2","n4","n5"], "minus_count": 1 }
+  ],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Emotional and spiritual bodies are measured with noise and co-vary with treatment adherence, so the mediation through immune function is confounded in observational healing data."
+}

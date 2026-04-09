@@ -1,0 +1,24 @@
+{
+  "id": "ch04-04-23andme-genomic-coordination",
+  "title": "23andMe patient-data-research flywheel",
+  "summary": "Wojcicki's consumer genomics as a reinforcing loop: individual curiosity drives patient participation, which grows the research database, which produces discoveries that attract more participants — coordinating personal genetics, medical research, and patient agency.",
+  "fmt": "cld",
+  "source": "Ch04 — \"Anne Wojcicki: When Patients Coordinate with Data\"",
+  "nodes": [
+    { "id": "n1", "label": "Patient Participation",  "description": "Opt-in customers contributing genotype and phenotype data", "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Genetic Database",       "description": "12M+ consented dataset, scale and diversity",              "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Research Discovery",     "description": "Novel variants for Parkinson's, depression, IBD, PGx",     "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Health Intelligence",    "description": "Actionable insight returned to individuals and clinicians","category": "outcome",  "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Each participant enlarges the database",         "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Scale enables statistical discovery",            "has_delay": true,  "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Discoveries feed personalized health reports",    "has_delay": true,  "is_confounding": false },
+    { "from": "n4", "to": "n1", "polarity": "positive", "description": "Returned value motivates further participation",  "has_delay": true,  "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Participation-discovery flywheel", "nodes": ["n1","n2","n3","n4"], "minus_count": 0 }
+  ],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Self-selection into 23andMe is correlated with health curiosity and demographics, so the participation→discovery→participation loop cannot be cleanly estimated without external controls."
+}

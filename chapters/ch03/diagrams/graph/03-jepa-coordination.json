@@ -1,0 +1,26 @@
+{
+  "id": "ch03-03-jepa-coordination",
+  "title": "JEPA self-supervised coordination",
+  "summary": "LeCun's Joint-Embedding Predictive Architecture learns by coordinating past and future context in abstract representation space, not by reconstructing pixels.",
+  "fmt": "cld",
+  "source": "Ch03 — Yann LeCun: \"Past Context ↔ Future Context ↔ Prediction Task\"",
+  "nodes": [
+    { "id": "n1", "label": "Past Context",          "description": "Frames, tokens, or state before the mask", "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Future Context",        "description": "Frames or state after the mask",           "category": "driver",   "is_latent": false },
+    { "id": "n3", "label": "Abstract Embedding",    "description": "Latent representation of the scene",       "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Prediction Task",       "description": "Infer masked-region embedding",             "category": "outcome",  "is_latent": false },
+    { "id": "n5", "label": "Coordination Pattern",  "description": "Learned world-model structure",             "category": "feedback", "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n3", "polarity": "positive", "description": "Past encoded into representation",       "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Future encoded into representation",     "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Embedding drives prediction",            "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "positive", "description": "Prediction error refines structure",     "has_delay": true,  "is_confounding": false },
+    { "from": "n5", "to": "n3", "polarity": "positive", "description": "Structure improves future embeddings",   "has_delay": true,  "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Representation learning", "nodes": ["n3","n4","n5"], "minus_count": 0 }
+  ],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Representation collapse is a known failure mode: embedding and coordination pattern are entangled, so the causal effect of architecture choices on understanding is not identifiable without interventional probes."
+}

@@ -1,0 +1,24 @@
+{
+  "id": "ch06-01-uber-classification-failure",
+  "title": "Uber crash: perception without awareness",
+  "summary": "The Tempe Uber AV had perception and processing but no third-body awareness. Repeated reclassification plus a suppression zone delayed braking until impact.",
+  "fmt": "cld",
+  "source": "Ch06 — 'It could detect her presence... but it lacked the awareness to interpret these patterns as a human being in danger.'",
+  "nodes": [
+    { "id": "n1", "label": "Sensor Perception",     "description": "Lidar/radar/camera detection",        "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Classifier Processing", "description": "Object label churn",                  "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Suppression Zone",      "description": "False-positive smoothing",            "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Emergency Braking",     "description": "Collision-avoidance action",          "category": "outcome",  "is_latent": false },
+    { "id": "n5", "label": "Contextual Awareness",  "description": "Missing third body: meaning",         "category": "latent",   "is_latent": true  }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Raw signal feeds classifier",            "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Unstable labels trigger suppression",    "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "negative", "description": "Suppression delays braking",             "has_delay": true,  "is_confounding": false },
+    { "from": "n5", "to": "n2", "polarity": "negative", "description": "Awareness would stabilize 'pedestrian'", "has_delay": false, "is_confounding": true  },
+    { "from": "n5", "to": "n4", "polarity": "positive", "description": "Awareness would command early brake",   "has_delay": false, "is_confounding": true  }
+  ],
+  "loops": [],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Contextual awareness is latent; its absence confounds both classification stability and braking timing."
+}

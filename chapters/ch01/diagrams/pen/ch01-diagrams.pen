@@ -1,0 +1,271 @@
+{
+  "version": "2.10",
+  "children": [
+    {
+      "type": "text",
+      "id": "Rsa4o",
+      "x": 80,
+      "y": 60,
+      "name": "title",
+      "fill": "#111111",
+      "content": "Chapter 01 — Causal Diagrams",
+      "fontFamily": "Inter",
+      "fontSize": 32,
+      "fontWeight": "700"
+    },
+    {
+      "type": "frame",
+      "id": "5MxEd",
+      "x": 80,
+      "y": 140,
+      "name": "07 Hardware-Software-Knowware",
+      "width": 900,
+      "height": 700,
+      "fill": "#FFFFFF",
+      "cornerRadius": 16,
+      "stroke": {
+        "thickness": 1,
+        "fill": "#E5E7EB"
+      },
+      "layout": "none",
+      "children": [
+        {
+          "type": "text",
+          "id": "7uEGV",
+          "x": 40,
+          "y": 32,
+          "name": "ftitle",
+          "fill": "#111111",
+          "content": "Hardware ↔ Software ↔ Knowware",
+          "fontFamily": "Inter",
+          "fontSize": 22,
+          "fontWeight": "600"
+        },
+        {
+          "type": "text",
+          "id": "xQAjp",
+          "x": 40,
+          "y": 64,
+          "name": "fsub",
+          "fill": "#6B7280",
+          "content": "Three-body coordination — canonical book schema",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "zel51",
+          "x": 80,
+          "y": 200,
+          "name": "hw",
+          "width": 200,
+          "height": 90,
+          "fill": "#DBEAFE",
+          "cornerRadius": 12,
+          "stroke": {
+            "thickness": 2,
+            "fill": "#2563EB"
+          },
+          "padding": 20,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "sRs1E",
+              "name": "hwt",
+              "fill": "#1E3A8A",
+              "content": "Hardware",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "LpEMy",
+          "x": 620,
+          "y": 200,
+          "name": "sw",
+          "width": 200,
+          "height": 90,
+          "fill": "#DCFCE7",
+          "cornerRadius": 12,
+          "stroke": {
+            "thickness": 2,
+            "fill": "#16A34A"
+          },
+          "padding": 20,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "6WN3L",
+              "name": "swt",
+              "fill": "#14532D",
+              "content": "Software",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "nJpJK",
+          "x": 350,
+          "y": 520,
+          "name": "kw",
+          "width": 200,
+          "height": 90,
+          "fill": "#FEF3C7",
+          "cornerRadius": 12,
+          "stroke": {
+            "thickness": 2,
+            "fill": "#D97706"
+          },
+          "padding": 20,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "O2n6W",
+              "name": "kwt",
+              "fill": "#78350F",
+              "content": "Knowware",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "ellipse",
+          "id": "AyjBe",
+          "x": 370,
+          "y": 295,
+          "name": "em",
+          "fill": "#F3E8FF",
+          "width": 160,
+          "height": 160,
+          "stroke": {
+            "thickness": 2,
+            "fill": "#7C3AED"
+          }
+        },
+        {
+          "type": "text",
+          "id": "RdYZE",
+          "x": 402,
+          "y": 360,
+          "name": "emt",
+          "fill": "#5B21B6",
+          "content": "Emergence",
+          "fontFamily": "Inter",
+          "fontSize": 16,
+          "fontWeight": "600"
+        },
+        {
+          "type": "text",
+          "id": "hqTPZ",
+          "x": 392,
+          "y": 382,
+          "name": "emt2",
+          "fill": "#6B21A8",
+          "content": "learning · context",
+          "fontFamily": "Inter",
+          "fontSize": 11,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "line",
+          "id": "wFJGO",
+          "x": 280,
+          "y": 245,
+          "name": "e1",
+          "width": 340,
+          "height": 0,
+          "stroke": {
+            "align": "center",
+            "thickness": 2,
+            "fill": "#374151"
+          }
+        },
+        {
+          "type": "line",
+          "id": "8lFns",
+          "x": 720,
+          "y": 290,
+          "name": "e2",
+          "width": 0,
+          "height": 230,
+          "stroke": {
+            "align": "center",
+            "thickness": 2,
+            "fill": "#374151"
+          }
+        },
+        {
+          "type": "line",
+          "id": "GjRbQ",
+          "x": 180,
+          "y": 290,
+          "name": "e3",
+          "width": 0,
+          "height": 230,
+          "stroke": {
+            "align": "center",
+            "thickness": 2,
+            "fill": "#374151"
+          }
+        },
+        {
+          "type": "line",
+          "id": "RM6ai",
+          "x": 180,
+          "y": 290,
+          "name": "d1",
+          "width": 270,
+          "height": 90,
+          "stroke": {
+            "align": "center",
+            "thickness": 1.5,
+            "fill": "#7C3AED"
+          }
+        },
+        {
+          "type": "line",
+          "id": "kXaO2",
+          "x": 720,
+          "y": 290,
+          "name": "d2",
+          "width": -270,
+          "height": 90,
+          "stroke": {
+            "align": "center",
+            "thickness": 1.5,
+            "fill": "#7C3AED"
+          }
+        },
+        {
+          "type": "line",
+          "id": "QZPb8",
+          "x": 450,
+          "y": 520,
+          "name": "d3",
+          "width": 0,
+          "height": -65,
+          "stroke": {
+            "align": "center",
+            "thickness": 1.5,
+            "fill": "#7C3AED"
+          }
+        }
+      ]
+    }
+  ]
+}

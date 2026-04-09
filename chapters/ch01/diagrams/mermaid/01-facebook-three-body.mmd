@@ -1,0 +1,15 @@
+%% Ch01 Diagram 01 — Facebook three-body system
+%% Source: "Human behavior ↔ Algorithm optimization ↔ Social system dynamics"
+flowchart LR
+    H["Human behavior<br/>(emotion, attention)"]
+    A["Algorithm optimization<br/>(engagement signals)"]
+    S["Social system dynamics<br/>(network effects)"]
+
+    H <--> A
+    A <--> S
+    S <--> H
+
+    E((Emergent<br/>coordination<br/>space))
+    H -.-> E
+    A -.-> E
+    S -.-> E

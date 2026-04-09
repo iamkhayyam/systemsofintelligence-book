@@ -1,0 +1,26 @@
+{
+  "id": "ch04-03-medical-ai-three-body",
+  "title": "Medical AI three-body diagnosis",
+  "summary": "Topol's diabetic retinopathy case: AI pattern recognition, clinical expertise, and patient context must coordinate through workflow integration to produce trusted diagnosis; missing any body collapses the system into clinical uselessness.",
+  "fmt": "both",
+  "source": "Ch04 — \"When Medical Intelligence Requires Three Bodies\" (Topol)",
+  "nodes": [
+    { "id": "n1", "label": "AI Pattern Recognition", "description": "Retinal image classifier, 95% accurate in isolation", "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Clinical Expertise",     "description": "Physician judgment, trust, contextual reading",       "category": "driver",   "is_latent": false },
+    { "id": "n3", "label": "Patient Context",        "description": "Symptoms, history, anxiety, false-positive cost",    "category": "driver",   "is_latent": false },
+    { "id": "n4", "label": "Workflow Integration",   "description": "EHR embedding, triage, reimbursement model",         "category": "mediator", "is_latent": false },
+    { "id": "n5", "label": "Diagnostic Outcome",     "description": "Accurate, trusted, actionable care decision",       "category": "outcome",  "is_latent": false },
+    { "id": "n6", "label": "Coordination Wisdom",    "description": "Shared decision norms, liability frame, trust",     "category": "latent",   "is_latent": true  }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n4", "polarity": "positive", "description": "AI output enters workflow",                         "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n4", "polarity": "positive", "description": "Clinician interprets and overrides within workflow","has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Patient context enters the decision",               "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "positive", "description": "Integrated workflow drives outcome",                 "has_delay": false, "is_confounding": false },
+    { "from": "n6", "to": "n4", "polarity": "positive", "description": "Wisdom shapes how integration actually works",      "has_delay": false, "is_confounding": true  },
+    { "from": "n6", "to": "n5", "polarity": "positive", "description": "Wisdom shapes what 'good outcome' means",           "has_delay": false, "is_confounding": true  }
+  ],
+  "loops": [],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Trust and norms (n6) confound both the workflow mediator and the outcome; the marginal effect of AI alone cannot be separated from the coordination culture around it."
+}

@@ -1,0 +1,26 @@
+{
+  "id": "ch08-03-hassabis-agi",
+  "title": "Hassabis: AGI as coordination of capabilities",
+  "summary": "General intelligence is not a single monolithic skill. Specialized capabilities plus meta-learning plus goal-directed behavior are bound together by a coordination system that decides which capability to apply when.",
+  "fmt": "cld",
+  "source": "Ch08 8.1 Hassabis — specialized capabilities, meta-learning, goal-directed behavior",
+  "nodes": [
+    { "id": "n1", "label": "Specialized Capabilities","description": "Perception, reasoning, planning, motor", "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Meta Learning",           "description": "Learning to learn, cross-domain transfer","category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Goal Directed Behavior",  "description": "Value-driven decisions",                  "category": "driver",   "is_latent": false },
+    { "id": "n4", "label": "Coordination System",     "description": "Routes which capability fires when",      "category": "mediator", "is_latent": false },
+    { "id": "n5", "label": "General Intelligence",    "description": "Novel-problem performance",               "category": "outcome",  "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n4", "polarity": "positive", "description": "Capabilities feed the coordinator",        "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Goals steer coordination priorities",      "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n2", "polarity": "positive", "description": "Coordination routes transfer signal",      "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n1", "polarity": "positive", "description": "Transfer improves each capability",        "has_delay": true,  "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "positive", "description": "Coordination produces novel-problem skill","has_delay": false, "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Coordinated transfer flywheel", "nodes": ["n1","n4","n2"], "minus_count": 0 }
+  ],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Meta-learning and coordination both mediate capability -> generality; their individual contributions cannot be separated without intervention on the coordinator."
+}

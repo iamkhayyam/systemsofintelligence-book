@@ -1,0 +1,31 @@
+{
+  "id": "ch09-06-menegon-mutual-aid-fork",
+  "title": "Menegon mutual aid: enabling vs replacing",
+  "summary": "Menegon's fork: the same coordination technology either enables community mutual aid (virtuous loop where matched need deepens trust and grows capacity) or extracts from it (vicious loop where commodification degrades trust and hollows capacity). Platform ownership is the latent switch that decides which loop runs.",
+  "fmt": "cld",
+  "source": "Ch09 §9.3 — Menegon interview; \"whether technology serves coordination or replaces it.\"",
+  "nodes": [
+    { "id": "n1", "label": "Coordination Technology", "description": "Apps, lists, matching platforms",     "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Needs-Capacity Matches",  "description": "Successfully coordinated mutual aid", "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Community Trust",         "description": "Reciprocity, relational depth",       "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Commodification",         "description": "Relationships reframed as transactions","category": "mediator","is_latent": false },
+    { "id": "n5", "label": "Community Resilience",    "description": "Durable capacity for mutual support", "category": "outcome",  "is_latent": false },
+    { "id": "n6", "label": "Platform Ownership",      "description": "Community-owned vs extractive governance", "category": "latent", "is_latent": true }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Tech surfaces matches at scale",           "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Successful matches build trust",           "has_delay": true,  "is_confounding": false },
+    { "from": "n3", "to": "n1", "polarity": "positive", "description": "Trusted communities adopt more coordination tech", "has_delay": true, "is_confounding": false },
+    { "from": "n1", "to": "n4", "polarity": "positive", "description": "Extractive tech commodifies relationships","has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n3", "polarity": "negative", "description": "Commodification erodes trust",             "has_delay": true,  "is_confounding": false },
+    { "from": "n3", "to": "n5", "polarity": "positive", "description": "Trust underwrites resilience",             "has_delay": false, "is_confounding": false },
+    { "from": "n6", "to": "n4", "polarity": "negative", "description": "Community ownership suppresses commodification", "has_delay": false, "is_confounding": true },
+    { "from": "n6", "to": "n2", "polarity": "positive", "description": "Community ownership improves match quality","has_delay": false, "is_confounding": true }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Virtuous mutual aid",  "nodes": ["n1","n2","n3"], "minus_count": 0 },
+    { "type": "reinforcing", "label": "R2 — Extraction vicious cycle", "nodes": ["n1","n4","n3"], "minus_count": 2 }
+  ],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Platform Ownership (n6) is a latent moderator that determines which of the two reinforcing loops dominates; the sign of the tech→resilience effect is unidentified without it."
+}

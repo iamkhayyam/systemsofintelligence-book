@@ -1,0 +1,24 @@
+{
+  "id": "ch02-03-musk-first-principles",
+  "title": "First principles as coordination architecture",
+  "summary": "Musk's method at SpaceX/Tesla: first-principles decomposition reveals coordination gaps; vertical integration enables designing for coordination; emergent performance compounds into economic advantage that funds more integration.",
+  "fmt": "cld",
+  "source": "Ch02 — \"First principles thinking, applied correctly, reveals coordination opportunities that optimization thinking can never see… designing a new architecture where the parts coordinate to create a superior emergent whole.\"",
+  "nodes": [
+    { "id": "n1", "label": "First Principles",     "description": "Decomposition to physics-level constraints", "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Vertical Integration", "description": "Owning adjacent layers of the stack",       "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Emergent Performance", "description": "Reusable rockets, supercharger network",     "category": "outcome",  "is_latent": false },
+    { "id": "n4", "label": "Economic Advantage",   "description": "Cost curve, margin, scale",                   "category": "feedback", "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Exposes which layers must be coordinated", "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Integration enables cross-layer redesign","has_delay": true,  "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Performance compounds into cost advantage","has_delay": true, "is_confounding": false },
+    { "from": "n4", "to": "n2", "polarity": "positive", "description": "Advantage funds further integration",     "has_delay": false, "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Integration-advantage spiral", "nodes": ["n2","n3","n4"], "minus_count": 0 }
+  ],
+  "identifiability": "identifiable",
+  "identifiability_note": "Observable via cost trajectories (Falcon 9 launch price, Model S → Model 3 COGS) and market-share data."
+}

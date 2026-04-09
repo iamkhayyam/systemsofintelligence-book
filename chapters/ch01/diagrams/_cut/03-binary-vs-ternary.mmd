@@ -1,0 +1,18 @@
+%% Ch01 Diagram 03 — Binary vs Ternary thinking
+flowchart LR
+    subgraph Binary["Binary thinking"]
+        A1[A] <--> B1[B]
+        T1[Trade-off / Opposition]
+        A1 -.-> T1
+        B1 -.-> T1
+    end
+
+    subgraph Ternary["Ternary thinking"]
+        A2[A] <--> B2[B]
+        A2 <--> C2[Coordination<br/>context]
+        B2 <--> C2
+        E((Emergence:<br/>new capability))
+        A2 -.-> E
+        B2 -.-> E
+        C2 -.-> E
+    end

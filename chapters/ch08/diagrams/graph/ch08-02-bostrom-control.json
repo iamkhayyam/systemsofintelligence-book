@@ -1,0 +1,29 @@
+{
+  "id": "ch08-02-bostrom-control",
+  "title": "Bostrom: orthogonality and the control problem",
+  "summary": "Intelligence capability and goal structure are independent (orthogonality). Instrumental convergence pushes almost any goal toward self-preservation and resource acquisition, which defeat containment-style controls. Only value learning and corrigibility close the loop.",
+  "fmt": "both",
+  "source": "Ch08 8.1 Bostrom — orthogonality thesis, instrumental convergence, control problem",
+  "nodes": [
+    { "id": "n1", "label": "Intelligence Capability", "description": "How much smarter than humans",                "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Goal Structure",          "description": "Terminal goals AI optimizes",                  "category": "driver",   "is_latent": false },
+    { "id": "n3", "label": "Instrumental Convergence","description": "Self-preservation, resource acquisition",     "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Value Learning",          "description": "Corrigibility, CEV, uncertainty over values", "category": "feedback", "is_latent": false },
+    { "id": "n5", "label": "Existential Outcome",     "description": "Flourishing vs. extinction",                  "category": "outcome",  "is_latent": false },
+    { "id": "n6", "label": "True Human Values",       "description": "What humans would endorse on reflection",      "category": "latent",   "is_latent": true  }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n3", "polarity": "positive", "description": "More capability amplifies instrumental drives", "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Almost any goal yields convergent subgoals",     "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n5", "polarity": "negative", "description": "Convergent drives acquire resources from humans","has_delay": true,  "is_confounding": false },
+    { "from": "n4", "to": "n2", "polarity": "positive", "description": "Value learning updates the goal structure",     "has_delay": true,  "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "positive", "description": "Corrigibility preserves human control",         "has_delay": false, "is_confounding": false },
+    { "from": "n6", "to": "n2", "polarity": "positive", "description": "Ground-truth values should shape goals",        "has_delay": false, "is_confounding": true  },
+    { "from": "n6", "to": "n4", "polarity": "positive", "description": "Ground-truth values anchor learning signal",    "has_delay": false, "is_confounding": true  }
+  ],
+  "loops": [
+    { "type": "balancing", "label": "B1 — Corrigibility check", "nodes": ["n2","n3","n5","n4"], "minus_count": 1 }
+  ],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "True human values (n6) are latent; without access to them we cannot distinguish a truly aligned goal structure from one that merely looks aligned before deployment."
+}

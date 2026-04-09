@@ -1,0 +1,27 @@
+{
+  "id": "ch06-04-crawford-material-stack",
+  "title": "Crawford: AI's material three-body stack",
+  "summary": "Every query coordinates three material bodies — resource extraction, compute infrastructure, and ghost labor — whose combined output is marketed as 'intelligence.' Demand closes a reinforcing loop back onto extraction.",
+  "fmt": "cld",
+  "source": "Ch06 — 'Every query you send to ChatGPT coordinates your question with server farms... with rare earth mines in Congo... with underpaid content moderators.'",
+  "nodes": [
+    { "id": "n1", "label": "Resource Extraction", "description": "Cobalt, lithium, water",         "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Compute Infrastructure","description": "Data centers, chips, energy",   "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Ghost Labor",           "description": "Labeling, moderation",          "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Ai Output",             "description": "Models, queries, products",     "category": "outcome",  "is_latent": false },
+    { "id": "n5", "label": "User Demand",           "description": "Consumption and usage",         "category": "feedback", "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Minerals and energy build compute", "has_delay": true,  "is_confounding": false },
+    { "from": "n2", "to": "n4", "polarity": "positive", "description": "Compute produces output",          "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Human labor shapes output",        "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "positive", "description": "Useful output drives demand",      "has_delay": false, "is_confounding": false },
+    { "from": "n5", "to": "n1", "polarity": "positive", "description": "Demand pulls more extraction",     "has_delay": true,  "is_confounding": false },
+    { "from": "n5", "to": "n3", "polarity": "positive", "description": "Demand pulls more ghost labor",    "has_delay": false, "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Extraction flywheel", "nodes": ["n1","n2","n4","n5"], "minus_count": 0 }
+  ],
+  "identifiability": "identifiable",
+  "identifiability_note": "All nodes observable in principle via supply-chain audit; no latent confounder required."
+}

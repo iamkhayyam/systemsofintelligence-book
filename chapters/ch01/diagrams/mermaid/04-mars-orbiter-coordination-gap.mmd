@@ -1,0 +1,16 @@
+%% Ch01 Diagram 04 — Mars Climate Orbiter coordination gap
+%% Source: components correct, coordination layer absent → $327M loss
+flowchart TB
+    T1["Navigation team<br/>(metric / newtons)"]
+    T2["Ground software team<br/>(imperial / pounds-force)"]
+    GAP{{"⚠ Missing coordination layer<br/>(no unit-translation interface,<br/>no integration testing)"}}
+    O["Orbiter trajectory"]
+    F["💥 Burned up in<br/>Mars atmosphere"]
+
+    T1 --> GAP
+    T2 --> GAP
+    GAP --> O
+    O --> F
+
+    FIX(["Fix: design coordination<br/>layers as carefully as<br/>components"])
+    GAP -.-> FIX

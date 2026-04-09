@@ -1,0 +1,26 @@
+{
+  "id": "ch07-05-mlops-production-gap",
+  "title": "MLOps production gap: missing coordination",
+  "summary": "Chip Huyen's 70% failure pattern: model development, system requirements, and business reality are optimized independently. Without a coordination layer, accuracy gains don't translate to production value.",
+  "fmt": "both",
+  "source": "Ch07 §7.3 — Chip Huyen / production ML",
+  "nodes": [
+    { "id": "n1", "label": "Model Development",    "description": "Notebook accuracy optimization",        "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "System Requirements",  "description": "Latency, throughput, cost",             "category": "driver",   "is_latent": false },
+    { "id": "n3", "label": "Business Reality",     "description": "Use case, ROI, user behavior",         "category": "driver",   "is_latent": false },
+    { "id": "n4", "label": "Production Value",     "description": "Deployed impact on the business",      "category": "outcome",  "is_latent": false },
+    { "id": "n5", "label": "Coordination Layer",   "description": "Missing day-one MLOps coordination",   "category": "latent",   "is_latent": true  }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n4", "polarity": "positive", "description": "Accuracy alone lifts value",              "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n4", "polarity": "positive", "description": "Meeting SLOs enables deployment",         "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Aligning to real use drives ROI",         "has_delay": false, "is_confounding": false },
+    { "from": "n1", "to": "n2", "polarity": "negative", "description": "Bigger models strain systems",            "has_delay": false, "is_confounding": false },
+    { "from": "n5", "to": "n1", "polarity": "positive", "description": "Coordination shapes model choices",       "has_delay": false, "is_confounding": true  },
+    { "from": "n5", "to": "n2", "polarity": "positive", "description": "Coordination aligns system design",       "has_delay": false, "is_confounding": true  },
+    { "from": "n5", "to": "n3", "polarity": "positive", "description": "Coordination keeps business in the loop","has_delay": false, "is_confounding": true  }
+  ],
+  "loops": [],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "The coordination layer (n5) is a latent common cause across all three drivers; without instrumenting it, the individual effects on production value are confounded."
+}

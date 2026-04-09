@@ -1,0 +1,26 @@
+{
+  "id": "ch07-03-vqe-hybrid-loop",
+  "title": "VQE hybrid quantum-classical loop",
+  "summary": "Variational Quantum Eigensolver coordinates classical optimization with short-lived quantum measurements: the decoherence constraint forces hybrid coordination rather than pure quantum computation.",
+  "fmt": "cld",
+  "source": "Ch07 §7.2 — VQE case study / Preskill, Baratz, Lloyd",
+  "nodes": [
+    { "id": "n1", "label": "Classical Proposal",    "description": "Trial parameters, circuit prep",       "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Quantum Measurement",   "description": "Short-coherence state + energy read", "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Classical Optimization","description": "Update parameters toward minimum",    "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Decoherence Limit",     "description": "Coherence time bounds run length",    "category": "feedback", "is_latent": false },
+    { "id": "n5", "label": "Ground State Estimate", "description": "Converged molecular energy",          "category": "outcome",  "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Proposal sets the quantum circuit",       "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Measurements feed optimizer",             "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n1", "polarity": "positive", "description": "Optimizer produces next proposal",        "has_delay": true,  "is_confounding": false },
+    { "from": "n4", "to": "n2", "polarity": "negative", "description": "Decoherence limits measurement fidelity", "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n5", "polarity": "positive", "description": "Convergence yields estimate",             "has_delay": true,  "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Variational convergence", "nodes": ["n1","n2","n3"], "minus_count": 0 }
+  ],
+  "identifiability": "identifiable",
+  "identifiability_note": "Classical and quantum steps are fully instrumented; decoherence is a measured constraint."
+}

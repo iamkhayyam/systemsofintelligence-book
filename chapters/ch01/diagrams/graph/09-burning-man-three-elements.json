@@ -1,0 +1,25 @@
+{
+  "id": "09-burning-man-three-elements",
+  "title": "Burning Man three-element coordination",
+  "summary": "Larry Harvey's success-case counterpoint: 70,000 people coordinate radical self-expression, communal effort, and temporary infrastructure to produce 'playa magic'. None alone works; together they create an emergent city.",
+  "fmt": "cld",
+  "nodes": [
+    { "id": "n1", "label": "Self Expression",    "description": "Radical individual creativity", "category": "driver",  "is_latent": false },
+    { "id": "n2", "label": "Communal Effort",    "description": "Shared volunteer labor",         "category": "driver",  "is_latent": false },
+    { "id": "n3", "label": "Temp Infrastructure","description": "Roads, services, power grid",   "category": "driver",  "is_latent": false },
+    { "id": "n4", "label": "Playa Magic",        "description": "Emergent city + experience",    "category": "outcome", "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n4", "polarity": "positive", "description": "Expression activates the space",       "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n4", "polarity": "positive", "description": "Effort sustains it",                   "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Infrastructure makes it possible",     "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n1", "polarity": "positive", "description": "Magic inspires more expression",       "has_delay": true,  "is_confounding": false },
+    { "from": "n4", "to": "n2", "polarity": "positive", "description": "Magic recruits more volunteers",       "has_delay": true,  "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Expression → magic → expression", "nodes": ["n1","n4"], "minus_count": 0 },
+    { "type": "reinforcing", "label": "R2 — Effort → magic → effort",         "nodes": ["n2","n4"], "minus_count": 0 }
+  ],
+  "identifiability": "identifiable",
+  "identifiability_note": "Annual cycle provides repeated observations; the 10 Principles operationalize the coordination norms."
+}

@@ -1,0 +1,14 @@
+%% Ch01 Diagram 06 — 737 MAX MCAS three-body failure
+flowchart LR
+    SW["MCAS software<br/>(single AoA sensor,<br/>nose-down command)"]
+    OP["Operational context<br/>(stress, takeoff,<br/>sensor failure)"]
+    PI["Pilot expectations<br/>(undocumented MCAS,<br/>no training)"]
+
+    SW <--> OP
+    OP <--> PI
+    PI <--> SW
+
+    F((💥 Coordination<br/>failure → 346 deaths))
+    SW -.-> F
+    OP -.-> F
+    PI -.-> F

@@ -1,0 +1,26 @@
+{
+  "id": "chX-03-blueprint-optimization-loop",
+  "title": "Blueprint protocol: biology ↔ data ↔ intervention",
+  "summary": "Bryan Johnson's Blueprint protocol runs a tight reinforcing loop: biology generates biomarkers, AI analyzes them, interventions adjust biology. Each turn drops biological age.",
+  "fmt": "cld",
+  "source": "ChX / 10.02 Bryan Johnson — \"biological feedback improving AI, AI improving the protocol, and the protocol improving biology.\"",
+  "nodes": [
+    { "id": "n1", "label": "Biological State",     "description": "Organs, metabolism, cellular function",     "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Biomarker Data",       "description": "100+ daily measurements",                    "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "AI Analysis",          "description": "Pattern detection, protocol tuning",         "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Intervention Protocol","description": "Diet, exercise, sleep, supplements",         "category": "mediator", "is_latent": false },
+    { "id": "n5", "label": "Biological Age",       "description": "Decreasing under coordinated protocol",      "category": "outcome",  "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Biology emits measurable signals",       "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Data feeds AI analysis",                 "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "AI prescribes protocol adjustments",     "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n1", "polarity": "positive", "description": "Protocol modifies biology",              "has_delay": true,  "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "negative", "description": "Better protocol lowers biological age",  "has_delay": true,  "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Blueprint optimization loop", "nodes": ["n1","n2","n3","n4"], "minus_count": 0 }
+  ],
+  "identifiability": "identifiable",
+  "identifiability_note": "Closed measurement loop; intervention is the only path from AI to biology, so protocol effect is estimable from the before/after biomarker panel."
+}

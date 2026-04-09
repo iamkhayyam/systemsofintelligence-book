@@ -1,0 +1,26 @@
+{
+  "id": "ch03-06-two-body-brittleness",
+  "title": "Two-body brittleness failure mode",
+  "summary": "The chapter's negative case: without a third coordinating body (context, feedback, or meta-learner), a two-body system — rules/data, robot/program, data/model, policy/execution — cannot adapt to novelty and degrades when conditions shift.",
+  "fmt": "dag",
+  "source": "Ch03 — \"When Two Bodies Aren't Enough\" (MYCIN, industrial robots, supervised learning, bureaucracy)",
+  "nodes": [
+    { "id": "n1", "label": "Fixed Rules",        "description": "Policy, program, model, or ruleset",            "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Input Data",         "description": "Cases, sensor readings, training examples",    "category": "driver",   "is_latent": false },
+    { "id": "n3", "label": "System Output",      "description": "Diagnosis, action, prediction, decision",       "category": "outcome",  "is_latent": false },
+    { "id": "n4", "label": "Novel Conditions",   "description": "Distribution shift, edge cases, new context",   "category": "driver",   "is_latent": false },
+    { "id": "n5", "label": "Missing Third Body", "description": "Absent context / feedback / meta-learner",      "category": "latent",   "is_latent": true  },
+    { "id": "n6", "label": "Brittleness",        "description": "Failure, misgeneralization, red tape",           "category": "outcome",  "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n3", "polarity": "positive", "description": "Rules applied to data produce output",           "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Data drives the output",                         "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n6", "polarity": "positive", "description": "Novelty exposes gaps the system can't handle",    "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n6", "polarity": "positive", "description": "Rigid output fails under novelty",                "has_delay": false, "is_confounding": false },
+    { "from": "n5", "to": "n1", "polarity": "negative", "description": "A third body would loosen rigid rules",           "has_delay": false, "is_confounding": true  },
+    { "from": "n5", "to": "n6", "polarity": "negative", "description": "A third body would absorb novelty before failure","has_delay": false, "is_confounding": true  }
+  ],
+  "loops": [],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "The missing third body is a latent confounder on both the rule-application path and the brittleness outcome; you cannot estimate 'how much worse two-body is' without constructing the three-body counterfactual."
+}

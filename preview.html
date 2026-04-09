@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Chapter Preview — Systems of Intelligence</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+  html,body{margin:0;padding:0;background:#f4f1ec;color:#1a1a1a;font-family:'EB Garamond',Georgia,serif}
+  header{position:sticky;top:0;z-index:10;padding:12px 24px;background:#ebebeb;border-bottom:1px solid #0a0a0a;display:flex;gap:16px;align-items:center;flex-wrap:wrap;font-family:'Barlow Condensed',sans-serif}
+  header h1{margin:0;font-size:16px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase}
+  header label{font-size:11px;text-transform:uppercase;letter-spacing:0.05em;display:flex;align-items:center;gap:6px}
+  header select,header button{font-family:'Barlow Condensed',sans-serif;font-size:12px;padding:6px 12px;border:1px solid #0a0a0a;background:#fff;cursor:pointer;letter-spacing:0.05em}
+  header button:hover{background:#0a0a0a;color:#fff}
+  #count{margin-left:auto;font-size:10px;font-family:monospace;color:#5a5a5a}
+  main{max-width:780px;margin:0 auto;padding:48px 32px 120px}
+  #content h1{font-size:32px;font-weight:600;margin:1.5em 0 0.4em;line-height:1.15}
+  #content h2{font-size:24px;font-weight:600;margin:2em 0 0.5em;line-height:1.2;border-bottom:1px solid #c0b8a8;padding-bottom:4px}
+  #content h3{font-size:19px;font-weight:600;margin:1.8em 0 0.4em}
+  #content p{font-size:17px;line-height:1.65;margin:0.8em 0}
+  #content blockquote{border-left:4px solid #c0b8a8;padding:4px 16px;margin:1em 0;color:#4a4030;font-style:italic}
+  #content ul,#content ol{font-size:17px;line-height:1.65}
+  #content code{font-family:'SF Mono',monospace;background:#ece6d8;padding:1px 5px;border-radius:2px;font-size:14px}
+  #content pre{background:#ece6d8;padding:14px;overflow:auto;font-size:13px;border-radius:4px}
+  #content strong{font-weight:600;color:#0a0a0a}
+  #content hr{border:none;border-top:1px solid #c0b8a8;margin:2em 0}
+  #content img{max-width:100%;height:auto;display:block;margin:1.5em auto;background:#fff;border:1px solid #c0b8a8;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+  #content em{color:#4a4030;display:block;text-align:center;font-size:14px;margin-top:-0.5em;margin-bottom:1.5em}
+  #content table{border-collapse:collapse;margin:1em 0;font-size:14px}
+  #content th,#content td{border:1px solid #c0b8a8;padding:6px 10px;text-align:left}
+  #content th{background:#ece6d8;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;font-size:11px;letter-spacing:0.05em}
+  .missing-img{display:inline-block;padding:40px 20px;background:#fff0f0;color:#7a1a1a;border:2px dashed #7a1a1a;font-family:monospace;font-size:12px;text-align:center;margin:1.5em auto}
+  #err{padding:20px;background:#fff0f0;color:#7a1a1a;font-family:monospace;font-size:12px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Chapter Preview</h1>
+  <label>Section <select id="picker"></select></label>
+  <button id="reload">↻ Reload</button>
+  <button id="raw" title="View source markdown">Raw</button>
+  <span id="count"></span>
+</header>
+<main id="content"></main>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+// All sections with their markdown file paths (paths relative to this preview.html at repo root)
+const SECTIONS = [
+  {label:"Preface",            path:"chapters/front-matter/preface/text/preface-with-figures.md"},
+  {label:"Prologue",           path:"chapters/front-matter/prologue/text/prologue-with-figures.md"},
+  {label:"Ch01 — Coordination Revolution", path:"chapters/ch01/text/chapter-01-with-figures.md"},
+  {label:"Ch02 — Dawn of Systems Intelligence", path:"chapters/ch02/text/chapter-02-with-figures.md"},
+  {label:"Ch03 — Architecture", path:"chapters/ch03/text/chapter-03-with-figures.md"},
+  {label:"Ch04 — In Action", path:"chapters/ch04/text/chapter-04-with-figures.md"},
+  {label:"Ch05 — Human-Systems Interaction", path:"chapters/ch05/text/chapter-05-with-figures.md"},
+  {label:"Ch06 — Consciousness", path:"chapters/ch06/text/chapter-06-with-figures.md"},
+  {label:"Ch07 — Engineering Reality", path:"chapters/ch07/text/chapter-07-with-figures.md"},
+  {label:"Ch08 — Beyond Human Intelligence", path:"chapters/ch08/text/chapter-08-with-figures.md"},
+  {label:"Ch09 — No Way Know-How", path:"chapters/ch09/text/chapter-09-with-figures.md"},
+  {label:"ChX — The Grand Coordination", path:"chapters/chX/text/chapter-X-with-figures.md"},
+  {label:"Appendix A — Mathematics", path:"chapters/back-matter/appendix-a/text/appendix-a-with-figures.md"},
+];
+
+const picker = document.getElementById("picker");
+const content = document.getElementById("content");
+const countEl = document.getElementById("count");
+
+picker.innerHTML = SECTIONS.map((s,i)=>`<option value="${i}">${s.label}</option>`).join("");
+
+function rewriteImages(html, basePath){
+  // basePath = "chapters/ch01/text/" → dir of the markdown file
+  // Image src like "../diagrams/png/foo.png" should resolve to "chapters/ch01/diagrams/png/foo.png"
+  return html.replace(/<img\s+([^>]*?)src="([^"]+)"/g, (m, attrs, src)=>{
+    if(src.startsWith("http") || src.startsWith("/")) return m;
+    // Resolve relative to basePath
+    const parts = basePath.split("/").filter(Boolean);
+    const srcParts = src.split("/");
+    for(const p of srcParts){
+      if(p === "..") parts.pop();
+      else if(p !== ".") parts.push(p);
+    }
+    const resolved = parts.join("/");
+    return `<img ${attrs}src="${resolved}" onerror="this.outerHTML='<div class=&quot;missing-img&quot;>⚠ MISSING IMAGE: ${resolved}</div>'"`;
+  });
+}
+
+async function load(i){
+  const sec = SECTIONS[i];
+  content.innerHTML = "<p style='text-align:center;color:#999'>loading…</p>";
+  try {
+    const res = await fetch(sec.path + "?t=" + Date.now());
+    if(!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+    const md = await res.text();
+    const basePath = sec.path.substring(0, sec.path.lastIndexOf("/") + 1);
+    const html = marked.parse(md);
+    content.innerHTML = rewriteImages(html, basePath);
+    const figs = (md.match(/^!\[Figure/gm) || []).length;
+    const words = md.split(/\s+/).filter(Boolean).length;
+    countEl.textContent = `${figs} figures · ${words.toLocaleString()} words`;
+    window.scrollTo(0,0);
+  } catch(e) {
+    content.innerHTML = `<div id='err'>Failed to load ${sec.path}: ${e.message}</div>`;
+  }
+}
+
+picker.addEventListener("change", ()=>load(+picker.value));
+document.getElementById("reload").addEventListener("click", ()=>load(+picker.value));
+document.getElementById("raw").addEventListener("click", ()=>{
+  window.open(SECTIONS[+picker.value].path, "_blank");
+});
+
+load(0);
+</script>
+</body>
+</html>

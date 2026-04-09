@@ -1,0 +1,28 @@
+{
+  "id": "ch05-05-wikipedia-collective-intelligence",
+  "title": "Wikipedia collective intelligence",
+  "summary": "Wales and Pentland converge: collective intelligence emerges when individual contribution, platform facilitation, and community norms coordinate. Bad edits trigger a balancing correction loop; good coordination reinforces participation.",
+  "fmt": "cld",
+  "source": "Ch05 §5.3 — Jimmy Wales, Alex Pentland",
+  "nodes": [
+    { "id": "n1", "label": "Individual Contribution","description": "Edits, expertise, volunteer motivation",       "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Platform Affordances",  "description": "Wiki software, history, discussion pages",      "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Community Norms",       "description": "NPOV, assume good faith, dispute resolution",   "category": "mediator", "is_latent": false },
+    { "id": "n4", "label": "Knowledge Quality",     "description": "Emergent accuracy, coverage, neutrality",       "category": "outcome",  "is_latent": false },
+    { "id": "n5", "label": "Bad Edit Pressure",     "description": "Vandalism, bias, edit wars",                    "category": "driver",   "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Contributors exercise platform tools",          "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n4", "polarity": "positive", "description": "Tools enable quality work to accumulate",       "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n1", "polarity": "positive", "description": "Norms recruit and retain good-faith editors",  "has_delay": true,  "is_confounding": false },
+    { "from": "n4", "to": "n1", "polarity": "positive", "description": "Visible quality attracts more contribution",   "has_delay": true,  "is_confounding": false },
+    { "from": "n5", "to": "n4", "polarity": "negative", "description": "Bad edits degrade quality",                     "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n5", "polarity": "negative", "description": "Norms + reverts suppress bad edits",            "has_delay": false, "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Virtuous participation", "nodes": ["n1","n2","n4"], "minus_count": 0 },
+    { "type": "balancing",   "label": "B1 — Norms correct vandalism","nodes": ["n3","n5","n4"], "minus_count": 1 }
+  ],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Community norms (n3) act on both contributors and vandalism pressure; isolating the platform→quality effect requires holding norm strength fixed, which is not observed directly."
+}

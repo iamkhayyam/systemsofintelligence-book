@@ -1,0 +1,27 @@
+{
+  "id": "ch06-03-gebru-injustice-amplification",
+  "title": "Gebru: technically fair, socially unjust",
+  "summary": "A 'technically fair' model coordinates with biased deployment patterns in a context of systemic inequality, producing disproportionate lived harm that then re-enters the training data as a reinforcing loop.",
+  "fmt": "cld",
+  "source": "Ch06 — 'How does this AI coordinate with existing power structures, and what does that coordination create for the people it affects?'",
+  "nodes": [
+    { "id": "n1", "label": "Technical Fairness",   "description": "Equal error rates on benchmark",  "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Deployment Context",   "description": "Policing, surveillance siting",   "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Disparate Harm",       "description": "Wrongful arrests, chilling",      "category": "outcome",  "is_latent": false },
+    { "id": "n4", "label": "Training Data",        "description": "Historical records fed back",     "category": "feedback", "is_latent": false },
+    { "id": "n5", "label": "Systemic Inequality",  "description": "Background power structure",      "category": "latent",   "is_latent": true  }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Certified models get deployed",         "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n3", "polarity": "positive", "description": "Biased siting produces disparate harm", "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Harm events become new training labels","has_delay": true, "is_confounding": false },
+    { "from": "n4", "to": "n1", "polarity": "positive", "description": "Tainted data re-certifies 'fairness'",  "has_delay": true,  "is_confounding": false },
+    { "from": "n5", "to": "n2", "polarity": "positive", "description": "Inequality shapes deployment",          "has_delay": false, "is_confounding": true  },
+    { "from": "n5", "to": "n3", "polarity": "positive", "description": "Inequality shapes who is harmed",       "has_delay": false, "is_confounding": true  }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Fairness-washing spiral", "nodes": ["n1","n2","n3","n4"], "minus_count": 0 }
+  ],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Systemic inequality is an unobserved common cause of both deployment and harm; the fairness→harm effect is not estimable from deployment data alone."
+}

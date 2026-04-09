@@ -1,0 +1,26 @@
+{
+  "id": "ch04-05-adaptive-markets-2008-collapse",
+  "title": "Adaptive Markets and the 2008 coordination failure",
+  "summary": "Andrew Lo's three-body market frame applied to 2008: rational models, behavioral herding, and fragile market structure coordinated destructively. Model-driven AAA ratings fueled herding, herding fueled leverage, structure hid counterparty risk, culminating in systemic collapse.",
+  "fmt": "cld",
+  "source": "Ch04 — \"Trading: Where Coordination Becomes Visible\" (Lo, Raschke)",
+  "nodes": [
+    { "id": "n1", "label": "Rational Models",        "description": "CDO pricing, VaR, risk-diversification math",               "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Behavioral Herding",     "description": "FOMO lending, housing euphoria, overconfidence",            "category": "driver",   "is_latent": false },
+    { "id": "n3", "label": "Market Structure",       "description": "Shadow banking, opaque derivatives, weak oversight",        "category": "driver",   "is_latent": false },
+    { "id": "n4", "label": "Systemic Leverage",      "description": "Interconnected exposure to mortgage credit",                "category": "mediator", "is_latent": false },
+    { "id": "n5", "label": "Coordination Failure",   "description": "Interbank freeze, Lehman, global financial crisis",         "category": "outcome",  "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n4", "polarity": "positive", "description": "Models legitimize and scale complex exposure",         "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n4", "polarity": "positive", "description": "Herding pushes more capital into the trade",           "has_delay": false, "is_confounding": false },
+    { "from": "n3", "to": "n4", "polarity": "positive", "description": "Opaque structure permits hidden leverage to grow",     "has_delay": true,  "is_confounding": false },
+    { "from": "n4", "to": "n2", "polarity": "positive", "description": "Rising prices reinforce herding belief",               "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n5", "polarity": "positive", "description": "Accumulated leverage triggers systemic failure",        "has_delay": true,  "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Herding-leverage bubble", "nodes": ["n2","n4"], "minus_count": 0 }
+  ],
+  "identifiability": "not_identifiable",
+  "identifiability_note": "Models, psychology, and structure co-moved throughout the cycle; without an unshocked control economy the individual contribution of each body is not separable."
+}
