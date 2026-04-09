@@ -2,17 +2,35 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>Chapter Preview — Systems of Intelligence</title>
+<title>Systems of Intelligence — Chapter Preview</title>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
 <style>
   html,body{margin:0;padding:0;background:#f4f1ec;color:#1a1a1a;font-family:'EB Garamond',Georgia,serif}
-  header{position:sticky;top:0;z-index:10;padding:12px 24px;background:#ebebeb;border-bottom:1px solid #0a0a0a;display:flex;gap:16px;align-items:center;flex-wrap:wrap;font-family:'Barlow Condensed',sans-serif}
-  header h1{margin:0;font-size:16px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase}
-  header label{font-size:11px;text-transform:uppercase;letter-spacing:0.05em;display:flex;align-items:center;gap:6px}
-  header select,header button{font-family:'Barlow Condensed',sans-serif;font-size:12px;padding:6px 12px;border:1px solid #0a0a0a;background:#fff;cursor:pointer;letter-spacing:0.05em}
-  header button:hover{background:#0a0a0a;color:#fff}
-  #count{margin-left:auto;font-size:10px;font-family:monospace;color:#5a5a5a}
+  *{box-sizing:border-box}
+  .layout{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+  @media (max-width:800px){.layout{grid-template-columns:1fr}.sidebar{position:static;height:auto;border-right:none;border-bottom:1px solid #0a0a0a}}
+
+  /* Sidebar */
+  .sidebar{position:sticky;top:0;height:100vh;overflow-y:auto;background:#ebebeb;border-right:1px solid #0a0a0a;padding:20px 0;font-family:'Barlow Condensed',sans-serif}
+  .sidebar h1{margin:0 20px 4px;font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase}
+  .sidebar .sub{margin:0 20px 16px;font-size:10px;color:#5a5a5a;letter-spacing:0.04em;text-transform:uppercase}
+  .sidebar .group{margin-top:14px}
+  .sidebar .group-title{padding:4px 20px;font-size:9px;color:#7a7a7a;letter-spacing:0.08em;text-transform:uppercase;font-weight:600}
+  .sidebar button{display:block;width:100%;text-align:left;padding:8px 20px;border:none;background:transparent;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:0.03em;text-transform:uppercase;color:#1a1a1a;cursor:pointer;border-left:3px solid transparent}
+  .sidebar button:hover{background:#ddd8ca}
+  .sidebar button.active{background:#0a0a0a;color:#ebebeb;border-left-color:#e8722a;font-weight:600}
+  .sidebar .fignum{color:#8a8a8a;font-size:9px;margin-left:6px}
+  .sidebar button.active .fignum{color:#c0c0c0}
+
+  /* Content area */
+  .stage{overflow-y:auto}
+  header{position:sticky;top:0;z-index:10;padding:10px 24px;background:rgba(244,241,236,0.95);backdrop-filter:blur(8px);border-bottom:1px solid #c0b8a8;display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-family:'Barlow Condensed',sans-serif}
+  header h2{margin:0;font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#5a5a5a}
+  header button{font-family:'Barlow Condensed',sans-serif;font-size:10px;padding:4px 10px;border:1px solid #8a7a62;background:#fff;cursor:pointer;letter-spacing:0.05em;text-transform:uppercase;color:#5a4a30}
+  header button:hover{background:#5a4a30;color:#fff}
+  #count{margin-left:auto;font-size:10px;font-family:monospace;color:#7a6a50}
+
   main{max-width:780px;margin:0 auto;padding:48px 32px 120px}
   #content h1{font-size:32px;font-weight:600;margin:1.5em 0 0.4em;line-height:1.15}
   #content h2{font-size:24px;font-weight:600;margin:2em 0 0.5em;line-height:1.2;border-bottom:1px solid #c0b8a8;padding-bottom:4px}
@@ -24,56 +42,85 @@
   #content pre{background:#ece6d8;padding:14px;overflow:auto;font-size:13px;border-radius:4px}
   #content strong{font-weight:600;color:#0a0a0a}
   #content hr{border:none;border-top:1px solid #c0b8a8;margin:2em 0}
-  #content img{max-width:100%;height:auto;display:block;margin:1.5em auto;background:#fff;border:1px solid #c0b8a8;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+  #content img{max-width:680px;width:100%;height:auto;display:block;margin:1.5em auto;background:#fff;border:1px solid #c0b8a8;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+  #content p[align="center"] img{max-width:920px}
   #content em{color:#4a4030;display:block;text-align:center;font-size:14px;margin-top:-0.5em;margin-bottom:1.5em}
   #content table{border-collapse:collapse;margin:1em 0;font-size:14px}
   #content th,#content td{border:1px solid #c0b8a8;padding:6px 10px;text-align:left}
   #content th{background:#ece6d8;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;font-size:11px;letter-spacing:0.05em}
   .missing-img{display:inline-block;padding:40px 20px;background:#fff0f0;color:#7a1a1a;border:2px dashed #7a1a1a;font-family:monospace;font-size:12px;text-align:center;margin:1.5em auto}
   #err{padding:20px;background:#fff0f0;color:#7a1a1a;font-family:monospace;font-size:12px}
+  .loading{text-align:center;color:#999;padding:40px;font-style:italic}
 </style>
 </head>
 <body>
-<header>
-  <h1>Chapter Preview</h1>
-  <label>Section <select id="picker"></select></label>
-  <button id="reload">↻ Reload</button>
-  <button id="raw" title="View source markdown">Raw</button>
-  <span id="count"></span>
-</header>
-<main id="content"></main>
+<div class="layout">
+  <nav class="sidebar">
+    <h1>Systems of Intelligence</h1>
+    <div class="sub">Chapter preview · 65 figures</div>
+    <div id="nav"></div>
+  </nav>
+  <div class="stage">
+    <header>
+      <h2 id="section-label">—</h2>
+      <button id="reload">↻ Reload</button>
+      <button id="raw" title="View source markdown">Raw</button>
+      <button id="proof" title="Open in Proof (Ch01 only for now)">On Proof ↗</button>
+      <span id="count"></span>
+    </header>
+    <main id="content"><div class="loading">Select a section from the sidebar →</div></main>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
-// All sections with their markdown file paths (paths relative to this preview.html at repo root)
 const SECTIONS = [
-  {label:"Preface",            path:"chapters/front-matter/preface/text/preface-with-figures.md"},
-  {label:"Prologue",           path:"chapters/front-matter/prologue/text/prologue-with-figures.md"},
-  {label:"Ch01 — Coordination Revolution", path:"chapters/ch01/text/chapter-01-with-figures.md"},
-  {label:"Ch02 — Dawn of Systems Intelligence", path:"chapters/ch02/text/chapter-02-with-figures.md"},
-  {label:"Ch03 — Architecture", path:"chapters/ch03/text/chapter-03-with-figures.md"},
-  {label:"Ch04 — In Action", path:"chapters/ch04/text/chapter-04-with-figures.md"},
-  {label:"Ch05 — Human-Systems Interaction", path:"chapters/ch05/text/chapter-05-with-figures.md"},
-  {label:"Ch06 — Consciousness", path:"chapters/ch06/text/chapter-06-with-figures.md"},
-  {label:"Ch07 — Engineering Reality", path:"chapters/ch07/text/chapter-07-with-figures.md"},
-  {label:"Ch08 — Beyond Human Intelligence", path:"chapters/ch08/text/chapter-08-with-figures.md"},
-  {label:"Ch09 — No Way Know-How", path:"chapters/ch09/text/chapter-09-with-figures.md"},
-  {label:"ChX — The Grand Coordination", path:"chapters/chX/text/chapter-X-with-figures.md"},
-  {label:"Appendix A — Mathematics", path:"chapters/back-matter/appendix-a/text/appendix-a-with-figures.md"},
+  {label:"Preface",                            group:"Front matter", figs:1, path:"chapters/front-matter/preface/text/preface-with-figures.md"},
+  {label:"Prologue",                           group:"Front matter", figs:2, path:"chapters/front-matter/prologue/text/prologue-with-figures.md"},
+  {label:"Ch01 · Coordination Revolution",     group:"Chapters",     figs:8, path:"chapters/ch01/text/chapter-01-with-figures.md", proof:"https://www.proofeditor.ai/d/ac13qw8o?token=13ad4f6a-31fa-423f-b677-fb72aeb3fbb0"},
+  {label:"Ch02 · Dawn of Systems Intelligence",group:"Chapters",     figs:5, path:"chapters/ch02/text/chapter-02-with-figures.md"},
+  {label:"Ch03 · Architecture",                group:"Chapters",     figs:6, path:"chapters/ch03/text/chapter-03-with-figures.md"},
+  {label:"Ch04 · In Action",                   group:"Chapters",     figs:6, path:"chapters/ch04/text/chapter-04-with-figures.md"},
+  {label:"Ch05 · Human-Systems Interaction",   group:"Chapters",     figs:5, path:"chapters/ch05/text/chapter-05-with-figures.md"},
+  {label:"Ch06 · Consciousness",               group:"Chapters",     figs:5, path:"chapters/ch06/text/chapter-06-with-figures.md"},
+  {label:"Ch07 · Engineering Reality",         group:"Chapters",     figs:5, path:"chapters/ch07/text/chapter-07-with-figures.md"},
+  {label:"Ch08 · Beyond Human Intelligence",   group:"Chapters",     figs:6, path:"chapters/ch08/text/chapter-08-with-figures.md"},
+  {label:"Ch09 · No Way Know-How",             group:"Chapters",     figs:6, path:"chapters/ch09/text/chapter-09-with-figures.md"},
+  {label:"ChX · The Grand Coordination",       group:"Chapters",     figs:6, path:"chapters/chX/text/chapter-X-with-figures.md"},
+  {label:"Appendix A · Mathematics",           group:"Back matter",  figs:4, path:"chapters/back-matter/appendix-a/text/appendix-a-with-figures.md"},
 ];
 
-const picker = document.getElementById("picker");
+const nav = document.getElementById("nav");
 const content = document.getElementById("content");
 const countEl = document.getElementById("count");
+const sectionLabel = document.getElementById("section-label");
+const proofBtn = document.getElementById("proof");
 
-picker.innerHTML = SECTIONS.map((s,i)=>`<option value="${i}">${s.label}</option>`).join("");
+// Build sidebar grouped by section type
+(function buildNav(){
+  const groups = {};
+  SECTIONS.forEach((s,i)=>{ (groups[s.group] ||= []).push({...s, idx:i}); });
+  const order = ["Front matter","Chapters","Back matter"];
+  nav.innerHTML = "";
+  order.forEach(g=>{
+    if(!groups[g]) return;
+    const gd = document.createElement("div");
+    gd.className = "group";
+    gd.innerHTML = `<div class="group-title">${g}</div>`;
+    groups[g].forEach(s=>{
+      const b = document.createElement("button");
+      b.dataset.idx = s.idx;
+      b.innerHTML = `${s.label}<span class="fignum">${s.figs}</span>`;
+      b.addEventListener("click", ()=>load(s.idx));
+      gd.appendChild(b);
+    });
+    nav.appendChild(gd);
+  });
+})();
 
 function rewriteImages(html, basePath){
-  // basePath = "chapters/ch01/text/" → dir of the markdown file
-  // Image src like "../diagrams/png/foo.png" should resolve to "chapters/ch01/diagrams/png/foo.png"
   return html.replace(/<img\s+([^>]*?)src="([^"]+)"/g, (m, attrs, src)=>{
     if(src.startsWith("http") || src.startsWith("/")) return m;
-    // Resolve relative to basePath
     const parts = basePath.split("/").filter(Boolean);
     const srcParts = src.split("/");
     for(const p of srcParts){
@@ -85,9 +132,19 @@ function rewriteImages(html, basePath){
   });
 }
 
+let currentIdx = 0;
+
 async function load(i){
+  currentIdx = i;
   const sec = SECTIONS[i];
-  content.innerHTML = "<p style='text-align:center;color:#999'>loading…</p>";
+  sectionLabel.textContent = sec.label;
+  content.innerHTML = "<div class='loading'>loading…</div>";
+  // Update active state
+  document.querySelectorAll("nav.sidebar button").forEach(b=>{
+    b.classList.toggle("active", +b.dataset.idx === i);
+  });
+  // Show/hide Proof button based on availability
+  proofBtn.style.display = sec.proof ? "inline-block" : "none";
   try {
     const res = await fetch(sec.path + "?t=" + Date.now());
     if(!res.ok) throw new Error(`${res.status} ${res.statusText}`);
@@ -98,19 +155,28 @@ async function load(i){
     const figs = (md.match(/^!\[Figure/gm) || []).length;
     const words = md.split(/\s+/).filter(Boolean).length;
     countEl.textContent = `${figs} figures · ${words.toLocaleString()} words`;
-    window.scrollTo(0,0);
+    // Scroll content area to top
+    document.querySelector(".stage").scrollTo(0,0);
+    // Persist selection
+    localStorage.setItem("soi-preview-section", i);
   } catch(e) {
     content.innerHTML = `<div id='err'>Failed to load ${sec.path}: ${e.message}</div>`;
   }
 }
 
-picker.addEventListener("change", ()=>load(+picker.value));
-document.getElementById("reload").addEventListener("click", ()=>load(+picker.value));
+document.getElementById("reload").addEventListener("click", ()=>load(currentIdx));
 document.getElementById("raw").addEventListener("click", ()=>{
-  window.open(SECTIONS[+picker.value].path, "_blank");
+  window.open(SECTIONS[currentIdx].path, "_blank");
+});
+proofBtn.addEventListener("click", ()=>{
+  const sec = SECTIONS[currentIdx];
+  if(sec.proof) window.open(sec.proof, "_blank");
 });
 
-load(0);
+// Restore last-selected section, or start with first
+const saved = parseInt(localStorage.getItem("soi-preview-section") || "0", 10);
+const start = isNaN(saved) || saved < 0 || saved >= SECTIONS.length ? 0 : saved;
+load(start);
 </script>
 </body>
 </html>
