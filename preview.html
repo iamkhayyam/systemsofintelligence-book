@@ -22,6 +22,8 @@
   .sidebar button.active{background:#0a0a0a;color:#ebebeb;border-left-color:#e8722a;font-weight:600}
   .sidebar .fignum{color:#8a8a8a;font-size:9px;margin-left:6px}
   .sidebar button.active .fignum{color:#c0c0c0}
+  .sidebar .pagecount{color:#8a8a8a;font-size:8px;margin-left:4px}
+  .sidebar button.active .pagecount{color:#a0a0a0}
 
   /* Content area — slightly darker surround to make the white page pop */
   .stage{overflow-y:auto;background:#e8e4dc}
@@ -61,12 +63,12 @@
   .page-break{position:relative;margin:32px -40px;height:0;border:none;border-top:2px dotted #d0c8b4}
   .page-break .page-num{position:absolute;right:-52px;top:-7px;font-family:'Barlow Condensed',sans-serif;font-size:9px;color:#b0a080;letter-spacing:0.06em;white-space:nowrap}
 
-  /* Scroll-locked oversized page counter — sits below the header */
-  #page-strip{position:sticky;top:42px;z-index:9;background:rgba(232,228,220,0.95);backdrop-filter:blur(6px);border-bottom:1px solid #d0c8b4;padding:6px 24px;display:flex;align-items:baseline;gap:12px;font-family:'Barlow Condensed',sans-serif}
-  #page-strip .current{font-size:36px;font-weight:700;color:#1a1a1a;line-height:1;letter-spacing:-0.02em}
-  #page-strip .sep{font-size:20px;color:#c0b8a8;font-weight:300}
-  #page-strip .total{font-size:14px;color:#8a7a5a;font-weight:600;letter-spacing:0.05em;text-transform:uppercase}
-  #page-strip .label{font-size:9px;color:#a09070;letter-spacing:0.1em;text-transform:uppercase;margin-left:auto}
+  /* Page counter lives inside the header bar */
+  .pg{display:flex;align-items:baseline;gap:6px;margin-left:auto;font-family:'Barlow Condensed',sans-serif}
+  .pg .current{font-size:32px;font-weight:700;color:#1a1a1a;line-height:1;letter-spacing:-0.02em}
+  .pg .sep{font-size:16px;color:#c0b8a8;font-weight:300}
+  .pg .section-total{font-size:13px;color:#8a7a5a;font-weight:600}
+  .pg .cumulative{font-size:9px;color:#a09070;letter-spacing:0.06em;text-transform:uppercase;margin-left:8px;border-left:1px solid #c0b8a8;padding-left:8px}
 </style>
 </head>
 <body>
@@ -83,13 +85,13 @@
       <button id="raw" title="View source markdown">Raw</button>
       <button id="proof" title="Open in Proof (Ch01 only for now)">On Proof ↗</button>
       <span id="count"></span>
+      <div class="pg">
+        <span class="current" id="pg-current">—</span>
+        <span class="sep">/</span>
+        <span class="section-total" id="pg-total">—</span>
+        <span class="cumulative" id="pg-cumulative">—</span>
+      </div>
     </header>
-    <div id="page-strip">
-      <span class="current" id="pg-current">—</span>
-      <span class="sep">/</span>
-      <span class="total" id="pg-total">—</span>
-      <span class="label" id="pg-label">pages</span>
-    </div>
     <main id="content"><div class="loading">Select a section from the sidebar →</div></main>
   </div>
 </div>
@@ -158,9 +160,20 @@ function rewriteImages(html, basePath){
 
 const pgCurrent = document.getElementById("pg-current");
 const pgTotal = document.getElementById("pg-total");
+const pgCumulative = document.getElementById("pg-cumulative");
 
 // 6×9 page: 7.5" text block ≈ 1100px on screen with our font sizes, images, and spacing
 const PAGE_HEIGHT = 1100;
+
+// Cumulative page tracking: stores page count per section once loaded
+const sectionPages = {};
+function getCumulativeStart(idx){
+  let sum = 0;
+  for(let i = 0; i < idx; i++){
+    sum += (sectionPages[i] || 0);
+  }
+  return sum;
+}
 
 function insertPageBreaks(container, pageHeight){
   container.querySelectorAll(".page-break").forEach(el=>el.remove());
@@ -181,10 +194,13 @@ function insertPageBreaks(container, pageHeight){
   });
 }
 
-function setupPageScroll(totalPages){
+function setupPageScroll(totalPages, sectionIdx){
+  sectionPages[sectionIdx] = totalPages;
+  const cumStart = getCumulativeStart(sectionIdx);
   const stage = document.querySelector(".stage");
   pgCurrent.textContent = "1";
   pgTotal.textContent = totalPages;
+  pgCumulative.textContent = `p${cumStart + 1} of book`;
   const updatePageNum = ()=>{
     const breaks = content.querySelectorAll(".page-break");
     const scrollY = stage.scrollTop;
@@ -193,6 +209,7 @@ function setupPageScroll(totalPages){
       if(pb.offsetTop - content.offsetTop < scrollY + 150) current++;
     });
     pgCurrent.textContent = current;
+    pgCumulative.textContent = `p${cumStart + current} of book`;
   };
   stage.removeEventListener("scroll", stage._pageScrollFn);
   stage._pageScrollFn = updatePageNum;
@@ -237,7 +254,7 @@ async function load(i){
     countEl.textContent = `${figs} figures · ${words.toLocaleString()} words · ~${totalPages} pages`;
 
     // Update page indicator on scroll
-    setupPageScroll(totalPages);
+    setupPageScroll(totalPages, i);
     // Scroll content area to top
     document.querySelector(".stage").scrollTo(0,0);
     // Persist selection
@@ -255,6 +272,31 @@ proofBtn.addEventListener("click", ()=>{
   const sec = SECTIONS[currentIdx];
   if(sec.proof) window.open(sec.proof, "_blank");
 });
+
+// Pre-seed cumulative page counts by estimating from word counts (no rendering needed)
+// ~250 words per 6×9 page is the book-industry standard
+(async function seedPageCounts(){
+  for(let i = 0; i < SECTIONS.length; i++){
+    if(sectionPages[i]) continue;
+    try {
+      const res = await fetch(SECTIONS[i].path + "?t=seed");
+      if(!res.ok) continue;
+      const md = await res.text();
+      const words = md.split(/\s+/).filter(Boolean).length;
+      sectionPages[i] = Math.max(1, Math.round(words / 250));
+    } catch(e){ sectionPages[i] = 0; }
+  }
+  // Update sidebar with page counts
+  document.querySelectorAll("nav.sidebar button").forEach(b=>{
+    const idx = +b.dataset.idx;
+    const pages = sectionPages[idx];
+    if(pages){
+      let sp = b.querySelector(".pagecount");
+      if(!sp){ sp = document.createElement("span"); sp.className="pagecount"; b.appendChild(sp); }
+      sp.textContent = `~${pages}p`;
+    }
+  });
+})();
 
 // Restore last-selected section, or start with first
 const saved = parseInt(localStorage.getItem("soi-preview-section") || "0", 10);
