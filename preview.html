@@ -57,12 +57,16 @@
   #err{padding:20px;background:#fff0f0;color:#7a1a1a;font-family:monospace;font-size:12px}
   .loading{text-align:center;color:#999;padding:40px;font-style:italic}
 
-  /* Page dividers — simple dotted line */
-  .page-break{position:relative;margin:24px -40px;height:0;border:none;border-top:2px dotted #c8bfa8}
-  .page-break .page-num{position:absolute;right:-48px;top:-8px;font-family:'Barlow Condensed',sans-serif;font-size:9px;color:#a09070;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap}
+  /* Page dividers — dotted line, page num in right margin */
+  .page-break{position:relative;margin:32px -40px;height:0;border:none;border-top:2px dotted #d0c8b4}
+  .page-break .page-num{position:absolute;right:-52px;top:-7px;font-family:'Barlow Condensed',sans-serif;font-size:9px;color:#b0a080;letter-spacing:0.06em;white-space:nowrap}
 
-  /* Sticky page indicator on the right margin of the content area */
-  #page-indicator{position:sticky;top:60px;float:right;margin-right:-80px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#9a8a6a;writing-mode:vertical-rl;text-orientation:mixed;z-index:5;pointer-events:none}
+  /* Scroll-locked oversized page counter — sits below the header */
+  #page-strip{position:sticky;top:42px;z-index:9;background:rgba(232,228,220,0.95);backdrop-filter:blur(6px);border-bottom:1px solid #d0c8b4;padding:6px 24px;display:flex;align-items:baseline;gap:12px;font-family:'Barlow Condensed',sans-serif}
+  #page-strip .current{font-size:36px;font-weight:700;color:#1a1a1a;line-height:1;letter-spacing:-0.02em}
+  #page-strip .sep{font-size:20px;color:#c0b8a8;font-weight:300}
+  #page-strip .total{font-size:14px;color:#8a7a5a;font-weight:600;letter-spacing:0.05em;text-transform:uppercase}
+  #page-strip .label{font-size:9px;color:#a09070;letter-spacing:0.1em;text-transform:uppercase;margin-left:auto}
 </style>
 </head>
 <body>
@@ -80,7 +84,13 @@
       <button id="proof" title="Open in Proof (Ch01 only for now)">On Proof ↗</button>
       <span id="count"></span>
     </header>
-    <main><div id="page-indicator">—</div><div id="content"><div class="loading">Select a section from the sidebar →</div></div></main>
+    <div id="page-strip">
+      <span class="current" id="pg-current">—</span>
+      <span class="sep">/</span>
+      <span class="total" id="pg-total">—</span>
+      <span class="label" id="pg-label">pages</span>
+    </div>
+    <main id="content"><div class="loading">Select a section from the sidebar →</div></main>
   </div>
 </div>
 
@@ -146,12 +156,14 @@ function rewriteImages(html, basePath){
   });
 }
 
-const pageIndicator = document.getElementById("page-indicator");
+const pgCurrent = document.getElementById("pg-current");
+const pgTotal = document.getElementById("pg-total");
+
+// 6×9 page: 7.5" text block ≈ 1100px on screen with our font sizes, images, and spacing
+const PAGE_HEIGHT = 1100;
 
 function insertPageBreaks(container, pageHeight){
-  // Remove existing page breaks
   container.querySelectorAll(".page-break").forEach(el=>el.remove());
-  // Walk through block-level children and insert dividers at approximate page boundaries
   const children = Array.from(container.children);
   let accHeight = 0;
   let pageNum = 1;
@@ -159,29 +171,28 @@ function insertPageBreaks(container, pageHeight){
     const h = child.getBoundingClientRect().height;
     accHeight += h;
     if(accHeight >= pageHeight){
-      // Insert a page break before this element
       const pb = document.createElement("div");
       pb.className = "page-break";
       pb.innerHTML = `<span class="page-num">${pageNum}</span>`;
       child.parentNode.insertBefore(pb, child);
       pageNum++;
-      accHeight = h; // reset for next page
+      accHeight = h;
     }
   });
 }
 
 function setupPageScroll(totalPages){
   const stage = document.querySelector(".stage");
-  pageIndicator.textContent = `1 / ${totalPages}`;
-  // Gather page-break positions
+  pgCurrent.textContent = "1";
+  pgTotal.textContent = totalPages;
   const updatePageNum = ()=>{
     const breaks = content.querySelectorAll(".page-break");
     const scrollY = stage.scrollTop;
     let current = 1;
     breaks.forEach(pb=>{
-      if(pb.offsetTop - content.offsetTop < scrollY + 120) current++;
+      if(pb.offsetTop - content.offsetTop < scrollY + 150) current++;
     });
-    pageIndicator.textContent = `${current} / ${totalPages}`;
+    pgCurrent.textContent = current;
   };
   stage.removeEventListener("scroll", stage._pageScrollFn);
   stage._pageScrollFn = updatePageNum;
@@ -218,7 +229,6 @@ async function load(i){
 
     // Insert phantom page breaks
     // 6×9 book page at ~540px column ≈ 750px content height per page
-    const PAGE_HEIGHT = 750;
     insertPageBreaks(content, PAGE_HEIGHT);
 
     const figs = (md.match(/^!\[Figure/gm) || []).length;
