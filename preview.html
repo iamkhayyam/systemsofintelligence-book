@@ -162,8 +162,8 @@ const pgCurrent = document.getElementById("pg-current");
 const pgTotal = document.getElementById("pg-total");
 const pgCumulative = document.getElementById("pg-cumulative");
 
-// 6×9 page: 7.5" text block ≈ 1100px on screen with our font sizes, images, and spacing
-const PAGE_HEIGHT = 1100;
+// 6×9 ratio: column is 540px wide, so page height = 540 × (9/6) = 810px
+const PAGE_HEIGHT = 810;
 
 // Cumulative page tracking: stores page count per section once loaded
 const sectionPages = {};
