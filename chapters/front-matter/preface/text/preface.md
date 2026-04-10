@@ -503,9 +503,7 @@ November 2025
 
 ---
 
-**P.S.** — If you finish this book and want to coordinate with me or the growing community of coordination thinkers, reach out:
-
-**khayyam@afk.world**
-**knowware.org**
+**P.S.** — If you finish this book and want to coordinate with me or the growing community of coordination thinkers, reach out to : someone [at] knowware [dot] institute**
+**https://knowware.institute**
 
 **The coordination continues through you.**
