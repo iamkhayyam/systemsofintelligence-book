@@ -57,15 +57,12 @@
   #err{padding:20px;background:#fff0f0;color:#7a1a1a;font-family:monospace;font-size:12px}
   .loading{text-align:center;color:#999;padding:40px;font-style:italic}
 
-  /* Page dividers — phantom page breaks with page numbers */
-  .page-break{position:relative;margin:0 -40px;padding:28px 0;border-top:1px dashed #c0b8a8;border-bottom:1px dashed #c0b8a8;background:repeating-linear-gradient(0deg,transparent,transparent 3px,#f0ece4 3px,#f0ece4 4px);height:24px}
-  .page-break .page-num{position:absolute;left:50%;transform:translateX(-50%);top:5px;font-family:'Barlow Condensed',sans-serif;font-size:10px;color:#9a8a6a;letter-spacing:0.1em;text-transform:uppercase;background:#f0ece4;padding:0 12px}
+  /* Page dividers — simple dotted line */
+  .page-break{position:relative;margin:24px -40px;height:0;border:none;border-top:2px dotted #c8bfa8}
+  .page-break .page-num{position:absolute;right:-48px;top:-8px;font-family:'Barlow Condensed',sans-serif;font-size:9px;color:#a09070;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap}
 
-  /* Floating page counter in bottom-right of stage */
-  #page-indicator{position:fixed;bottom:20px;right:20px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#7a6a50;background:rgba(255,255,255,0.92);border:1px solid #c0b8a8;padding:6px 14px;border-radius:3px;box-shadow:0 2px 8px rgba(0,0,0,0.08);z-index:20;pointer-events:none}
-
-  /* Page number in sidebar per section */
-  .sidebar .pagecount{color:#8a8a8a;font-size:8px;margin-left:4px}
+  /* Sticky page indicator on the right margin of the content area */
+  #page-indicator{position:sticky;top:60px;float:right;margin-right:-80px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#9a8a6a;writing-mode:vertical-rl;text-orientation:mixed;z-index:5;pointer-events:none}
 </style>
 </head>
 <body>
@@ -83,8 +80,7 @@
       <button id="proof" title="Open in Proof (Ch01 only for now)">On Proof ↗</button>
       <span id="count"></span>
     </header>
-    <main id="content"><div class="loading">Select a section from the sidebar →</div></main>
-    <div id="page-indicator">—</div>
+    <main><div id="page-indicator">—</div><div id="content"><div class="loading">Select a section from the sidebar →</div></div></main>
   </div>
 </div>
 
@@ -166,7 +162,7 @@ function insertPageBreaks(container, pageHeight){
       // Insert a page break before this element
       const pb = document.createElement("div");
       pb.className = "page-break";
-      pb.innerHTML = `<span class="page-num">page ${pageNum}</span>`;
+      pb.innerHTML = `<span class="page-num">${pageNum}</span>`;
       child.parentNode.insertBefore(pb, child);
       pageNum++;
       accHeight = h; // reset for next page
