@@ -56,6 +56,16 @@
   .missing-img{display:inline-block;padding:40px 20px;background:#fff0f0;color:#7a1a1a;border:2px dashed #7a1a1a;font-family:monospace;font-size:12px;text-align:center;margin:1.5em auto}
   #err{padding:20px;background:#fff0f0;color:#7a1a1a;font-family:monospace;font-size:12px}
   .loading{text-align:center;color:#999;padding:40px;font-style:italic}
+
+  /* Page dividers — phantom page breaks with page numbers */
+  .page-break{position:relative;margin:0 -40px;padding:28px 0;border-top:1px dashed #c0b8a8;border-bottom:1px dashed #c0b8a8;background:repeating-linear-gradient(0deg,transparent,transparent 3px,#f0ece4 3px,#f0ece4 4px);height:24px}
+  .page-break .page-num{position:absolute;left:50%;transform:translateX(-50%);top:5px;font-family:'Barlow Condensed',sans-serif;font-size:10px;color:#9a8a6a;letter-spacing:0.1em;text-transform:uppercase;background:#f0ece4;padding:0 12px}
+
+  /* Floating page counter in bottom-right of stage */
+  #page-indicator{position:fixed;bottom:20px;right:20px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#7a6a50;background:rgba(255,255,255,0.92);border:1px solid #c0b8a8;padding:6px 14px;border-radius:3px;box-shadow:0 2px 8px rgba(0,0,0,0.08);z-index:20;pointer-events:none}
+
+  /* Page number in sidebar per section */
+  .sidebar .pagecount{color:#8a8a8a;font-size:8px;margin-left:4px}
 </style>
 </head>
 <body>
@@ -74,6 +84,7 @@
       <span id="count"></span>
     </header>
     <main id="content"><div class="loading">Select a section from the sidebar →</div></main>
+    <div id="page-indicator">—</div>
   </div>
 </div>
 
@@ -139,6 +150,48 @@ function rewriteImages(html, basePath){
   });
 }
 
+const pageIndicator = document.getElementById("page-indicator");
+
+function insertPageBreaks(container, pageHeight){
+  // Remove existing page breaks
+  container.querySelectorAll(".page-break").forEach(el=>el.remove());
+  // Walk through block-level children and insert dividers at approximate page boundaries
+  const children = Array.from(container.children);
+  let accHeight = 0;
+  let pageNum = 1;
+  children.forEach(child=>{
+    const h = child.getBoundingClientRect().height;
+    accHeight += h;
+    if(accHeight >= pageHeight){
+      // Insert a page break before this element
+      const pb = document.createElement("div");
+      pb.className = "page-break";
+      pb.innerHTML = `<span class="page-num">page ${pageNum}</span>`;
+      child.parentNode.insertBefore(pb, child);
+      pageNum++;
+      accHeight = h; // reset for next page
+    }
+  });
+}
+
+function setupPageScroll(totalPages){
+  const stage = document.querySelector(".stage");
+  pageIndicator.textContent = `Page 1 of ${totalPages}`;
+  // Gather page-break positions
+  const updatePageNum = ()=>{
+    const breaks = content.querySelectorAll(".page-break");
+    const scrollY = stage.scrollTop;
+    let current = 1;
+    breaks.forEach(pb=>{
+      if(pb.offsetTop - content.offsetTop < scrollY + 120) current++;
+    });
+    pageIndicator.textContent = `Page ${current} of ${totalPages}`;
+  };
+  stage.removeEventListener("scroll", stage._pageScrollFn);
+  stage._pageScrollFn = updatePageNum;
+  stage.addEventListener("scroll", updatePageNum, {passive:true});
+}
+
 let currentIdx = 0;
 
 async function load(i){
@@ -160,16 +213,25 @@ async function load(i){
     const html = marked.parse(md);
     content.innerHTML = rewriteImages(html, basePath);
     // Post-process: mark figure-caption <p> elements
-    // A caption is a <p> whose text content starts with "Figure" and contains only <em>/<code> children
     content.querySelectorAll("p").forEach(p=>{
       const text = p.textContent.trim();
       if(text.startsWith("Figure ") && p.children.length <= 2 && p.querySelector("em")){
         p.classList.add("caption");
       }
     });
+
+    // Insert phantom page breaks
+    // 6×9 book page at ~540px column ≈ 750px content height per page
+    const PAGE_HEIGHT = 750;
+    insertPageBreaks(content, PAGE_HEIGHT);
+
     const figs = (md.match(/^!\[Figure/gm) || []).length;
     const words = md.split(/\s+/).filter(Boolean).length;
-    countEl.textContent = `${figs} figures · ${words.toLocaleString()} words`;
+    const totalPages = content.querySelectorAll(".page-break").length + 1;
+    countEl.textContent = `${figs} figures · ${words.toLocaleString()} words · ~${totalPages} pages`;
+
+    // Update page indicator on scroll
+    setupPageScroll(totalPages);
     // Scroll content area to top
     document.querySelector(".stage").scrollTo(0,0);
     // Persist selection
