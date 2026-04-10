@@ -172,7 +172,7 @@ function insertPageBreaks(container, pageHeight){
 
 function setupPageScroll(totalPages){
   const stage = document.querySelector(".stage");
-  pageIndicator.textContent = `Page 1 of ${totalPages}`;
+  pageIndicator.textContent = `1 / ${totalPages}`;
   // Gather page-break positions
   const updatePageNum = ()=>{
     const breaks = content.querySelectorAll(".page-break");
@@ -181,7 +181,7 @@ function setupPageScroll(totalPages){
     breaks.forEach(pb=>{
       if(pb.offsetTop - content.offsetTop < scrollY + 120) current++;
     });
-    pageIndicator.textContent = `Page ${current} of ${totalPages}`;
+    pageIndicator.textContent = `${current} / ${totalPages}`;
   };
   stage.removeEventListener("scroll", stage._pageScrollFn);
   stage._pageScrollFn = updatePageNum;
