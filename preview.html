@@ -8,7 +8,7 @@
 <style>
   html,body{margin:0;padding:0;background:#f4f1ec;color:#1a1a1a;font-family:'EB Garamond',Georgia,serif}
   *{box-sizing:border-box}
-  .layout{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+  .layout{display:grid;grid-template-columns:240px 1fr;height:100vh;overflow:hidden}
   @media (max-width:800px){.layout{grid-template-columns:1fr}.sidebar{position:static;height:auto;border-right:none;border-bottom:1px solid #0a0a0a}}
 
   /* Sidebar */
@@ -26,7 +26,7 @@
   .sidebar button.active .pagecount{color:#a0a0a0}
 
   /* Content area — slightly darker surround to make the white page pop */
-  .stage{overflow-y:scroll;overflow-x:hidden;background:#e8e4dc;position:relative}
+  .stage{overflow-y:scroll;overflow-x:hidden;background:#e8e4dc;height:100vh}
   header{position:sticky;top:0;z-index:10;padding:10px 24px;background:rgba(232,228,220,0.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #c0b8a8;display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-family:'Barlow Condensed',sans-serif}
   header h2{margin:0;font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#5a5a5a}
   header button{font-family:'Barlow Condensed',sans-serif;font-size:10px;padding:4px 10px;border:1px solid #8a7a62;background:#fff;cursor:pointer;letter-spacing:0.05em;text-transform:uppercase;color:#5a4a30}
