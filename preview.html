@@ -283,7 +283,7 @@ proofBtn.addEventListener("click", ()=>{
       if(!res.ok) continue;
       const md = await res.text();
       const words = md.split(/\s+/).filter(Boolean).length;
-      sectionPages[i] = Math.max(1, Math.round(words / 175));
+      sectionPages[i] = Math.max(1, Math.round(words / 150));
     } catch(e){ sectionPages[i] = 0; }
   }
   // Update sidebar with page counts
