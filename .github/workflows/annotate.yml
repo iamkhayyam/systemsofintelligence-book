@@ -1,0 +1,59 @@
+name: Save Annotation
+on:
+  repository_dispatch:
+    types: [annotation]
+
+permissions:
+  contents: write
+
+jobs:
+  save:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Apply annotation
+        run: |
+          cat > /tmp/apply.py << 'PYEOF'
+          import json, sys, os
+
+          payload = json.loads(os.environ.get("PAYLOAD", "{}"))
+          action = payload.get("action", "add")
+          section = payload.get("sectionPath", "")
+          ann = payload.get("annotation", {})
+          ann_id = payload.get("annId", "")
+
+          store_path = "_meta/annotations.json"
+          with open(store_path) as f:
+              store = json.load(f)
+
+          if action == "add" and section and ann:
+              store.setdefault(section, []).append(ann)
+              print(f"Added annotation {ann.get('id','')} to {section}")
+          elif action == "resolve" and section and ann_id:
+              for a in store.get(section, []):
+                  if a.get("id") == ann_id:
+                      a["resolved"] = True
+                      print(f"Resolved {ann_id} in {section}")
+                      break
+          else:
+              print(f"Unknown action or missing data: {action}")
+              sys.exit(1)
+
+          with open(store_path, "w") as f:
+              json.dump(store, f, indent=2)
+          PYEOF
+          python3 /tmp/apply.py
+        env:
+          PAYLOAD: ${{ toJson(github.event.client_payload) }}
+
+      - name: Commit & push
+        run: |
+          git config user.name "soi-annotation-bot"
+          git config user.email "noreply@systemsofintelligence.book"
+          git add _meta/annotations.json
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "annotation: $(echo '${{ github.event.client_payload.action }}' | head -c 20) by $(echo '${{ github.event.client_payload.annotation.author }}' | head -c 30)"
+          git push

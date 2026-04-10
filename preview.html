@@ -59,6 +59,56 @@
   #err{padding:20px;background:#fff0f0;color:#7a1a1a;font-family:monospace;font-size:12px}
   .loading{text-align:center;color:#999;padding:40px;font-style:italic}
 
+  /* ── Annotations ─────────────────────────────────────────────── */
+  .ann-highlight{cursor:pointer;border-radius:2px;padding:0 1px;transition:background 0.15s}
+  .ann-feedback{background:rgba(255,220,80,0.35)}
+  .ann-feedback:hover{background:rgba(255,220,80,0.55)}
+  .ann-correction{background:rgba(230,100,100,0.25)}
+  .ann-correction:hover{background:rgba(230,100,100,0.45)}
+  .ann-revision{background:rgba(100,160,255,0.25)}
+  .ann-revision:hover{background:rgba(100,160,255,0.45)}
+
+  #ann-popup{position:absolute;z-index:20;background:#0a0a0a;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;padding:5px 10px;border-radius:3px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.3);user-select:none}
+  #ann-popup:hover{background:#e8722a}
+
+  #ann-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:30;display:none;backdrop-filter:blur(2px)}
+  #ann-modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:31;width:360px;background:#fffdf5;border:1px solid #c0b8a8;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,0.2);font-family:'Barlow Condensed',sans-serif;display:none;overflow:hidden}
+  .ann-modal-header{padding:12px 16px;background:#f4f1ec;border-bottom:1px solid #d0c8b4;display:flex;align-items:center;gap:8px}
+  .ann-modal-header .title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;flex:1}
+  .ann-modal-header .close{cursor:pointer;font-size:18px;color:#8a7a62;line-height:1}
+  .ann-modal-header .close:hover{color:#0a0a0a}
+  .ann-modal-body{padding:16px}
+  .ann-modal-body .quote{font-family:'EB Garamond',serif;font-style:italic;font-size:13px;color:#5a4a30;border-left:3px solid #d0c8b4;padding:6px 10px;margin:0 0 12px;max-height:80px;overflow:hidden}
+  .ann-modal-body label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:#8a7a62;margin:8px 0 3px}
+  .ann-modal-body input,.ann-modal-body select,.ann-modal-body textarea{width:100%;padding:6px 8px;border:1px solid #c0b8a8;border-radius:3px;font-family:'EB Garamond',serif;font-size:13px;background:#fff}
+  .ann-modal-body textarea{height:80px;resize:vertical}
+  .ann-modal-body select{font-family:'Barlow Condensed',sans-serif;font-size:12px}
+  .ann-modal-footer{padding:10px 16px;border-top:1px solid #d0c8b4;display:flex;gap:8px;justify-content:flex-end}
+  .ann-modal-footer button{font-family:'Barlow Condensed',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;padding:6px 16px;border:1px solid #8a7a62;border-radius:3px;cursor:pointer}
+  .ann-btn-save{background:#0a0a0a;color:#fff;border-color:#0a0a0a}
+  .ann-btn-save:hover{background:#e8722a;border-color:#e8722a}
+  .ann-btn-resolve{background:#1a5a32;color:#fff;border-color:#1a5a32}
+  .ann-btn-resolve:hover{background:#16a34a;border-color:#16a34a}
+  .ann-btn-cancel{background:#fff;color:#5a4a30}
+  .ann-btn-cancel:hover{background:#f4f1ec}
+  .ann-btn-delete{background:#7a1a1a;color:#fff;border-color:#7a1a1a}
+  .ann-btn-delete:hover{background:#b91c1c;border-color:#b91c1c}
+
+  #ann-panel{position:absolute;top:0;right:0;bottom:0;width:320px;background:#fffdf5;border-left:1px solid #c0b8a8;box-shadow:-4px 0 20px rgba(0,0,0,0.08);z-index:15;overflow-y:auto;display:none;font-family:'Barlow Condensed',sans-serif}
+  .ann-panel-header{padding:12px 16px;border-bottom:1px solid #d0c8b4;display:flex;align-items:center}
+  .ann-panel-header .title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;flex:1}
+  .ann-panel-header .close{cursor:pointer;font-size:16px;color:#8a7a62}
+  .ann-panel-item{padding:10px 16px;border-bottom:1px solid #ece6d8;cursor:pointer;transition:background 0.1s}
+  .ann-panel-item:hover{background:#f4f1ec}
+  .ann-panel-item .ann-quote{font-family:'EB Garamond',serif;font-size:12px;font-style:italic;color:#5a4a30;margin-bottom:4px;max-height:40px;overflow:hidden}
+  .ann-panel-item .ann-meta{font-size:9px;color:#8a7a62;text-transform:uppercase;letter-spacing:0.04em}
+  .ann-panel-item .ann-comment{font-family:'EB Garamond',serif;font-size:11px;color:#2a2018;margin-top:4px}
+  .ann-panel-empty{padding:20px;text-align:center;color:#8a7a62;font-size:11px;text-transform:uppercase;letter-spacing:0.05em}
+
+  .ann-badge{font-family:'Barlow Condensed',sans-serif;font-size:10px;padding:4px 10px;border:1px solid #8a7a62;background:#fff;cursor:pointer;letter-spacing:0.05em;text-transform:uppercase;color:#5a4a30;display:flex;align-items:center;gap:4px}
+  .ann-badge:hover{background:#5a4a30;color:#fff}
+  .ann-badge .dot{width:6px;height:6px;border-radius:50%;background:#e8722a}
+
   /* Page dividers — dotted line, page num in right margin */
   .page-break{position:relative;margin:32px -40px;height:0;border:none;border-top:2px dotted #d0c8b4}
   .page-break .page-num{position:absolute;right:-58px;top:-11px;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:600;color:#a09070;letter-spacing:0.04em;white-space:nowrap}
@@ -85,6 +135,7 @@
       <button id="raw" title="View source markdown">Raw</button>
       <button id="proof" title="Open in Proof (Ch01 only for now)">On Proof ↗</button>
       <span id="count"></span>
+      <button class="ann-badge" id="ann-toggle"><span class="dot"></span> <span id="ann-count">0</span> Notes</button>
       <div class="pg">
         <span class="current" id="pg-current">—</span>
         <span class="sep">/</span>
@@ -93,6 +144,39 @@
       </div>
     </header>
     <main id="content"><div class="loading">Select a section from the sidebar →</div></main>
+    <div id="ann-popup" style="display:none">💬 Comment</div>
+    <div id="ann-panel" style="display:none">
+      <div class="ann-panel-header"><span class="title">Annotations</span><span class="close" id="ann-panel-close">✕</span></div>
+      <div id="ann-panel-list"></div>
+    </div>
+  </div>
+  <div id="ann-modal-overlay" style="display:none"></div>
+  <div id="ann-modal" style="display:none">
+    <div class="ann-modal-header"><span class="title" id="ann-modal-title">Add Comment</span><span class="close" id="ann-modal-close">✕</span></div>
+    <div class="ann-modal-body">
+      <div class="quote" id="ann-modal-quote"></div>
+      <div id="ann-modal-create">
+        <label>Your name</label>
+        <input type="text" id="ann-name" placeholder="Reviewer name" />
+        <label>Type</label>
+        <select id="ann-type"><option value="feedback">Feedback</option><option value="correction">Correction</option><option value="revision">Revision</option></select>
+        <label>Comment</label>
+        <textarea id="ann-comment" placeholder="Your note..."></textarea>
+      </div>
+      <div id="ann-modal-view" style="display:none">
+        <label>Author</label><div id="ann-view-author"></div>
+        <label>Type</label><div id="ann-view-type"></div>
+        <label>Comment</label><div id="ann-view-comment" style="font-family:'EB Garamond',serif;font-size:14px;color:#2a2018;margin-top:4px"></div>
+      </div>
+    </div>
+    <div class="ann-modal-footer" id="ann-modal-footer-create">
+      <button class="ann-btn-cancel" id="ann-cancel">Cancel</button>
+      <button class="ann-btn-save" id="ann-save">Save</button>
+    </div>
+    <div class="ann-modal-footer" id="ann-modal-footer-view" style="display:none">
+      <button class="ann-btn-delete" id="ann-delete">Delete</button>
+      <button class="ann-btn-resolve" id="ann-resolve">✓ Resolve</button>
+    </div>
   </div>
 </div>
 
@@ -276,8 +360,12 @@ async function load(i){
     const totalPages = content.querySelectorAll(".page-break").length + 1;
     countEl.textContent = `${figs} figures · ${words.toLocaleString()} words · ~${totalPages} pages`;
 
+    // Apply annotation highlights
+    applyHighlights();
     // Update page indicator on scroll
     setupPageScroll(totalPages, i);
+    // Close panel on section switch
+    annPanel.style.display = "none";
     // Scroll content area to top
     document.querySelector(".stage").scrollTo(0,0);
     // Persist selection
@@ -320,6 +408,266 @@ proofBtn.addEventListener("click", ()=>{
     }
   });
 })();
+
+// ── Annotation system ─────────────────────────────────────────────────
+const GITHUB_REPO = "iamkhayyam/systemsofintelligence-book";
+const PAGES_BASE = `https://${GITHUB_REPO.split("/")[0]}.github.io/${GITHUB_REPO.split("/")[1]}`;
+const ANN_STORE_KEY = "soi-annotations";
+const annPopup = document.getElementById("ann-popup");
+const annModal = document.getElementById("ann-modal");
+const annOverlay = document.getElementById("ann-modal-overlay");
+const annPanel = document.getElementById("ann-panel");
+const annPanelList = document.getElementById("ann-panel-list");
+const annCount = document.getElementById("ann-count");
+let currentAnnotations = [];
+let pendingQuote = "";
+let viewingAnnId = null;
+
+// ── Storage ──────────────────────────────────────────────────────────
+function getAllAnnotations(){
+  try{ return JSON.parse(localStorage.getItem(ANN_STORE_KEY)||"{}"); }catch(e){ return {}; }
+}
+function getAnnotations(path){
+  return (getAllAnnotations()[path]||[]).filter(a=>!a.resolved);
+}
+function saveLocal(path, annotations){
+  const all = getAllAnnotations();
+  all[path] = annotations;
+  localStorage.setItem(ANN_STORE_KEY, JSON.stringify(all));
+}
+function addAnnotation(path, ann){
+  const all = getAllAnnotations();
+  (all[path] = all[path]||[]).push(ann);
+  localStorage.setItem(ANN_STORE_KEY, JSON.stringify(all));
+  // Fire-and-forget to GitHub
+  dispatchToGitHub({action:"add", sectionPath:path, annotation:ann});
+}
+function resolveAnnotation(path, annId){
+  const all = getAllAnnotations();
+  (all[path]||[]).forEach(a=>{ if(a.id===annId) a.resolved=true; });
+  localStorage.setItem(ANN_STORE_KEY, JSON.stringify(all));
+  dispatchToGitHub({action:"resolve", sectionPath:path, annId:annId});
+}
+function deleteAnnotation(path, annId){
+  const all = getAllAnnotations();
+  all[path] = (all[path]||[]).filter(a=>a.id!==annId);
+  localStorage.setItem(ANN_STORE_KEY, JSON.stringify(all));
+}
+
+// Merge remote annotations from GitHub Pages JSON
+async function fetchRemoteAnnotations(){
+  try{
+    const res = await fetch(`${PAGES_BASE}/_meta/annotations.json?t=${Date.now()}`);
+    if(!res.ok) return;
+    const remote = await res.json();
+    const local = getAllAnnotations();
+    let merged = false;
+    for(const [path, anns] of Object.entries(remote)){
+      const localAnns = local[path]||[];
+      const localIds = new Set(localAnns.map(a=>a.id));
+      for(const a of anns){
+        if(!localIds.has(a.id)){
+          localAnns.push(a);
+          merged = true;
+        }
+      }
+      local[path] = localAnns;
+    }
+    if(merged) localStorage.setItem(ANN_STORE_KEY, JSON.stringify(local));
+  }catch(e){ /* silent — remote may not exist yet */ }
+}
+
+function dispatchToGitHub(payload){
+  // repository_dispatch — requires a PAT with repo scope stored in localStorage
+  const pat = localStorage.getItem("soi-github-pat");
+  if(!pat) return; // no token = local-only mode
+  fetch(`https://api.github.com/repos/${GITHUB_REPO}/dispatches`, {
+    method:"POST",
+    headers:{"Authorization":`token ${pat}`,"Accept":"application/vnd.github.v3+json","Content-Type":"application/json"},
+    body:JSON.stringify({event_type:"annotation",client_payload:payload})
+  }).catch(()=>{});
+}
+
+// ── Highlight rendering ──────────────────────────────────────────────
+function applyHighlights(){
+  // Remove existing highlights
+  content.querySelectorAll(".ann-highlight").forEach(el=>{
+    el.replaceWith(...el.childNodes);
+  });
+  const path = SECTIONS[currentIdx].path;
+  currentAnnotations = getAnnotations(path);
+  annCount.textContent = currentAnnotations.length;
+  if(!currentAnnotations.length) return;
+
+  // Flatten all text nodes
+  const walker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT);
+  const textNodes = [];
+  while(walker.nextNode()) textNodes.push(walker.currentNode);
+
+  currentAnnotations.forEach(ann=>{
+    const quote = ann.quote;
+    if(!quote) return;
+    // Find the quote in text nodes
+    for(let i=0;i<textNodes.length;i++){
+      const node = textNodes[i];
+      const idx = node.textContent.indexOf(quote);
+      if(idx === -1) continue;
+      // Split and wrap
+      const range = document.createRange();
+      range.setStart(node, idx);
+      range.setEnd(node, idx + quote.length);
+      const span = document.createElement("span");
+      span.className = `ann-highlight ann-${ann.type||"feedback"}`;
+      span.dataset.annId = ann.id;
+      range.surroundContents(span);
+      // Re-collect text nodes since DOM changed
+      textNodes.splice(i, 1);
+      break;
+    }
+  });
+}
+
+// ── Popup on text selection ──────────────────────────────────────────
+const stage = document.querySelector(".stage");
+stage.addEventListener("mouseup", e=>{
+  const sel = window.getSelection();
+  if(!sel || sel.isCollapsed || !sel.toString().trim()){
+    annPopup.style.display = "none";
+    return;
+  }
+  // Only trigger inside #content
+  const anchor = sel.anchorNode;
+  if(!content.contains(anchor)) { annPopup.style.display="none"; return; }
+  const range = sel.getRangeAt(0);
+  const rect = range.getBoundingClientRect();
+  const stageRect = stage.getBoundingClientRect();
+  annPopup.style.display = "block";
+  annPopup.style.left = (rect.left - stageRect.left + rect.width/2 - 40) + "px";
+  annPopup.style.top = (rect.top - stageRect.top - 32 + stage.scrollTop) + "px";
+  pendingQuote = sel.toString().trim().substring(0, 300);
+});
+
+// Hide popup on click elsewhere
+stage.addEventListener("mousedown", e=>{
+  if(e.target !== annPopup) annPopup.style.display = "none";
+});
+
+// ── Modal: create mode ───────────────────────────────────────────────
+annPopup.addEventListener("click", ()=>{
+  annPopup.style.display = "none";
+  window.getSelection().removeAllRanges();
+  document.getElementById("ann-modal-quote").textContent = pendingQuote.length > 120 ? pendingQuote.substring(0,117)+"..." : pendingQuote;
+  document.getElementById("ann-modal-title").textContent = "Add Comment";
+  document.getElementById("ann-modal-create").style.display = "block";
+  document.getElementById("ann-modal-view").style.display = "none";
+  document.getElementById("ann-modal-footer-create").style.display = "flex";
+  document.getElementById("ann-modal-footer-view").style.display = "none";
+  // Restore saved name
+  document.getElementById("ann-name").value = localStorage.getItem("soi-reviewer-name")||"";
+  document.getElementById("ann-comment").value = "";
+  document.getElementById("ann-type").value = "feedback";
+  annModal.style.display = "block";
+  annOverlay.style.display = "block";
+  viewingAnnId = null;
+});
+
+// ── Modal: view mode (click on highlight) ────────────────────────────
+content.addEventListener("click", e=>{
+  const hl = e.target.closest(".ann-highlight");
+  if(!hl) return;
+  const annId = hl.dataset.annId;
+  const ann = currentAnnotations.find(a=>a.id===annId);
+  if(!ann) return;
+  viewingAnnId = annId;
+  document.getElementById("ann-modal-quote").textContent = ann.quote.length > 120 ? ann.quote.substring(0,117)+"..." : ann.quote;
+  document.getElementById("ann-modal-title").textContent = "Annotation";
+  document.getElementById("ann-modal-create").style.display = "none";
+  document.getElementById("ann-modal-view").style.display = "block";
+  document.getElementById("ann-modal-footer-create").style.display = "none";
+  document.getElementById("ann-modal-footer-view").style.display = "flex";
+  document.getElementById("ann-view-author").textContent = ann.author||"Anonymous";
+  document.getElementById("ann-view-type").textContent = (ann.type||"feedback").toUpperCase();
+  document.getElementById("ann-view-comment").textContent = ann.comment||"";
+  annModal.style.display = "block";
+  annOverlay.style.display = "block";
+});
+
+// ── Modal actions ────────────────────────────────────────────────────
+function closeModal(){
+  annModal.style.display = "none";
+  annOverlay.style.display = "none";
+  viewingAnnId = null;
+}
+document.getElementById("ann-modal-close").addEventListener("click", closeModal);
+document.getElementById("ann-cancel").addEventListener("click", closeModal);
+annOverlay.addEventListener("click", closeModal);
+
+document.getElementById("ann-save").addEventListener("click", ()=>{
+  const name = document.getElementById("ann-name").value.trim()||"Anonymous";
+  localStorage.setItem("soi-reviewer-name", name);
+  const ann = {
+    id: "ann-"+Date.now()+"-"+Math.random().toString(36).substring(2,6),
+    quote: pendingQuote,
+    type: document.getElementById("ann-type").value,
+    author: name,
+    comment: document.getElementById("ann-comment").value.trim(),
+    createdAt: new Date().toISOString(),
+    resolved: false
+  };
+  addAnnotation(SECTIONS[currentIdx].path, ann);
+  closeModal();
+  applyHighlights();
+});
+
+document.getElementById("ann-resolve").addEventListener("click", ()=>{
+  if(!viewingAnnId) return;
+  resolveAnnotation(SECTIONS[currentIdx].path, viewingAnnId);
+  closeModal();
+  applyHighlights();
+});
+
+document.getElementById("ann-delete").addEventListener("click", ()=>{
+  if(!viewingAnnId) return;
+  deleteAnnotation(SECTIONS[currentIdx].path, viewingAnnId);
+  closeModal();
+  applyHighlights();
+});
+
+// ── Panel ────────────────────────────────────────────────────────────
+document.getElementById("ann-toggle").addEventListener("click", ()=>{
+  const open = annPanel.style.display === "none";
+  annPanel.style.display = open ? "block" : "none";
+  if(open) renderPanel();
+});
+document.getElementById("ann-panel-close").addEventListener("click", ()=>{
+  annPanel.style.display = "none";
+});
+
+function renderPanel(){
+  const path = SECTIONS[currentIdx].path;
+  const anns = getAnnotations(path);
+  if(!anns.length){
+    annPanelList.innerHTML = '<div class="ann-panel-empty">No annotations yet.<br/>Select text to add one.</div>';
+    return;
+  }
+  annPanelList.innerHTML = anns.map(a=>`
+    <div class="ann-panel-item" data-ann-id="${a.id}">
+      <div class="ann-quote">"${(a.quote||"").substring(0,80)}${(a.quote||"").length>80?"...":""}"</div>
+      <div class="ann-meta">${a.type||"feedback"} · ${a.author||"Anon"} · ${new Date(a.createdAt).toLocaleDateString()}</div>
+      <div class="ann-comment">${a.comment||""}</div>
+    </div>
+  `).join("");
+  // Click panel item to scroll to highlight
+  annPanelList.querySelectorAll(".ann-panel-item").forEach(el=>{
+    el.addEventListener("click", ()=>{
+      const hl = content.querySelector(`[data-ann-id="${el.dataset.annId}"]`);
+      if(hl) hl.scrollIntoView({behavior:"smooth",block:"center"});
+    });
+  });
+}
+
+// Merge remote annotations on startup
+fetchRemoteAnnotations();
 
 // Restore last-selected section, or start with first
 const saved = parseInt(localStorage.getItem("soi-preview-section") || "0", 10);
