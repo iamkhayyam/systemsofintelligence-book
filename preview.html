@@ -162,8 +162,12 @@ const pgCurrent = document.getElementById("pg-current");
 const pgTotal = document.getElementById("pg-total");
 const pgCumulative = document.getElementById("pg-cumulative");
 
-// 6×9 ratio: column is 540px wide, so page height = 540 × (9/6) = 810px
-const PAGE_HEIGHT = 810;
+// Page proportions based on column width
+// Text-only pages: 6×9 ratio → height = width × 1.5
+// Pages with images: 6×11 ratio → height = width × 1.833
+const COL_WIDTH = 540;
+const PAGE_TEXT = Math.round(COL_WIDTH * (9/6));    // 810px
+const PAGE_IMAGE = Math.round(COL_WIDTH * (11/6));  // 990px
 
 // Cumulative page tracking: stores page count per section once loaded
 const sectionPages = {};
@@ -175,21 +179,32 @@ function getCumulativeStart(idx){
   return sum;
 }
 
-function insertPageBreaks(container, pageHeight){
+function insertPageBreaks(container){
   container.querySelectorAll(".page-break").forEach(el=>el.remove());
   const children = Array.from(container.children);
   let accHeight = 0;
   let pageNum = 1;
+  let pageHasImage = false;
+
   children.forEach(child=>{
     const h = child.getBoundingClientRect().height;
+    // Check if this element is or contains an image
+    const hasImg = child.tagName === "IMG" || child.querySelector("img") || child.classList.contains("missing-img");
+    if(hasImg) pageHasImage = true;
+
+    // Pick the threshold based on whether this page has an image
+    const threshold = pageHasImage ? PAGE_IMAGE : PAGE_TEXT;
+
     accHeight += h;
-    if(accHeight >= pageHeight){
+    if(accHeight >= threshold){
       const pb = document.createElement("div");
       pb.className = "page-break";
       pb.innerHTML = `<span class="page-num">${pageNum}</span>`;
       child.parentNode.insertBefore(pb, child);
       pageNum++;
       accHeight = h;
+      // Reset image flag for the new page — carry forward if this child itself has the image
+      pageHasImage = hasImg;
     }
   });
 }
@@ -201,12 +216,18 @@ function setupPageScroll(totalPages, sectionIdx){
   pgCurrent.textContent = "1";
   pgTotal.textContent = totalPages;
   pgCumulative.textContent = `p${cumStart + 1} of book`;
+
+  // Trigger threshold: page number in header changes when the margin page-num
+  // reaches the top 15% of the stage viewport
+  const triggerZone = stage.clientHeight * 0.15;
+
   const updatePageNum = ()=>{
     const breaks = content.querySelectorAll(".page-break");
-    const scrollY = stage.scrollTop;
+    const stageTop = stage.scrollTop + stage.getBoundingClientRect().top;
     let current = 1;
     breaks.forEach(pb=>{
-      if(pb.offsetTop - content.offsetTop < scrollY + 150) current++;
+      const pbTop = pb.getBoundingClientRect().top - stage.getBoundingClientRect().top;
+      if(pbTop < triggerZone) current++;
     });
     pgCurrent.textContent = current;
     pgCumulative.textContent = `p${cumStart + current} of book`;
@@ -246,7 +267,7 @@ async function load(i){
 
     // Insert phantom page breaks
     // 6×9 book page at ~540px column ≈ 750px content height per page
-    insertPageBreaks(content, PAGE_HEIGHT);
+    insertPageBreaks(content);
 
     const figs = (md.match(/^!\[Figure/gm) || []).length;
     const words = md.split(/\s+/).filter(Boolean).length;
