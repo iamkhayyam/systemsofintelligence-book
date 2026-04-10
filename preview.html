@@ -61,7 +61,7 @@
 
   /* Page dividers — dotted line, page num in right margin */
   .page-break{position:relative;margin:32px -40px;height:0;border:none;border-top:2px dotted #d0c8b4}
-  .page-break .page-num{position:absolute;right:-52px;top:-7px;font-family:'Barlow Condensed',sans-serif;font-size:9px;color:#b0a080;letter-spacing:0.06em;white-space:nowrap}
+  .page-break .page-num{position:absolute;right:-58px;top:-11px;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:600;color:#a09070;letter-spacing:0.04em;white-space:nowrap}
 
   /* Page counter lives inside the header bar */
   .pg{display:flex;align-items:baseline;gap:6px;margin-left:auto;font-family:'Barlow Condensed',sans-serif}
@@ -283,7 +283,7 @@ proofBtn.addEventListener("click", ()=>{
       if(!res.ok) continue;
       const md = await res.text();
       const words = md.split(/\s+/).filter(Boolean).length;
-      sectionPages[i] = Math.max(1, Math.round(words / 200));
+      sectionPages[i] = Math.max(1, Math.round(words / 175));
     } catch(e){ sectionPages[i] = 0; }
   }
   // Update sidebar with page counts
