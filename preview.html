@@ -9,37 +9,9 @@
   html,body{margin:0;padding:0;background:#f4f1ec;color:#1a1a1a;font-family:'EB Garamond',Georgia,serif}
   *{box-sizing:border-box}
   .layout{display:grid;grid-template-columns:240px 1fr;height:100vh;overflow:hidden}
-  /* Tablet: narrower sidebar */
-  @media (max-width:900px){
-    .layout{grid-template-columns:180px 1fr}
-    .sidebar button{font-size:10px;padding:6px 12px}
-    .sidebar h1{font-size:12px;margin:0 12px 4px}
-    .sidebar .sub{margin:0 12px 12px;font-size:9px}
-    .sidebar .group-title{padding:4px 12px;font-size:8px}
-    header{gap:6px;padding:8px 12px}
-    header h2{font-size:11px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-    header button{font-size:9px;padding:3px 6px}
-    .pg .current{font-size:22px}
-    .pg .section-total{font-size:11px}
-    .pg .cumulative{font-size:8px;padding-left:4px;margin-left:4px}
-    main{padding:32px 16px 80px;max-width:100%}
-    #ann-modal{width:260px;right:8px;left:auto!important}
-    #ann-panel{width:260px}
-    #count{display:none}
-  }
-  /* Mobile: sidebar becomes a drawer */
   #mobile-toggle{display:none;position:fixed;bottom:20px;left:20px;z-index:25;width:48px;height:48px;border-radius:50%;border:none;background:#0a0a0a;color:#fff;font-size:22px;box-shadow:0 2px 16px rgba(0,0,0,0.35);cursor:pointer;font-family:'Barlow Condensed',sans-serif;line-height:1}
   #mobile-toggle:hover{background:#e8722a}
   .sidebar-overlay{display:none}
-  @media (max-width:600px){
-    .layout{grid-template-columns:1fr}
-    .sidebar{position:fixed;top:0;left:0;bottom:0;width:280px;z-index:20;transform:translateX(-100%);transition:transform 0.25s ease;border-right:1px solid #0a0a0a;height:100vh;box-shadow:4px 0 20px rgba(0,0,0,0.15)}
-    .sidebar.open{transform:translateX(0)}
-    .sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:19;display:none}
-    .sidebar-overlay.open{display:block}
-    #mobile-toggle{display:block}
-    main{padding:24px 12px 80px;max-width:100%}
-  }
 
   /* Sidebar */
   .sidebar{position:sticky;top:0;height:100vh;overflow-y:auto;background:#ebebeb;border-right:1px solid #0a0a0a;padding:20px 0;font-family:'Barlow Condensed',sans-serif}
@@ -149,6 +121,35 @@
   .pg .sep{font-size:16px;color:#c0b8a8;font-weight:300}
   .pg .section-total{font-size:13px;color:#8a7a5a;font-weight:600}
   .pg .cumulative{font-size:9px;color:#a09070;letter-spacing:0.06em;text-transform:uppercase;margin-left:8px;border-left:1px solid #c0b8a8;padding-left:8px}
+  /* ── Responsive: tablet ── */
+  @media (max-width:900px){
+    .layout{grid-template-columns:180px 1fr}
+    .sidebar button{font-size:10px;padding:6px 12px}
+    .sidebar h1{font-size:12px;margin:0 12px 4px}
+    .sidebar .sub{margin:0 12px 12px;font-size:9px}
+    .sidebar .group-title{padding:4px 12px;font-size:8px}
+    header{gap:6px;padding:8px 12px}
+    header h2{font-size:11px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    header button{font-size:9px;padding:3px 6px}
+    .pg .current{font-size:22px}
+    .pg .section-total{font-size:11px}
+    .pg .cumulative{font-size:8px;padding-left:4px;margin-left:4px}
+    main{padding:32px 16px 80px;max-width:100%}
+    #ann-modal{width:260px;left:auto!important;right:8px!important}
+    #ann-panel{width:260px}
+    #count{display:none}
+  }
+  /* ── Responsive: mobile ── */
+  @media (max-width:600px){
+    .layout{grid-template-columns:1fr}
+    .sidebar{position:fixed!important;top:0;left:0;bottom:0;width:280px;z-index:20;transform:translateX(-100%);transition:transform 0.25s ease;border-right:1px solid #0a0a0a;height:100vh!important;box-shadow:4px 0 20px rgba(0,0,0,0.15);overflow-y:auto}
+    .sidebar.open{transform:translateX(0)}
+    .sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:19;display:none}
+    .sidebar-overlay.open{display:block}
+    #mobile-toggle{display:block}
+    main{padding:24px 12px 80px;max-width:100%}
+    #ann-modal{width:calc(100vw - 32px);left:16px!important;right:16px!important}
+  }
 </style>
 </head>
 <body>
