@@ -529,6 +529,19 @@ function applyHighlights(){
 
 // ── Popup on text selection ──────────────────────────────────────────
 const stage = document.querySelector(".stage");
+// Convert viewport-relative rect to stage-scroll-relative coords
+function toStageCoords(rect){
+  const stageRect = stage.getBoundingClientRect();
+  return {
+    top: rect.top - stageRect.top + stage.scrollTop,
+    left: rect.left - stageRect.left + stage.scrollLeft,
+    width: rect.width,
+    height: rect.height,
+    bottom: rect.bottom - stageRect.top + stage.scrollTop,
+    right: rect.right - stageRect.left + stage.scrollLeft
+  };
+}
+
 stage.addEventListener("mouseup", e=>{
   const sel = window.getSelection();
   if(!sel || sel.isCollapsed || !sel.toString().trim()){
@@ -539,12 +552,11 @@ stage.addEventListener("mouseup", e=>{
   const anchor = sel.anchorNode;
   if(!content.contains(anchor)) { annPopup.style.display="none"; return; }
   const range = sel.getRangeAt(0);
-  const rect = range.getBoundingClientRect();
-  const stageRect = stage.getBoundingClientRect();
+  const sc = toStageCoords(range.getBoundingClientRect());
   annPopup.style.display = "block";
-  annPopup.style.left = (rect.left - stageRect.left + rect.width/2 - 40) + "px";
-  annPopup.style.top = (rect.top - stageRect.top - 32 + stage.scrollTop) + "px";
-  pendingQuote = sel.toString().trim().substring(0, 300);
+  annPopup.style.left = (sc.left + sc.width/2 - 40) + "px";
+  annPopup.style.top = (sc.top - 32) + "px";
+  pendingQuote = sel.toString().trim().substring(0, 500);
 });
 
 // Hide popup on click elsewhere
@@ -554,18 +566,16 @@ stage.addEventListener("mousedown", e=>{
 
 // ── Modal: create mode ───────────────────────────────────────────────
 function positionModal(anchorRect){
-  // Position modal in the right margin at the same vertical line as the anchor
-  const stageRect = stage.getBoundingClientRect();
+  // anchorRect is viewport-relative (from getBoundingClientRect)
+  const sc = toStageCoords(anchorRect);
   const mainEl = document.querySelector("main");
   const mainRect = mainEl.getBoundingClientRect();
-  // Right edge of the content column + small gap
+  const stageRect = stage.getBoundingClientRect();
+  // Right edge of the content column + gap
   const leftPos = mainRect.right - stageRect.left + 16;
-  // Top aligned to anchor, with scroll offset
-  const topPos = anchorRect.top - stageRect.top + stage.scrollTop;
   annModal.style.left = leftPos + "px";
-  annModal.style.top = topPos + "px";
+  annModal.style.top = sc.top + "px";
   annModal.style.right = "auto";
-  // Draw a thin connector line from content edge to modal
 }
 
 annPopup.addEventListener("click", ()=>{
