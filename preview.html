@@ -71,8 +71,8 @@
   #ann-popup{position:absolute;z-index:20;background:#0a0a0a;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;padding:5px 10px;border-radius:3px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.3);user-select:none}
   #ann-popup:hover{background:#e8722a}
 
-  #ann-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:30;display:none;backdrop-filter:blur(2px)}
-  #ann-modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:31;width:360px;background:#fffdf5;border:1px solid #c0b8a8;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,0.2);font-family:'Barlow Condensed',sans-serif;display:none;overflow:hidden}
+  #ann-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.08);z-index:30;display:none}
+  #ann-modal{position:absolute;z-index:31;width:300px;background:#fffdf5;border:1px solid #c0b8a8;border-radius:6px;box-shadow:-4px 2px 20px rgba(0,0,0,0.12);font-family:'Barlow Condensed',sans-serif;display:none;overflow:hidden;right:16px}
   .ann-modal-header{padding:12px 16px;background:#f4f1ec;border-bottom:1px solid #d0c8b4;display:flex;align-items:center;gap:8px}
   .ann-modal-header .title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;flex:1}
   .ann-modal-header .close{cursor:pointer;font-size:18px;color:#8a7a62;line-height:1}
@@ -145,39 +145,39 @@
     </header>
     <main id="content"><div class="loading">Select a section from the sidebar →</div></main>
     <div id="ann-popup" style="display:none">💬 Comment</div>
+    <div id="ann-modal" style="display:none">
+      <div class="ann-modal-header"><span class="title" id="ann-modal-title">Add Comment</span><span class="close" id="ann-modal-close">✕</span></div>
+      <div class="ann-modal-body">
+        <div class="quote" id="ann-modal-quote"></div>
+        <div id="ann-modal-create">
+          <label>Your name</label>
+          <input type="text" id="ann-name" placeholder="Reviewer name" />
+          <label>Type</label>
+          <select id="ann-type"><option value="feedback">Feedback</option><option value="correction">Correction</option><option value="revision">Revision</option></select>
+          <label>Comment</label>
+          <textarea id="ann-comment" placeholder="Your note..."></textarea>
+        </div>
+        <div id="ann-modal-view" style="display:none">
+          <label>Author</label><div id="ann-view-author"></div>
+          <label>Type</label><div id="ann-view-type"></div>
+          <label>Comment</label><div id="ann-view-comment" style="font-family:'EB Garamond',serif;font-size:14px;color:#2a2018;margin-top:4px"></div>
+        </div>
+      </div>
+      <div class="ann-modal-footer" id="ann-modal-footer-create">
+        <button class="ann-btn-cancel" id="ann-cancel">Cancel</button>
+        <button class="ann-btn-save" id="ann-save">Save</button>
+      </div>
+      <div class="ann-modal-footer" id="ann-modal-footer-view" style="display:none">
+        <button class="ann-btn-delete" id="ann-delete">Delete</button>
+        <button class="ann-btn-resolve" id="ann-resolve">✓ Resolve</button>
+      </div>
+    </div>
     <div id="ann-panel" style="display:none">
       <div class="ann-panel-header"><span class="title">Annotations</span><span class="close" id="ann-panel-close">✕</span></div>
       <div id="ann-panel-list"></div>
     </div>
   </div>
   <div id="ann-modal-overlay" style="display:none"></div>
-  <div id="ann-modal" style="display:none">
-    <div class="ann-modal-header"><span class="title" id="ann-modal-title">Add Comment</span><span class="close" id="ann-modal-close">✕</span></div>
-    <div class="ann-modal-body">
-      <div class="quote" id="ann-modal-quote"></div>
-      <div id="ann-modal-create">
-        <label>Your name</label>
-        <input type="text" id="ann-name" placeholder="Reviewer name" />
-        <label>Type</label>
-        <select id="ann-type"><option value="feedback">Feedback</option><option value="correction">Correction</option><option value="revision">Revision</option></select>
-        <label>Comment</label>
-        <textarea id="ann-comment" placeholder="Your note..."></textarea>
-      </div>
-      <div id="ann-modal-view" style="display:none">
-        <label>Author</label><div id="ann-view-author"></div>
-        <label>Type</label><div id="ann-view-type"></div>
-        <label>Comment</label><div id="ann-view-comment" style="font-family:'EB Garamond',serif;font-size:14px;color:#2a2018;margin-top:4px"></div>
-      </div>
-    </div>
-    <div class="ann-modal-footer" id="ann-modal-footer-create">
-      <button class="ann-btn-cancel" id="ann-cancel">Cancel</button>
-      <button class="ann-btn-save" id="ann-save">Save</button>
-    </div>
-    <div class="ann-modal-footer" id="ann-modal-footer-view" style="display:none">
-      <button class="ann-btn-delete" id="ann-delete">Delete</button>
-      <button class="ann-btn-resolve" id="ann-resolve">✓ Resolve</button>
-    </div>
-  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -553,8 +553,27 @@ stage.addEventListener("mousedown", e=>{
 });
 
 // ── Modal: create mode ───────────────────────────────────────────────
+function positionModal(anchorRect){
+  // Position modal in the right margin at the same vertical line as the anchor
+  const stageRect = stage.getBoundingClientRect();
+  const mainEl = document.querySelector("main");
+  const mainRect = mainEl.getBoundingClientRect();
+  // Right edge of the content column + small gap
+  const leftPos = mainRect.right - stageRect.left + 16;
+  // Top aligned to anchor, with scroll offset
+  const topPos = anchorRect.top - stageRect.top + stage.scrollTop;
+  annModal.style.left = leftPos + "px";
+  annModal.style.top = topPos + "px";
+  annModal.style.right = "auto";
+  // Draw a thin connector line from content edge to modal
+}
+
 annPopup.addEventListener("click", ()=>{
   annPopup.style.display = "none";
+  const sel = window.getSelection();
+  let anchorRect;
+  if(sel && sel.rangeCount) anchorRect = sel.getRangeAt(0).getBoundingClientRect();
+  else anchorRect = {top: 200, left: 0, right: 0};
   window.getSelection().removeAllRanges();
   document.getElementById("ann-modal-quote").textContent = pendingQuote.length > 120 ? pendingQuote.substring(0,117)+"..." : pendingQuote;
   document.getElementById("ann-modal-title").textContent = "Add Comment";
@@ -562,12 +581,12 @@ annPopup.addEventListener("click", ()=>{
   document.getElementById("ann-modal-view").style.display = "none";
   document.getElementById("ann-modal-footer-create").style.display = "flex";
   document.getElementById("ann-modal-footer-view").style.display = "none";
-  // Restore saved name
   document.getElementById("ann-name").value = localStorage.getItem("soi-reviewer-name")||"";
   document.getElementById("ann-comment").value = "";
   document.getElementById("ann-type").value = "feedback";
   annModal.style.display = "block";
   annOverlay.style.display = "block";
+  positionModal(anchorRect);
   viewingAnnId = null;
 });
 
@@ -590,6 +609,7 @@ content.addEventListener("click", e=>{
   document.getElementById("ann-view-comment").textContent = ann.comment||"";
   annModal.style.display = "block";
   annOverlay.style.display = "block";
+  positionModal(hl.getBoundingClientRect());
 });
 
 // ── Modal actions ────────────────────────────────────────────────────
