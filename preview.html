@@ -542,49 +542,50 @@ function toStageCoords(rect){
   };
 }
 
-// Use document-level listener so nothing blocks it
+// Annotation selection — use a simple approach that works at any scroll depth
+// The popup is positioned using pageX/pageY from the event (absolute page coords),
+// converted to stage-relative coords. No dependency on getBoundingClientRect.
+let lastMouseUpY = 0;
+let lastMouseUpX = 0;
+
 document.addEventListener("mouseup", e=>{
-  // Small delay to let the selection finalize
-  setTimeout(()=>{
-    const sel = window.getSelection();
-    if(!sel || sel.isCollapsed || !sel.toString().trim()){
-      annPopup.style.display = "none";
-      return;
-    }
-    // Check if selection is inside the content area
-    const anchor = sel.anchorNode;
-    const focus = sel.focusNode;
-    if(!content.contains(anchor) && !content.contains(focus)){
-      annPopup.style.display = "none";
-      return;
-    }
-    const range = sel.getRangeAt(0);
-    const rect = range.getBoundingClientRect();
-    if(!rect.width && !rect.height){ annPopup.style.display="none"; return; }
-    const selText = sel.toString().trim();
-    const wordCount = selText.split(/\s+/).length;
-    const sc = toStageCoords(rect);
-    if(wordCount > 500){
-      // Too long — show a warning popup instead
-      annPopup.textContent = `⚠ ${wordCount} words — max 500`;
-      annPopup.style.display = "block";
-      annPopup.style.left = (sc.left + sc.width/2 - 60) + "px";
-      annPopup.style.top = (sc.top - 32) + "px";
-      annPopup.style.background = "#7a1a1a";
-      pendingQuote = "";
-      setTimeout(()=>{ annPopup.style.display="none"; annPopup.textContent="💬 Comment"; annPopup.style.background=""; }, 2500);
-      return;
-    }
-    annPopup.textContent = wordCount > 100 ? `💬 ${wordCount}w` : "💬 Comment";
-    annPopup.style.background = "";
-    annPopup.style.display = "block";
-    annPopup.style.left = (sc.left + sc.width/2 - 40) + "px";
-    annPopup.style.top = (sc.top - 32) + "px";
-    pendingQuote = selText;
-  }, 10);
+  lastMouseUpX = e.clientX;
+  lastMouseUpY = e.clientY;
+  setTimeout(showPopupIfSelection, 20);
 });
 
-// Hide popup on mousedown anywhere except on the popup itself
+function showPopupIfSelection(){
+  const sel = window.getSelection();
+  if(!sel || sel.isCollapsed) { annPopup.style.display="none"; return; }
+  const selText = sel.toString().trim();
+  if(!selText) { annPopup.style.display="none"; return; }
+
+  // Use the mouse position directly — it's always correct regardless of scroll
+  const stageRect = stage.getBoundingClientRect();
+  const popX = lastMouseUpX - stageRect.left + stage.scrollLeft;
+  const popY = lastMouseUpY - stageRect.top + stage.scrollTop - 36;
+
+  const wordCount = selText.split(/\s+/).length;
+
+  if(wordCount > 500){
+    annPopup.textContent = `⚠ ${wordCount} words — max 500`;
+    annPopup.style.background = "#7a1a1a";
+    annPopup.style.display = "block";
+    annPopup.style.left = (popX - 60) + "px";
+    annPopup.style.top = popY + "px";
+    pendingQuote = "";
+    setTimeout(()=>{ annPopup.style.display="none"; annPopup.textContent="💬 Comment"; annPopup.style.background=""; }, 2500);
+    return;
+  }
+
+  annPopup.textContent = wordCount > 100 ? `💬 ${wordCount}w` : "💬 Comment";
+  annPopup.style.background = "";
+  annPopup.style.display = "block";
+  annPopup.style.left = (popX - 40) + "px";
+  annPopup.style.top = popY + "px";
+  pendingQuote = selText;
+}
+
 document.addEventListener("mousedown", e=>{
   if(e.target !== annPopup && !annPopup.contains(e.target)){
     annPopup.style.display = "none";
@@ -592,25 +593,27 @@ document.addEventListener("mousedown", e=>{
 });
 
 // ── Modal: create mode ───────────────────────────────────────────────
-function positionModal(anchorRect){
-  // anchorRect is viewport-relative (from getBoundingClientRect)
-  const sc = toStageCoords(anchorRect);
+function positionModal(anchorEl){
+  // Position modal in the right margin at the anchor's vertical position
+  const stageRect = stage.getBoundingClientRect();
   const mainEl = document.querySelector("main");
   const mainRect = mainEl.getBoundingClientRect();
-  const stageRect = stage.getBoundingClientRect();
-  // Right edge of the content column + gap
   const leftPos = mainRect.right - stageRect.left + 16;
+  let topPos;
+  if(anchorEl && anchorEl.getBoundingClientRect){
+    const r = anchorEl.getBoundingClientRect();
+    topPos = r.top - stageRect.top + stage.scrollTop;
+  } else {
+    // Fallback to last mouse position
+    topPos = lastMouseUpY - stageRect.top + stage.scrollTop;
+  }
   annModal.style.left = leftPos + "px";
-  annModal.style.top = sc.top + "px";
+  annModal.style.top = topPos + "px";
   annModal.style.right = "auto";
 }
 
 annPopup.addEventListener("click", ()=>{
   annPopup.style.display = "none";
-  const sel = window.getSelection();
-  let anchorRect;
-  if(sel && sel.rangeCount) anchorRect = sel.getRangeAt(0).getBoundingClientRect();
-  else anchorRect = {top: 200, left: 0, right: 0};
   window.getSelection().removeAllRanges();
   document.getElementById("ann-modal-quote").textContent = pendingQuote.length > 120 ? pendingQuote.substring(0,117)+"..." : pendingQuote;
   document.getElementById("ann-modal-title").textContent = "Add Comment";
@@ -623,7 +626,7 @@ annPopup.addEventListener("click", ()=>{
   document.getElementById("ann-type").value = "feedback";
   annModal.style.display = "block";
   annOverlay.style.display = "block";
-  positionModal(anchorRect);
+  positionModal(null);
   viewingAnnId = null;
 });
 
