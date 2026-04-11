@@ -98,11 +98,11 @@
   .ann-revision{background:rgba(100,160,255,0.25)}
   .ann-revision:hover{background:rgba(100,160,255,0.45)}
 
-  #ann-popup{position:absolute;z-index:20;background:#0a0a0a;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;padding:5px 10px;border-radius:3px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.3);user-select:none}
+  #ann-popup{position:fixed;z-index:50;background:#0a0a0a;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;padding:5px 10px;border-radius:3px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.3);user-select:none}
   #ann-popup:hover{background:#e8722a}
 
   #ann-modal-overlay{display:none!important;pointer-events:none}
-  #ann-modal{position:absolute;z-index:31;width:300px;background:#fffdf5;border:1px solid #c0b8a8;border-radius:6px;box-shadow:-4px 2px 20px rgba(0,0,0,0.12);font-family:'Barlow Condensed',sans-serif;display:none;overflow:hidden;right:16px}
+  #ann-modal{position:fixed;z-index:50;width:300px;background:#fffdf5;border:1px solid #c0b8a8;border-radius:6px;box-shadow:-4px 2px 20px rgba(0,0,0,0.12);font-family:'Barlow Condensed',sans-serif;display:none;overflow:hidden}
   .ann-modal-header{padding:12px 16px;background:#f4f1ec;border-bottom:1px solid #d0c8b4;display:flex;align-items:center;gap:8px}
   .ann-modal-header .title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;flex:1}
   .ann-modal-header .close{cursor:pointer;font-size:18px;color:#8a7a62;line-height:1}
@@ -593,10 +593,9 @@ function showPopupIfSelection(){
   const selText = sel.toString().trim();
   if(!selText) { annPopup.style.display="none"; return; }
 
-  // Use the mouse position directly — it's always correct regardless of scroll
-  const stageRect = stage.getBoundingClientRect();
-  const popX = lastMouseUpX - stageRect.left + stage.scrollLeft;
-  const popY = lastMouseUpY - stageRect.top + stage.scrollTop - 36;
+  // position:fixed — use clientX/clientY directly, no scroll math
+  const popX = lastMouseUpX;
+  const popY = lastMouseUpY - 36;
 
   const wordCount = selText.split(/\s+/).length;
 
@@ -627,22 +626,20 @@ document.addEventListener("mousedown", e=>{
 
 // ── Modal: create mode ───────────────────────────────────────────────
 function positionModal(anchorEl){
-  // Position modal in the right margin at the anchor's vertical position
-  const stageRect = stage.getBoundingClientRect();
+  // position:fixed — use viewport coords directly
   const mainEl = document.querySelector("main");
   const mainRect = mainEl.getBoundingClientRect();
-  const leftPos = mainRect.right - stageRect.left + 16;
+  const leftPos = Math.min(mainRect.right + 16, window.innerWidth - 320);
   let topPos;
   if(anchorEl && anchorEl.getBoundingClientRect){
-    const r = anchorEl.getBoundingClientRect();
-    topPos = r.top - stageRect.top + stage.scrollTop;
+    topPos = anchorEl.getBoundingClientRect().top;
   } else {
-    // Fallback to last mouse position
-    topPos = lastMouseUpY - stageRect.top + stage.scrollTop;
+    topPos = lastMouseUpY;
   }
+  // Clamp so modal doesn't go off-screen
+  topPos = Math.max(60, Math.min(topPos, window.innerHeight - 400));
   annModal.style.left = leftPos + "px";
   annModal.style.top = topPos + "px";
-  annModal.style.right = "auto";
 }
 
 annPopup.addEventListener("click", ()=>{
