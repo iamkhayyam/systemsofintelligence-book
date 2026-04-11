@@ -65,7 +65,8 @@
   .ann-highlight{cursor:pointer;border-radius:2px;padding:0 1px;transition:background 0.15s;background:rgba(255,220,80,0.35)}
   .ann-highlight:hover{background:rgba(255,220,80,0.55)}
   .has-annotation{position:relative}
-  .ann-marker{position:absolute;right:-58px;top:0;font-size:16px;cursor:pointer;user-select:none;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.15))}
+  .ann-marker{position:absolute;right:-98px;width:18px;height:16px;cursor:pointer;user-select:none}
+  .ann-marker svg{display:block;width:100%;height:100%}
 
   #ann-popup{position:fixed;z-index:50;background:#0a0a0a;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;padding:5px 10px;border-radius:3px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.3);user-select:none}
   #ann-popup:hover{background:#e8722a}
@@ -535,33 +536,57 @@ function applyHighlights(){
   currentAnnotations.forEach(ann=>{
     const quote = ann.quote;
     if(!quote) return;
-    // Find the quote in text nodes
-    for(let i=0;i<textNodes.length;i++){
-      const node = textNodes[i];
-      const idx = node.textContent.indexOf(quote);
-      if(idx === -1) continue;
-      // Split and wrap
+
+    // Re-collect text nodes (DOM may have changed from previous annotation)
+    const freshWalker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while(freshWalker.nextNode()) nodes.push(freshWalker.currentNode);
+
+    // Build a concatenated string with node boundaries mapped
+    let concat = "";
+    const map = []; // { node, startInConcat, length }
+    for(const n of nodes){
+      map.push({ node: n, start: concat.length, len: n.textContent.length });
+      concat += n.textContent;
+    }
+
+    const matchIdx = concat.indexOf(quote);
+    if(matchIdx === -1) return;
+    const matchEnd = matchIdx + quote.length;
+
+    // Find which text nodes overlap with [matchIdx, matchEnd)
+    let firstSpan = null;
+    for(const entry of map){
+      const nodeStart = entry.start;
+      const nodeEnd = entry.start + entry.len;
+      // Skip nodes entirely before or after the match
+      if(nodeEnd <= matchIdx || nodeStart >= matchEnd) continue;
+
+      const offsetInNode = Math.max(0, matchIdx - nodeStart);
+      const endInNode = Math.min(entry.len, matchEnd - nodeStart);
+
       const range = document.createRange();
-      range.setStart(node, idx);
-      range.setEnd(node, idx + quote.length);
+      range.setStart(entry.node, offsetInNode);
+      range.setEnd(entry.node, endInNode);
       const span = document.createElement("span");
       span.className = "ann-highlight";
       span.dataset.annId = ann.id;
       range.surroundContents(span);
-      // Add ⚠️ marker in the right margin
-      // Add .has-annotation to the parent block element so position:relative scopes the marker
-      const parentBlock = span.closest("p, li, h1, h2, h3, blockquote, div");
-      if(parentBlock) parentBlock.classList.add("has-annotation");
-      const marker = document.createElement("span");
-      marker.className = "ann-marker";
-      marker.textContent = "⚠️";
-      marker.dataset.annId = ann.id;
-      if(parentBlock) parentBlock.appendChild(marker);
-      else span.appendChild(marker);
-      // Re-collect text nodes since DOM changed
-      textNodes.splice(i, 1);
-      break;
+      if(!firstSpan) firstSpan = span;
     }
+
+    // Add marker using the first highlight span for positioning
+    if(!firstSpan) return;
+    const parentBlock = firstSpan.closest("p, li, h1, h2, h3, blockquote, div");
+    if(parentBlock) parentBlock.classList.add("has-annotation");
+    const marker = document.createElement("span");
+    marker.className = "ann-marker";
+    marker.innerHTML = '<svg viewBox="0 0 18 16"><path d="M9 1L1 15h16L9 1z" fill="#e8722a" stroke="#5a4a30" stroke-width="1"/><text x="9" y="13" text-anchor="middle" font-size="10" font-weight="700" font-family="Barlow Condensed,sans-serif" fill="#fff">!</text></svg>';
+    marker.dataset.annId = ann.id;
+    if(parentBlock){
+      parentBlock.appendChild(marker);
+      marker.style.top = firstSpan.offsetTop + "px";
+    } else firstSpan.appendChild(marker);
   });
 }
 
@@ -664,9 +689,15 @@ annPopup.addEventListener("click", ()=>{
   viewingAnnId = null;
 });
 
-// ── Modal: view mode (click on highlight) ────────────────────────────
+// ── Modal: view mode (click on highlight or marker) ─────────────────
 content.addEventListener("click", e=>{
-  const hl = e.target.closest(".ann-highlight");
+  // Clicking the marker opens the same annotation as clicking the highlight
+  const marker = e.target.closest(".ann-marker");
+  let hl = e.target.closest(".ann-highlight");
+  if(marker){
+    const annId = marker.dataset.annId;
+    hl = content.querySelector(`.ann-highlight[data-ann-id="${annId}"]`);
+  }
   if(!hl) return;
   const annId = hl.dataset.annId;
   const ann = currentAnnotations.find(a=>a.id===annId);
@@ -694,7 +725,7 @@ document.getElementById("ann-modal-close").addEventListener("click", closeModal)
 document.getElementById("ann-cancel").addEventListener("click", closeModal);
 // Close modal on click outside
 document.addEventListener("mousedown", e=>{
-  if(annModal.style.display==="block" && !annModal.contains(e.target) && !e.target.closest(".ann-highlight") && e.target!==annPopup){
+  if(annModal.style.display==="block" && !annModal.contains(e.target) && !e.target.closest(".ann-highlight") && !e.target.closest(".ann-marker") && e.target!==annPopup){
     closeModal();
   }
 });
