@@ -542,26 +542,39 @@ function toStageCoords(rect){
   };
 }
 
-stage.addEventListener("mouseup", e=>{
-  const sel = window.getSelection();
-  if(!sel || sel.isCollapsed || !sel.toString().trim()){
-    annPopup.style.display = "none";
-    return;
-  }
-  // Only trigger inside #content
-  const anchor = sel.anchorNode;
-  if(!content.contains(anchor)) { annPopup.style.display="none"; return; }
-  const range = sel.getRangeAt(0);
-  const sc = toStageCoords(range.getBoundingClientRect());
-  annPopup.style.display = "block";
-  annPopup.style.left = (sc.left + sc.width/2 - 40) + "px";
-  annPopup.style.top = (sc.top - 32) + "px";
-  pendingQuote = sel.toString().trim().substring(0, 500);
+// Use document-level listener so nothing blocks it
+document.addEventListener("mouseup", e=>{
+  // Small delay to let the selection finalize
+  setTimeout(()=>{
+    const sel = window.getSelection();
+    if(!sel || sel.isCollapsed || !sel.toString().trim()){
+      annPopup.style.display = "none";
+      return;
+    }
+    // Check if selection is inside the content area
+    const anchor = sel.anchorNode;
+    const focus = sel.focusNode;
+    if(!content.contains(anchor) && !content.contains(focus)){
+      annPopup.style.display = "none";
+      return;
+    }
+    const range = sel.getRangeAt(0);
+    const rect = range.getBoundingClientRect();
+    // Bail if rect has zero dimensions (collapsed/invisible)
+    if(!rect.width && !rect.height){ annPopup.style.display="none"; return; }
+    const sc = toStageCoords(rect);
+    annPopup.style.display = "block";
+    annPopup.style.left = (sc.left + sc.width/2 - 40) + "px";
+    annPopup.style.top = (sc.top - 32) + "px";
+    pendingQuote = sel.toString().trim().substring(0, 500);
+  }, 10);
 });
 
-// Hide popup on click elsewhere
-stage.addEventListener("mousedown", e=>{
-  if(e.target !== annPopup) annPopup.style.display = "none";
+// Hide popup on mousedown anywhere except on the popup itself
+document.addEventListener("mousedown", e=>{
+  if(e.target !== annPopup && !annPopup.contains(e.target)){
+    annPopup.style.display = "none";
+  }
 });
 
 // ── Modal: create mode ───────────────────────────────────────────────
