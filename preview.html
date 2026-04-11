@@ -94,7 +94,7 @@
   #ann-popup{position:absolute;z-index:20;background:#0a0a0a;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;padding:5px 10px;border-radius:3px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.3);user-select:none}
   #ann-popup:hover{background:#e8722a}
 
-  #ann-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.08);z-index:30;display:none}
+  #ann-modal-overlay{display:none!important;pointer-events:none}
   #ann-modal{position:absolute;z-index:31;width:300px;background:#fffdf5;border:1px solid #c0b8a8;border-radius:6px;box-shadow:-4px 2px 20px rgba(0,0,0,0.12);font-family:'Barlow Condensed',sans-serif;display:none;overflow:hidden;right:16px}
   .ann-modal-header{padding:12px 16px;background:#f4f1ec;border-bottom:1px solid #d0c8b4;display:flex;align-items:center;gap:8px}
   .ann-modal-header .title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;flex:1}
@@ -651,7 +651,7 @@ annPopup.addEventListener("click", ()=>{
   document.getElementById("ann-comment").value = "";
   document.getElementById("ann-type").value = "feedback";
   annModal.style.display = "block";
-  annOverlay.style.display = "block";
+  /* overlay removed */
   positionModal(null);
   viewingAnnId = null;
 });
@@ -674,19 +674,23 @@ content.addEventListener("click", e=>{
   document.getElementById("ann-view-type").textContent = (ann.type||"feedback").toUpperCase();
   document.getElementById("ann-view-comment").textContent = ann.comment||"";
   annModal.style.display = "block";
-  annOverlay.style.display = "block";
+  /* overlay removed */
   positionModal(hl.getBoundingClientRect());
 });
 
 // ── Modal actions ────────────────────────────────────────────────────
 function closeModal(){
   annModal.style.display = "none";
-  annOverlay.style.display = "none";
   viewingAnnId = null;
 }
 document.getElementById("ann-modal-close").addEventListener("click", closeModal);
 document.getElementById("ann-cancel").addEventListener("click", closeModal);
-annOverlay.addEventListener("click", closeModal);
+// Close modal on click outside
+document.addEventListener("mousedown", e=>{
+  if(annModal.style.display==="block" && !annModal.contains(e.target) && !e.target.closest(".ann-highlight") && e.target!==annPopup){
+    closeModal();
+  }
+});
 
 document.getElementById("ann-save").addEventListener("click", ()=>{
   const name = document.getElementById("ann-name").value.trim()||"Anonymous";
