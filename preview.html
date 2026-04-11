@@ -560,13 +560,27 @@ document.addEventListener("mouseup", e=>{
     }
     const range = sel.getRangeAt(0);
     const rect = range.getBoundingClientRect();
-    // Bail if rect has zero dimensions (collapsed/invisible)
     if(!rect.width && !rect.height){ annPopup.style.display="none"; return; }
+    const selText = sel.toString().trim();
+    const wordCount = selText.split(/\s+/).length;
     const sc = toStageCoords(rect);
+    if(wordCount > 500){
+      // Too long — show a warning popup instead
+      annPopup.textContent = `⚠ ${wordCount} words — max 500`;
+      annPopup.style.display = "block";
+      annPopup.style.left = (sc.left + sc.width/2 - 60) + "px";
+      annPopup.style.top = (sc.top - 32) + "px";
+      annPopup.style.background = "#7a1a1a";
+      pendingQuote = "";
+      setTimeout(()=>{ annPopup.style.display="none"; annPopup.textContent="💬 Comment"; annPopup.style.background=""; }, 2500);
+      return;
+    }
+    annPopup.textContent = wordCount > 100 ? `💬 ${wordCount}w` : "💬 Comment";
+    annPopup.style.background = "";
     annPopup.style.display = "block";
     annPopup.style.left = (sc.left + sc.width/2 - 40) + "px";
     annPopup.style.top = (sc.top - 32) + "px";
-    pendingQuote = sel.toString().trim().substring(0, 500);
+    pendingQuote = selText;
   }, 10);
 });
 
