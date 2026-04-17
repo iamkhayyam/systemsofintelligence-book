@@ -50,8 +50,6 @@ You saw the coordination pattern in the 1940s-1960s. We forgot. We're rememberin
 
 **Fritjof Capra**, who connected systems thinking with ecology, consciousness, and life itself. You showed us that the systems pattern is universal.
 
-**Melanie Mitchell**, whose work on complexity and emergence reveals how simple coordination creates rich behavior. You're carrying forward the Santa Fe Institute tradition of understanding emergence.
-
 **The Santa Fe Institute community**, who've been studying emergence, complexity, and coordination for decades. You built the intellectual infrastructure for understanding coordination scientifically.
 
 ## The Practitioners (Implementing Three-Body Solutions)

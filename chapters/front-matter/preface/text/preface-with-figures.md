@@ -28,7 +28,7 @@ Not as abstract theory, but as practical framework you can use tomorrow in your 
 
 **This book has three bodies:**
 
-**1. The Narrative** (Chapters 1-10)
+**1. The Narrative** (Chapters 1-9 + Capstone)
 
 - Stories, examples, case studies
 
@@ -178,7 +178,7 @@ Because understanding emerges from coordinating multiple viewpoints:
 
 **Path 1: Linear (Recommended first time)**
 
-- Read chapters 1-10 in order
+- Read chapters 1-9, then the capstone (ChX), in order
 
 
 - Skip appendices initially
@@ -223,7 +223,7 @@ Because understanding emerges from coordinating multiple viewpoints:
 
 **Path 4: Consciousness (For explorers)**
 
-- Read Chapters 1, 5, 6, 8, 10
+- Read Chapters 1, 5, 6, 8, and the Capstone (ChX)
 
 
 - Focus on consciousness themes
@@ -300,7 +300,7 @@ Because understanding emerges from coordinating multiple viewpoints:
 
 
 
-**After Part IV (Chapters 9-10):**
+**After Part IV (Chapter 9 + Capstone):**
 
 - Overcome coordination barriers
 

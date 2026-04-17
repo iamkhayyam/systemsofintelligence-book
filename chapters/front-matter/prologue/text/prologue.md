@@ -248,7 +248,7 @@ This prologue coordinates with the book coordinates with your consciousness to c
 
 ## The Beginning
 
-You're about to begin a journey through nine chapters and three appendices exploring coordination across every domain—from Facebook algorithms to quantum computing, from neural interfaces to cosmic civilizations.
+You're about to begin a journey through nine chapters, a capstone, and three appendices exploring coordination across every domain—from Facebook algorithms to quantum computing, from neural interfaces to cosmic civilizations.
 
 But the journey isn't linear.
 

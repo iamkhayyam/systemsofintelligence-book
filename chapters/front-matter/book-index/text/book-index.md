@@ -14,17 +14,17 @@ By Khayyam Wakil
 
 ---
 
-## 📚 MAIN CHAPTERS (10 Chapters, 81 Expert Voices)
+## 📚 MAIN CHAPTERS (9 Chapters + Capstone, 81 Expert Voices)
 
 ### Part I: Foundation
-- [Chapter 1: The Coordination Intelligence Revolution](Chapter%201:%20The%20Coordination%20Intelligence%20Revolution.art_9K6wBFoa.md) *(6 experts)*
+- [Chapter 1: The Coordination Intelligence Revolution](Chapter%201:%20The%20Coordination%20Intelligence%20Revolution.art_9K6wBFoa.md) *(9 experts)*
 - [Chapter 2: The Dawn of Systems Intelligence](Chapter%202:%20The%20Dawn%20of%20Systems%20Intelligence.art_jJ238aLj.md) *(9 experts)*
-- [Chapter 3: Architecture of Systems Intelligence](Chapter%203:%20Architecture%20of%20Systems%20Intelligence.art_L0iurCpm.md) *(3 experts)*
+- [Chapter 3: Architecture of Systems Intelligence](Chapter%203:%20Architecture%20of%20Systems%20Intelligence.art_L0iurCpm.md) *(9 experts)*
 
 ### Part II: Application
 - [Chapter 4: Systems Intelligence in Action](Chapter%204:%20Systems%20Intelligence%20in%20Action.art_ExCXcodm.md) *(9 experts)*
 - [Chapter 5: Human-Systems Intelligence Interaction](Chapter%205:%20Human-Systems%20Intelligence%20Interaction.art_Tv5j2DmR.md) *(9 experts)*
-- [Chapter 6: Consciousness as Pattern Recognition](Chapter%206:%20Consciousness%20as%20Pattern%20Recognition.art_rFeTjrrl.md) *(3 experts)*
+- [Chapter 6: Consciousness as Pattern Recognition](Chapter%206:%20Consciousness%20as%20Pattern%20Recognition.art_rFeTjrrl.md) *(9 experts)*
 
 ### Part III: Engineering
 - [Chapter 7: Engineering Reality](Chapter%207:%20Engineering%20Reality.art_6U0rg9d0.md) *(9 experts)*
@@ -32,7 +32,9 @@ By Khayyam Wakil
 
 ### Part IV: Integration
 - [Chapter 9: No Way? Know-How](Chapter%209:%20No%20Way%3F%20Know-How.art_r42gocY4.md) *(9 experts)*
-- [Chapter 10: Embracing Knowware](Chapter%2010:%20Embracing%20Knowware.art_1HXXSP4m.md) *(9 experts)*
+
+### Capstone
+- [ChX: The Grand Coordination](ChX:%20The%20Grand%20Coordination.art_1HXXSP4m.md) *(synthesis — draws on all 81 voices)*
 
 ---
 
@@ -59,9 +61,9 @@ By Khayyam Wakil
 
 ## 📊 BOOK STATISTICS
 
-- **Total Word Count:** ~90,000 words
-- **Main Chapters:** 10 chapters
-- **Expert Voices:** 81 synthesized perspectives
+- **Total Word Count:** ~60,000 words (chapter prose) + capstone + appendices
+- **Main Chapters:** 9 interview chapters + 1 capstone (ChX)
+- **Expert Voices:** 81 synthesized perspectives (9 per chapter × 9 chapters)
 - **Appendices:** 3 comprehensive references
 - **Page Estimate:** ~350 pages
 
@@ -82,7 +84,7 @@ By Khayyam Wakil
 **Author:** Khayyam Wakil
 **Email:** someone@systemsofintelligence.com
 **Website:** systemsofintelligence.com
-**Company:** The ARC Institute ofKnowware
+**Company:** Systems of Intelligence
 
 ---
 
