@@ -46,7 +46,7 @@ The graphify pass surfaced two under-represented concepts:
 
 Neither was referenced by any of the original 57 chapter-level arc_engine diagrams. The graph caught them because they're named mathematical objects with unique identities that the narrative chapters allude to but never operationalize visually. That's a pattern worth watching for in Appendices B and C as well — the formal content often names objects the narrative depends on.
 
-**Current state: 60 diagrams across 10 chapters + 1 appendix.**
+**Current state: 60 diagrams across 9 interview chapters + ChX capstone + 1 appendix.**
 
 ## Open questions (next pass)
 

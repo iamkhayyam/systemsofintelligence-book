@@ -92,7 +92,7 @@ I discovered the three-body pattern by accident—or rather, the pattern discove
 
 
 
-**2025:** Writing "Knowware."
+**2025:** Writing *Systems of Intelligence*.
 
 - Coordinating: Everything I've learned
 

@@ -1093,7 +1093,7 @@ Every chapter's insight has mathematical foundation:
 - Engineering optimization (Chapter 7)
 - Cosmic coordination (Chapter 8)
 - Integration challenges (Chapter 9)
-- Knowware synthesis (Chapter 10)
+- Knowware synthesis (ChX capstone)
 
 **The mathematics proves:**
 

@@ -487,6 +487,6 @@ Welcome to the transformation we're creating together.
 
 ---
 
-**Next: Chapter 10 - Embracing Knowware: Achieving Infinite Intelligence Access**
+**Next: ChX - The Grand Coordination**
 
-*The final synthesis—where we bring it all together and step into the future of hybrid consciousness.*
+*The capstone—where we close the feedback loop, synthesize what the 81 voices coordinated, and step into coordination consciousness.*
