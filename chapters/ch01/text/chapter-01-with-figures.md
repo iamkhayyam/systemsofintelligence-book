@@ -10,33 +10,33 @@ The goal, published in the prestigious Proceedings of the National Academy of Sc
 
 The answer was a resounding, terrifying yes. The study proved, unequivocally, that emotional contagion works at massive scale through algorithmic curation. Facebook's algorithms weren't just connecting people; they were actively shaping their emotional states and, by extension, their behavior.
 
-This wasn't just an ethical breach that sparked massive backlash. It was a profound, accidental revelation about the nature of intelligence in the digital age. It showed that the coordination between algorithms, human psychology, and social network dynamics creates emergent behaviors that none of the elements could produce alone. The system wasn't just influencing; it was *coordinating* to produce a collective intelligence—a shared emotional landscape—that was both powerful and, in this case, deeply unsettling.
+This wasn't just an ethical breach that sparked massive backlash. It was a profound, accidental revelation about the nature of intelligence in the digital age. It showed that the coordination between algorithms, human psychology, and social network dynamics creates emergent behaviors that none of the elements could produce alone. The system wasn't just influencing; it was *coordinating* to produce a collective intelligence---a shared emotional landscape---that was both powerful and, in this case, deeply unsettling.
 
 This revelation taught us the solution: Intelligence doesn't live in humans OR machines. It emerges in the coordination between them.
 
 ## The Pattern Hidden in the Wreckage
 
-The expert perspectives in this chapter are drawn from synthesized interviews—detailed conversations constructed from their published work, research, and documented ideas. While the quotes reflect their established positions and frameworks, these are not transcripts of conducted interviews.
+The expert perspectives in this chapter are drawn from synthesized interviews---detailed conversations constructed from their published work, research, and documented ideas. While the quotes reflect their established positions and frameworks, these are not transcripts of conducted interviews.
 
-Dr. Paul Pangaro saw it immediately. He'd spent decades studying under Gordon Pask at the American Society for Cybernetics, learning that intelligence emerges when systems learn to understand each other's understanding—not when they simply optimize feedback loops. Pask's Conversation Theory, developed in the mid-20th century, posited that true intelligence and learning occur not through simple information transfer, but through a recursive process of mutual understanding. Imagine two people trying to solve a complex puzzle. They don't just exchange pieces of information; they constantly adjust their mental models of the puzzle, and of each other's approach to the puzzle, until a shared understanding of the solution emerges. This recursive loop of "understanding each other's understanding" is the essence of coordination intelligence.
+Dr. Paul Pangaro saw it immediately. He'd spent decades studying under Gordon Pask at the American Society for Cybernetics, learning that intelligence emerges when systems learn to understand each other's understanding---not when they simply optimize feedback loops. Pask's Conversation Theory, developed in the mid-20th century, posited that true intelligence and learning occur not through simple information transfer, but through a recursive process of mutual understanding. Imagine two people trying to solve a complex puzzle. They don't just exchange pieces of information; they constantly adjust their mental models of the puzzle, and of each other's approach to the puzzle, until a shared understanding of the solution emerges. This recursive loop of "understanding each other's understanding" is the essence of coordination intelligence.
 
-Drawing from his decades of work on Conversation Theory, Pangaro explains that Facebook's disaster is actually a breakthrough disguised as a failure. He notes that Pask's Conversation Theory had shown this decades earlier: intelligence isn't about information transfer, it's about coordination of understanding. Pangaro argues that the solution isn't better algorithms—it's designing for three-way coordination where humans, machines, and social contexts learn together. Facebook optimized for *reaction*, not *understanding*. It created feedback loops that amplified existing biases rather than fostering mutual comprehension. If they had designed for Paskian conversation, for systems that help humans understand each other's perspectives, and for algorithms that learn from the *quality* of coordination, not just the *quantity* of interaction, the outcome would have been entirely different.
+Drawing from his decades of work on Conversation Theory, Pangaro explains that Facebook's disaster is actually a breakthrough disguised as a failure. He notes that Pask's Conversation Theory had shown this decades earlier: intelligence isn't about information transfer, it's about coordination of understanding. Pangaro argues that the solution isn't better algorithms---it's designing for three-way coordination where humans, machines, and social contexts learn together. Facebook optimized for *reaction*, not *understanding*. It created feedback loops that amplified existing biases rather than fostering mutual comprehension. If they had designed for Paskian conversation, for systems that help humans understand each other's perspectives, and for algorithms that learn from the *quality* of coordination, not just the *quantity* of interaction, the outcome would have been entirely different.
 
-In his extensive work on tools and systems, Stewart Brand, who created the Whole Earth Catalog in 1968, observes the same pattern play out. He explains that for fifty years, we'd built tools that amplified individual capability—personal computers, smartphones, social networks. Brand argues that we forgot to build the coordination layer. The Whole Earth Catalog, a counterculture publication, was a physical manifestation of coordination intelligence. It wasn't just a list of tools; it was a curated collection of reviews, essays, and user-submitted content that fostered a community of shared learning and practical application. Readers would review tools, share projects, and connect with others who had similar interests. The catalog itself was a coordination mechanism, helping individuals find tools, but the real power came from the community that formed around shared learning—a dynamic, evolving network of people helping each other understand and apply knowledge. Brand's perspective is that Facebook gave us access to attention without the coordination wisdom. When you connect everyone but don't help them coordinate, you haven't built infrastructure—you've built a coordination crisis. The Whole Earth Catalog's success wasn't just about 'access to tools'; it was about access to *coordinated intelligence*—a collective mind that learned and adapted together.
+In his extensive work on tools and systems, Stewart Brand, who created the Whole Earth Catalog in 1968, observes the same pattern play out. He explains that for fifty years, we'd built tools that amplified individual capability---personal computers, smartphones, social networks. Brand argues that we forgot to build the coordination layer. The Whole Earth Catalog was a physical manifestation of coordination intelligence. It wasn't just a list of tools; it was a curated collection of reviews, essays, and user-submitted content that fostered a community of shared learning and practical application. Readers would review tools, share projects, and connect with others who had similar interests. The catalog itself was a coordination mechanism, helping individuals find tools, but the real power came from the community that formed around shared learning---a dynamic, evolving network of people helping each other understand and apply knowledge. Brand's perspective is that Facebook gave us access to attention without the coordination wisdom. When you connect everyone but don't help them coordinate, you haven't built infrastructure---you've built a coordination crisis.
 
-Even Terence McKenna, through his work on consciousness technology and indigenous wisdom in the 1990s, anticipated this dynamic before Facebook existed. He argued that our tools would eventually force us to recognize that consciousness isn't individual—it's relational. From his perspective, Facebook didn't create polarization; it revealed that we never learned to coordinate collective consciousness at scale. Indigenous cultures had rituals, ceremonies, and social technologies for managing collective mental states. They understood that the individual mind is deeply intertwined with the collective, and they developed sophisticated methods—from storytelling circles to elaborate ceremonies—to harmonize group consciousness, resolve conflict, and foster shared purpose. McKenna's work suggests that we built the most powerful consciousness technology in history without any wisdom tradition to guide its collective use. We amplified individual voices without providing the mechanisms for those voices to coordinate into a coherent, healthy collective intelligence. The result was a cacophony, not a symphony.
+Even Terence McKenna, through his work on consciousness technology and indigenous wisdom in the 1990s, anticipated this dynamic before Facebook existed. He argued that our tools would eventually force us to recognize that consciousness isn't individual---it's relational. From his perspective, Facebook didn't create polarization; it revealed that we never learned to coordinate collective consciousness at scale. Indigenous cultures had rituals, ceremonies, and social technologies for managing collective mental states. They understood that the individual mind is deeply intertwined with the collective, and they developed sophisticated methods---from storytelling circles to elaborate ceremonies---to harmonize group consciousness, resolve conflict, and foster shared purpose. McKenna's work suggests that we built the most powerful consciousness technology in history without any wisdom tradition to guide its collective use. We amplified individual voices without providing the mechanisms for those voices to coordinate into a coherent, healthy collective intelligence.
 
-What Facebook's engineers missed—and what we now understand—is that they were operating within a three-body system:
+What Facebook's engineers missed---and what we now understand---is that they were operating within a three-body system:
 
-**Human behavior ←→ Algorithm optimization ←→ Social system dynamics**
+**Human behavior <--> Algorithm optimization <--> Social system dynamics**
 
-You can't optimize two elements and ignore the third. The third element—the coordination space—is where emergence happens. Where the real intelligence lives.
+You can't optimize two elements and ignore the third. The third element---the coordination space---is where emergence happens. Where the real intelligence lives.
 
 ---
 
-![Figure 1.1 — Facebook's three-body system: Human Behavior, Algorithmic Curation, and Emergent Contagion form a reinforcing loop. The latent "Coordination Wisdom" node (dashed) is the missing norm-set Facebook never built.](../diagrams/png/01-facebook-three-body.png)
+![Figure 1.1 --- Facebook's three-body system: Human Behavior, Algorithmic Curation, and Emergent Contagion form a reinforcing loop. The latent "Coordination Wisdom" node (dashed) is the missing norm-set Facebook never built.](../diagrams/png/01-facebook-three-body.png)
 
-*Figure 1.1 — Facebook's three-body system. See `../diagrams/svg/01-facebook-three-body.svg` for the vector source.*
+*Figure 1.1 --- Facebook's three-body system. See `../diagrams/svg/01-facebook-three-body.svg` for the vector source.*
 
 ---
 
@@ -71,7 +71,11 @@ Ternary thinking reveals:
 
 
 
-Drawing from the work of Joseph Campbell, the mythologist, the Joseph Campbell Foundation archives note that Campbell showed us that every culture's myths follow the same three-act structure: departure, initiation, return. This isn't just storytelling—it's how consciousness coordinates complexity. Binary thinking can't create meaning—it can only create opposition. You can't have a hero's journey with just two acts; the 'return' is where the transformed hero brings new wisdom back to the community, completing the cycle of coordination between individual and collective.
+Donella Meadows, the systems thinker whose 1999 essay on leverage points remains the most concentrated systems wisdom ever written, saw this pattern with crystalline clarity. She identified twelve places you can intervene in a system, ranked from least to most powerful. At the bottom: numbers, subsidies, taxes---the things everyone argues about. At the top: the paradigm, the shared set of assumptions from which the entire system arises. Meadows taught that most people intervene at the bottom because the bottom is visible, measurable, and fits in a spreadsheet. But changing numbers almost never changes behavior. The system absorbs the adjustment and goes right back to what it was doing.
+
+Her deeper insight was about feedback. Every functioning system, Meadows showed, runs on two kinds of loops: reinforcing feedback that amplifies whatever is already happening---growth or collapse---and balancing feedback that seeks a goal and resists disruption. The engagement algorithm Facebook built was a reinforcing loop running without a balancing partner. More engagement produced more amplification produced more engagement. But where was the feedback that said: this community is fracturing, this information is false, this person's wellbeing is declining? If that balancing feedback doesn't exist, the reinforcing loop runs away. And the system does exactly what its structure tells it to do.
+
+Meadows insisted that systems are not machines to be optimized but dances to be participated in. A machine has inputs and outputs, and you control it from the outside. A dance has a pattern that emerges from the interaction of the dancers---no single dancer dictates it, each responds to the others. The machine metaphor produces controllers who think they can stand outside the system and push its levers. The dance metaphor produces coordinators who know they are part of the pattern. This shift---from control to coordination, from optimization to participation---is the paradigm shift at the top of her leverage list. And it is precisely the shift this book is built around.
 
 Look at our biggest challenges. Climate change becomes "economy vs. environment" with no solution. AI development becomes "capability vs. safety" with no path forward. Political discourse becomes "my side vs. your side" with no resolution. These are all binary traps, forcing us into false dichotomies that prevent true progress.
 
@@ -80,14 +84,12 @@ But ternary thinking reveals the coordination space where solutions emerge:
 - Economy + Environment + Coordination = Sustainable prosperity. This isn't about sacrificing one for the other, but designing economic systems that *coordinate* with ecological limits and opportunities, creating new forms of value that benefit both.
 
 
-- Capability + Safety + Coordination = Aligned intelligence. It's not about slowing down AI or letting it run wild, but about building robust coordination mechanisms—ethical frameworks, human oversight, transparent processes—that ensure AI's power is aligned with human values and societal well-being.
+- Capability + Safety + Coordination = Aligned intelligence. It's not about slowing down AI or letting it run wild, but about building robust coordination mechanisms---ethical frameworks, human oversight, transparent processes---that ensure AI's power is aligned with human values and societal well-being.
 
 
 - My values + Your values + Coordination = Shared solutions. This moves beyond mere compromise to a process where diverse perspectives are brought into a shared space, not to convert each other, but to find emergent solutions that respect and integrate different needs and beliefs.
 
 
-
-As the Campbell scholar emphasizes, he explains that the trinity isn't just religious—it's mathematical. When we try to reduce reality to binary choices, we violate the fundamental structure of how meaning emerges. The third element isn't just a mediator; it's the crucible where transformation happens, where new possibilities are forged from the interaction of the first two.
 
 ---
 
@@ -95,9 +97,9 @@ As the Campbell scholar emphasizes, he explains that the trinity isn't just reli
 
 ---
 
-![Figure 1.2 — Failure triptych: three coordination-failure cases that share the same structural pattern. Mars Climate Orbiter ($327M lost), 2008 Financial Crisis (global cascade), and 737 MAX (346 deaths). Each is examined in detail in Figures 1.3–1.5.](../diagrams/png/ch01-failure-triptych.png)
+![Figure 1.2 --- Failure triptych: three coordination-failure cases that share the same structural pattern. Mars Climate Orbiter ($327M lost), 2008 Financial Crisis (global cascade), and 737 MAX (346 deaths). Each is examined in detail in Figures 1.3--1.5.](../diagrams/png/ch01-failure-triptych.png)
 
-*Figure 1.2 — Failure triptych — Mars / 2008 / 737 MAX. See `../diagrams/svg/ch01-failure-triptych.svg` for the vector source.*
+*Figure 1.2 --- Failure triptych --- Mars / 2008 / 737 MAX. See `../diagrams/svg/ch01-failure-triptych.svg` for the vector source.*
 
 ---
 
@@ -106,17 +108,17 @@ As the Campbell scholar emphasizes, he explains that the trinity isn't just reli
 
 **Binary thinking:** Team A (metric) + Team B (imperial) = disaster
 **Missing third:** Coordination protocol (interface standards, integration testing)
-**Ternary solution:** Engineering teams ←→ Coordination protocols ←→ System integration
+**Ternary solution:** Engineering teams <--> Coordination protocols <--> System integration
 
-Dr. N. Katherine Hayles at Duke University studies how cognition distributes across complex systems. The Mars Orbiter disaster perfectly illustrates her framework of distributed cognition and what happens when coordination fails. Launched in December 1998, the $327 million spacecraft was intended to study the Martian climate. On September 23, 1999, as it prepared to enter orbit, it burned up in Mars' atmosphere. The post-mortem revealed a critical error: one team, responsible for ground software, calculated thruster impulses in pounds-force (an imperial unit), while another team, responsible for the spacecraft's navigation software, expected the data in newtons (a metric unit). This seemingly simple unit mismatch, a failure to coordinate fundamental interface standards, led to the spacecraft flying too low and disintegrating. Through the lens of her work on posthuman cognition, Hayles argues that the navigation team 'knew' metric, the thruster team 'knew' imperial, but the system as a whole didn't 'know' anything—because there was no coordination layer where these different forms of knowing could interact. This is posthuman cognition in action: intelligence doesn't live in components, it lives in coordination. When coordination fails, the system becomes literally mindless despite being composed of brilliant minds. The engineers were brilliant, the software was robust, but the *coordination* between them was absent, leading to a catastrophic loss of intelligence at the system level.
+Dr. N. Katherine Hayles at Duke University studies how cognition distributes across complex systems. The Mars Orbiter disaster perfectly illustrates her framework of distributed cognition and what happens when coordination fails. Launched in December 1998, the $327 million spacecraft was intended to study the Martian climate. On September 23, 1999, as it prepared to enter orbit, it burned up in Mars' atmosphere. The post-mortem revealed a critical error: one team, responsible for ground software, calculated thruster impulses in pounds-force (an imperial unit), while another team, responsible for the spacecraft's navigation software, expected the data in newtons (a metric unit). This seemingly simple unit mismatch, a failure to coordinate fundamental interface standards, led to the spacecraft flying too low and disintegrating. Through the lens of her work on posthuman cognition, Hayles argues that the navigation team 'knew' metric, the thruster team 'knew' imperial, but the system as a whole didn't 'know' anything---because there was no coordination layer where these different forms of knowing could interact. This is posthuman cognition in action: intelligence doesn't live in components, it lives in coordination. When coordination fails, the system becomes literally mindless despite being composed of brilliant minds.
 
 The solution? Design coordination layers as carefully as we design components. This means not just defining interfaces, but rigorously testing the *coordination* across those interfaces, ensuring mutual understanding and consistent interpretation of data.
 
 ---
 
-![Figure 1.3 — Mars Climate Orbiter: two competent teams (Navigation in metric, Ground Software in imperial) feeding the same Thrust Calculation. The latent Unit Translation Layer is the missing coordination interface — its absence drove the orbiter into the Martian atmosphere.](../diagrams/png/04-mars-orbiter-coordination-gap.png)
+![Figure 1.3 --- Mars Climate Orbiter: two competent teams (Navigation in metric, Ground Software in imperial) feeding the same Thrust Calculation. The latent Unit Translation Layer is the missing coordination interface --- its absence drove the orbiter into the Martian atmosphere.](../diagrams/png/04-mars-orbiter-coordination-gap.png)
 
-*Figure 1.3 — Mars Climate Orbiter coordination gap. See `../diagrams/svg/04-mars-orbiter-coordination-gap.svg` for the vector source.*
+*Figure 1.3 --- Mars Climate Orbiter coordination gap. See `../diagrams/svg/04-mars-orbiter-coordination-gap.svg` for the vector source.*
 
 ---
 
@@ -125,15 +127,15 @@ The solution? Design coordination layers as carefully as we design components. T
 
 **Binary thinking:** Individual risk models + Portfolio diversification = safety
 **Missing third:** Systemic correlation (how risks coordinate across the entire system)
-**Ternary solution:** Risk models ←→ Market coordination ←→ Systemic correlation monitoring
+**Ternary solution:** Risk models <--> Market coordination <--> Systemic correlation monitoring
 
 The 2008 financial crisis, which plunged the world into a deep recession, costing trillions of dollars and millions of jobs, was a profound failure of coordination intelligence. Banks and financial institutions relied on sophisticated risk models for individual assets and portfolios, believing that diversification would protect them from localized failures. However, these models largely failed to account for the *systemic correlation* that emerged when everyone was using similar models and investing in similarly structured, highly interconnected financial products like mortgage-backed securities and credit default swaps. When the housing market began to falter, what were thought to be independent risks suddenly became highly coordinated. The failure of one institution, like Lehman Brothers, triggered a cascade across the entire global financial system, revealing that the "safety" derived from binary thinking (individual risk + diversification) was an illusion. The missing third element was a robust understanding and monitoring of how risks *coordinated* across the entire, interconnected market, and the lack of regulatory mechanisms to manage that systemic coordination.
 
 ---
 
-![Figure 1.4 — 2008 systemic correlation: individual risk models converged into a hidden balancing loop. The latent Systemic Monitoring node would have detected the cascade in advance — its absence is what made the crisis structurally invisible until too late.](../diagrams/png/05-2008-systemic-correlation.png)
+![Figure 1.4 --- 2008 systemic correlation: individual risk models converged into a hidden balancing loop. The latent Systemic Monitoring node would have detected the cascade in advance --- its absence is what made the crisis structurally invisible until too late.](../diagrams/png/05-2008-systemic-correlation.png)
 
-*Figure 1.4 — 2008 Crisis — hidden systemic correlation. See `../diagrams/svg/05-2008-systemic-correlation.svg` for the vector source.*
+*Figure 1.4 --- 2008 Crisis --- hidden systemic correlation. See `../diagrams/svg/05-2008-systemic-correlation.svg` for the vector source.*
 
 ---
 
@@ -142,15 +144,15 @@ The 2008 financial crisis, which plunged the world into a deep recession, costin
 
 **Binary thinking:** MCAS software (tested) + Pilot training (certified) = safety
 **Missing third:** Operational coordination (how software and pilots coordinate under stress)
-**Ternary solution:** Software behavior ←→ Operational context ←→ Pilot expectations
+**Ternary solution:** Software behavior <--> Operational context <--> Pilot expectations
 
-The tragic crashes of Lion Air Flight 610 in October 2018 and Ethiopian Airlines Flight 302 in March 2019, which killed 346 people, exposed a fatal flaw in coordination. Boeing introduced the Maneuvering Characteristics Augmentation System (MCAS) on the 737 MAX to compensate for changes in the aircraft's aerodynamics. This software, designed to automatically push the aircraft's nose down if it detected a stall, was intended as a safety feature. Pilots were certified, and the software was tested. However, the MCAS system relied on a single angle-of-attack sensor, and if that sensor failed, it could repeatedly force the nose down, overriding pilot input. Crucially, pilots were not adequately informed about MCAS or trained on how to respond to its aggressive commands, especially in high-stress, real-world operational contexts. The binary thinking assumed that a "safe" software component combined with "certified" pilots would ensure safety. The missing third element was the *operational coordination*—how the automated software, the human pilot, and the complex, stressful environment of flight would interact and coordinate in an emergency. The result was a catastrophic failure of the human-machine system, where perfect components coordinating poorly led to fatal outcomes.
+The tragic crashes of Lion Air Flight 610 in October 2018 and Ethiopian Airlines Flight 302 in March 2019, which killed 346 people, exposed a fatal flaw in coordination. Boeing introduced the Maneuvering Characteristics Augmentation System (MCAS) on the 737 MAX to compensate for changes in the aircraft's aerodynamics. This software, designed to automatically push the aircraft's nose down if it detected a stall, was intended as a safety feature. Pilots were certified, and the software was tested. However, the MCAS system relied on a single angle-of-attack sensor, and if that sensor failed, it could repeatedly force the nose down, overriding pilot input. Crucially, pilots were not adequately informed about MCAS or trained on how to respond to its aggressive commands, especially in high-stress, real-world operational contexts. The binary thinking assumed that a "safe" software component combined with "certified" pilots would ensure safety. The missing third element was the *operational coordination*---how the automated software, the human pilot, and the complex, stressful environment of flight would interact and coordinate in an emergency. The result was a catastrophic failure of the human-machine system, where perfect components coordinating poorly led to fatal outcomes.
 
 ---
 
-![Figure 1.5 — 737 MAX MCAS: software, sensor failure, operational stress, and pilot override. The latent Pilot Awareness node represents knowledge of MCAS that was withheld from training documents — its absence transformed a recoverable malfunction into 346 fatalities.](../diagrams/png/06-737max-mcas-human-machine.png)
+![Figure 1.5 --- 737 MAX MCAS: software, sensor failure, operational stress, and pilot override. The latent Pilot Awareness node represents knowledge of MCAS that was withheld from training documents --- its absence transformed a recoverable malfunction into 346 fatalities.](../diagrams/png/06-737max-mcas-human-machine.png)
 
-*Figure 1.5 — 737 MAX MCAS three-body failure. See `../diagrams/svg/06-737max-mcas-human-machine.svg` for the vector source.*
+*Figure 1.5 --- 737 MAX MCAS three-body failure. See `../diagrams/svg/06-737max-mcas-human-machine.svg` for the vector source.*
 
 ---
 
@@ -161,13 +163,13 @@ The tragic crashes of Lion Air Flight 610 in October 2018 and Ethiopian Airlines
 
 In physics, the three-body problem is famous for being fundamentally unsolvable through simple equations. Unlike the elegant, predictable orbits of a two-body system (like a planet around a star), adding a third body introduces an intractable level of complexity. The gravitational interactions between three masses create chaotic, unpredictable trajectories. There are no stable, repeating orbits; the system is exquisitely sensitive to initial conditions, meaning a tiny change can lead to vastly different outcomes over time. This mathematical intractability has long been seen as a limitation.
 
-That's not a limitation—it's an opportunity.
+That's not a limitation---it's an opportunity.
 
 Systems that can navigate three-body coordination have capabilities that two-body systems can never achieve.
 
-Liu Cixin, whose novel *The Three-Body Problem* won the Hugo Award, explores this concept through the lens of his fictional Trisolarans—aliens living in a chaotic three-star system. In his writing, Cixin explains that he was exploring what happens when three forces mutually influence each other to create chaos. He notes that what he didn't fully realize was that we're already living in it: human civilization, artificial intelligence, and planetary systems—each affecting the other two, creating fundamentally unpredictable outcomes. Our climate, our economies, our social structures are all caught in this complex dance.
+Lakota Elder Phillip Deere, a Star Knowledge keeper whose teachings bridge indigenous cosmology with contemporary understanding, recognized this pattern in the oldest classroom on Earth: the night sky. His grandmother didn't teach him to name celestial objects in isolation. She said: watch how they dance together. Earth, Moon, and Sun---three bodies whose coordination creates everything we call life. The Moon's pull creates the tides, the ocean breathing in and out. The Sun's path creates the seasons, the land breathing, growing, resting. Earth's rotation creates the rhythm of waking and sleeping. But none of these alone creates life. Life emerges from the coordination of all three---from the sacred dance, not from any single dancer.
 
-But here's a key insight from his novel: The Trisolarans couldn't predict when their suns would rise or set, but they survived by learning to navigate chaos. They developed a civilization that was incredibly adaptive, resilient, and capable of rapid transformation, precisely because they couldn't rely on stable predictions. Cixin's work suggests the lesson: Stop trying to predict. Start learning to coordinate. The shift is from prediction to coordination, from control to participation, from solving to dancing. We must embrace the inherent unpredictability of our three-body reality and design systems that thrive on dynamic coordination rather than static control.
+Elder Deere applied this to every domain. Buffalo, grass, and people form a three-body ecology: the buffalo eat the grass and fertilize the soil, the grass feeds the buffalo, the people hunt with restraint and keep the herds healthy. Remove any element and the system collapses. Europeans, he observed, wanted to understand the buffalo by dissecting it---thing thinking, studying components in isolation. Indigenous wisdom understood the buffalo through relationship thinking---watching how it coordinates with grass, with predators, with seasons, with the land. Thing thinking kills to understand. Relationship thinking observes to understand. And now, Elder Deere noted, the machines are teaching what the grandmothers knew: everything is related, and the relationship is where wisdom lives. Mitakuye Oyasin---All My Relations---including the AI relations we are creating.
 
 ### From Physics to Digital Reality
 
@@ -209,9 +211,9 @@ In our digital world, the three bodies are:
 
 ---
 
-![Figure 1.6 — The canonical book schema: Hardware ↔ Software ↔ Knowware coordinate through a single reinforcing loop to produce Emergent Intelligence. Knowware is the third body that distinguishes adaptive systems from optimizing ones. Every diagram in this book is a specialization of this pattern.](../diagrams/png/07-hardware-software-knowware.png)
+![Figure 1.6 --- The canonical book schema: Hardware <-> Software <-> Knowware coordinate through a single reinforcing loop to produce Emergent Intelligence. Knowware is the third body that distinguishes adaptive systems from optimizing ones. Every diagram in this book is a specialization of this pattern.](../diagrams/png/07-hardware-software-knowware.png)
 
-*Figure 1.6 — Hardware ↔ Software ↔ Knowware. See `../diagrams/svg/07-hardware-software-knowware.svg` for the vector source.*
+*Figure 1.6 --- Hardware <-> Software <-> Knowware. See `../diagrams/svg/07-hardware-software-knowware.svg` for the vector source.*
 
 ---
 
@@ -228,9 +230,9 @@ When these three coordinate well:
 
 
 
-Dr. Melanie Mitchell at the Santa Fe Institute has studied this pattern across every domain of complexity science. She observes that chemical reactions need three molecules for catalytic cycles. Ecosystems need three species for stable food webs. Markets need three agents for efficient pricing. Even cellular automata reveal this pattern—two-neighbor rules create either static patterns or simple oscillation, but three-neighbor rules create rich complexity and emergence. The jump from two to three is where true novelty and adaptive capacity appear.
+Kevin Kelly, co-founder of Wired and editor of the Whole Earth Review, has watched this pattern across fifty years of technology evolution. He coined the term "technium" for the global system of technology as a whole---not individual tools but the entire interconnected system, including its emergent behavior. The technium, Kelly argues, wants the same things life wants: increasing efficiency, increasing diversity, increasing complexity, increasing mutualism. It is nature's seventh kingdom, running on different substrates---silicon instead of carbon, electricity instead of ATP---but following the same deep dynamics. It evolves, diversifies, fills niches, coordinates.
 
-Mitchell's framework reveals why AI systems modeling only binary relationships miss the most important dynamics. She argues that the breakthrough in AI isn't bigger models—it's models that represent ternary coordination. It's about designing AI that can not only process information but also understand and participate in complex coordination dynamics, learning from the emergent properties of three-way interactions.
+The key word on Kelly's list is mutualism. Mutualism is coordination between organisms that benefits both parties---lichens, mycorrhizal networks, the countless partnerships that make ecosystems resilient and creative. The most advanced state of technology, Kelly insists, is not automation but mutualism: AI as a partner for human intelligence, not a replacement. Full automation is a dead end, biologically speaking. The most successful species coordinate most effectively with others. And Kelly offers a test borrowed from the most unlikely source: the Amish. Before adopting any technology, Amish communities ask one question---what will this do to our coordination? Does it strengthen or weaken the bonds between us? If Silicon Valley had asked the Amish question before building the News Feed, we might live in a different world.
 
 ---
 
@@ -253,31 +255,24 @@ Every successful coordination follows the same structure:
 
 ---
 
-![Figure 1.7 — Universal coordination pattern: identify the three bodies → design the coordination space → enable emergence → adapt continuously. The book's operational template — a single reinforcing learning cycle that closes back on itself.](../diagrams/png/10-universal-coordination-pattern.png)
+![Figure 1.7 --- Universal coordination pattern: identify the three bodies -> design the coordination space -> enable emergence -> adapt continuously. The book's operational template --- a single reinforcing learning cycle that closes back on itself.](../diagrams/png/10-universal-coordination-pattern.png)
 
-*Figure 1.7 — Universal coordination pattern. See `../diagrams/svg/10-universal-coordination-pattern.svg` for the vector source.*
-
----
-
-
-Larry Harvey, who founded Burning Man, discovered this accidentally. Every year, 70,000 people coordinate to build a temporary city in the Nevada desert, create profound experiences, and leave no trace. This isn't a top-down command structure; it's a marvel of emergent coordination. Harvey explains that Burning Man works because it coordinates three elements most events keep separate: radical self-expression, communal effort, and temporary infrastructure. He notes that you can't have the magic with just two. Self-expression without community becomes narcissism. Community without infrastructure becomes chaos. Infrastructure without self-expression becomes bureaucracy.
-
-He calls it "the playa magic," but it's really just what happens when you design for three-way coordination. The 70,000 participants aren't just attendees; they are active co-creators. Radical self-expression is encouraged through art, costumes, and theme camps. This isn't just individualistic display; it's channeled into communal effort through the 10 Principles, which include radical inclusion, decommodification, civic responsibility, and communal effort. Participants volunteer, share resources, and contribute to the collective experience. All of this is supported by a temporary infrastructure—roads, safety services, sanitation, power grids—built and maintained by a dedicated team of volunteers (the Department of Public Works). The coordination is dynamic and distributed. If one element fails, the others adapt. If a theme camp's infrastructure breaks down, the community often rallies to help. If self-expression becomes destructive, civic responsibility and communal effort provide a framework for correction. The "magic" emerges from the constant, fluid coordination between these three forces, creating a vibrant, self-organizing city that is dismantled without a trace each year. As Harvey articulated, when people express themselves within a community that builds shared infrastructure—something emerges that none could create alone. It's a living, breathing example of coordination intelligence in action.
+*Figure 1.7 --- Universal coordination pattern. See `../diagrams/svg/10-universal-coordination-pattern.svg` for the vector source.*
 
 ---
 
-![Figure 1.8 — Burning Man's three elements: radical Self Expression, Communal Effort, and Temporary Infrastructure coordinate to produce Playa Magic. Two reinforcing loops (expression-magic and effort-magic) sustain the city year over year — the only example in this chapter where the coordination is observed annually rather than failed.](../diagrams/png/09-burning-man-three-elements.png)
 
-*Figure 1.8 — Burning Man three-element coordination. See `../diagrams/svg/09-burning-man-three-elements.svg` for the vector source.*
+Daniel Schmachtenberger, co-founder of the Consilience Project and the Civilization Research Institute, has spent his career mapping why this pattern fails at civilizational scale. His diagnosis is precise: every existential risk we face---AI, climate, pandemics, weapons of mass destruction---shares the same underlying cause. Not the technology. The coordination architecture. He calls it the meta-crisis: the gap between what our technology can do and what our coordination architecture can govern. That gap is widening. Capabilities grow exponentially. Governance evolves linearly. The space between those curves is what Schmachtenberger calls the catastrophe corridor.
 
----
+The mechanism is what he terms the multipolar trap---a generalized prisoner's dilemma at civilizational scale. Each AI lab thinks: if we slow down for safety, our competitor won't. Each government thinks: if we regulate aggressively, our adversary gains an advantage. Each company thinks: if we don't deploy now, someone else captures the market. Every actor makes a locally rational choice. No actor is being reckless from their own perspective. And the collective outcome is capabilities racing ahead of safety, ahead of governance, ahead of coordination. Nobody chose it. Everybody's in it. Individual virtue, Schmachtenberger insists, is necessary but radically insufficient against systemic incentives. You cannot solve coordination failure by making people better. You solve it by changing the coordination architecture---by building systems that make cooperation the rational choice for every actor simultaneously.
 
+Schmachtenberger sees two catastrophic attractors on our current trajectory---multipolar chaos, where the arms race produces civilizational-scale harm, or totalitarian lock-in, where one actor wins the race and establishes permanent control. Neither is acceptable. The third attractor---the one this book is built around---is a new coordination architecture capable of governing exponential technology while preserving human agency and diversity. Not utopian. Not requiring everyone to agree. Requiring systems that prevent catastrophic externalization of risk, that maintain a functional epistemic commons, and that operate on time horizons adequate to the technology's impact. As Schmachtenberger frames it: the hardware-software-knowware model is the third attractor at the technology level. We have extraordinary hardware and increasingly powerful software. The knowware---the coordination architecture governing their use---is catastrophically underdeveloped.
 
 ---
 
 ## What This Looks Like In Practice: Ternary Thinking In Action
 
-How can you apply ternary thinking tomorrow? It's about consciously identifying the third element—the coordination space—in any situation and actively designing for it.
+How can you apply ternary thinking tomorrow? It's about consciously identifying the third element---the coordination space---in any situation and actively designing for it.
 
 1. **In Team Meetings:**
 
@@ -312,14 +307,14 @@ How can you apply ternary thinking tomorrow? It's about consciously identifying 
 
 
 
-1. **In Problem Solving:**
+1. **In Consciousness Technology:**
 
 
 
-- **Binary Trap:** Problem + Solution = Resolution.
+- **Binary Trap:** Powerful tool + Individual user = Altered state.
 
 
-- **Ternary Approach:** Problem + Solution + **Stakeholder Coordination**. A "solution" isn't truly a solution if it doesn't coordinate with the needs, perspectives, and capabilities of all affected stakeholders. Actively involve diverse voices, facilitate dialogue, and design for solutions that emerge from a coordinated understanding of the problem's context and impact on everyone involved.
+- **Ternary Approach:** Tool + Participant + **Intentional Context**. Yann Minh, a French digital artist and trained ayahuascero, practices what he calls digital shamanism---applying the coordination wisdom of indigenous ceremony to modern technology. In traditional ayahuasca ceremony, three bodies must coordinate: the plant medicine, the human participant, and the ceremonial container held by the shaman. Remove any one and the experience becomes dangerous or meaningless. Minh recognized the same pattern in his VR installations: technology, participant, and intentional experience design must coordinate for transformation to occur. Social media, he argues, is ayahuasca without a shaman---a consciousness-altering technology unleashed on billions with no wisdom tradition, no guidance, no integration. The shaman doesn't control the experience; they coordinate plant medicine with human psychology with ceremonial context, moment by moment. Digital shamanism asks: can we bring this same coordination wisdom to AI? Not as metaphor, but as design principle---preparation before engagement, guidance during use, integration afterward.
 
 
 
@@ -348,7 +343,7 @@ Binary thinking asks "A or B?" Ternary thinking asks "How do A, B, and their coo
 
 The stakes are higher than ever. As AI becomes more powerful, and our global challenges more pressing, the ability to coordinate human intelligence, artificial intelligence, and the planetary systems we inhabit will determine our future. Will we fall into the binary traps of "human vs. machine" or "economy vs. environment," leading to further fragmentation and crisis? Or will we embrace ternary thinking, designing for the coordination that unlocks unprecedented levels of collective intelligence and creates a future of sustainable prosperity and aligned progress?
 
-The rest of this book will show you how to see these patterns everywhere—in markets, in organizations, in AI systems, in consciousness itself. And more importantly, how to design for coordination instead of just optimizing for components. It's not just about understanding the world; it's about actively shaping it through intelligent coordination.
+The rest of this book will show you how to see these patterns everywhere---in markets, in organizations, in AI systems, in consciousness itself. And more importantly, how to design for coordination instead of just optimizing for components. It's not just about understanding the world; it's about actively shaping it through intelligent coordination.
 
 Because the future doesn't belong to the fastest processors or the biggest datasets.
 
