@@ -1,7 +1,7 @@
 # Systems of Intelligence
 
-Companion repository for the book *Systems of Intelligence* (Knowware Institute).
-Target remote: https://github.com/knowwareinstitute/systemsofintelligence
+Companion repository for the book *Systems of Intelligence*.
+Website: https://systemsofintelligence.com
 
 ## Layout
 

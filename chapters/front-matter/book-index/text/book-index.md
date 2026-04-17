@@ -80,8 +80,8 @@ By Khayyam Wakil
 ## 📧 CONTACT
 
 **Author:** Khayyam Wakil
-**Email:** someone@knowware.institute
-**Website:** knowware.institute
+**Email:** someone@systemsofintelligence.com
+**Website:** systemsofintelligence.com
 **Company:** The ARC Institute ofKnowware
 
 ---

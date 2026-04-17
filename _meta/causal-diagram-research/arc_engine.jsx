@@ -340,7 +340,7 @@ export default function App() {
 
         {/* Corners */}
         <div style={{ position:"absolute", top:14, left:14, fontFamily:"monospace", fontSize:9, letterSpacing:"0.08em", textTransform:"uppercase", color:"#9a9a9a", pointerEvents:"none" }}>{fmtLabel[fmt]}</div>
-        <div style={{ position:"absolute", top:14, right:14, fontFamily:"monospace", fontSize:9, letterSpacing:"0.08em", textTransform:"uppercase", color:"#9a9a9a", pointerEvents:"none", textAlign:"right" }}>Knowware Institute</div>
+        <div style={{ position:"absolute", top:14, right:14, fontFamily:"monospace", fontSize:9, letterSpacing:"0.08em", textTransform:"uppercase", color:"#9a9a9a", pointerEvents:"none", textAlign:"right" }}>Systems of Intelligence</div>
         <div style={{ position:"absolute", bottom:26, left:14, fontFamily:"monospace", fontSize:9, letterSpacing:"0.08em", textTransform:"uppercase", color:"#9a9a9a", pointerEvents:"none", maxWidth:400, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap" }}>{activeSection?.title || ""}</div>
         <div style={{ position:"absolute", bottom:26, right:14, fontFamily:"monospace", fontSize:9, letterSpacing:"0.08em", textTransform:"uppercase", color:"#9a9a9a", pointerEvents:"none" }}>Existence Precedes Timestamp</div>
 

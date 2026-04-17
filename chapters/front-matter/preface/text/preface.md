@@ -503,7 +503,7 @@ November 2025
 
 ---
 
-**P.S.** — If you finish this book and want to coordinate with me or the growing community of coordination thinkers, reach out to : someone [at] knowware [dot] institute**
-**https://knowware.institute**
+**P.S.** — If you finish this book and want to coordinate with me or the growing community of coordination thinkers, reach out to : someone [at] systemsofintelligence [dot] com**
+**https://systemsofintelligence.com**
 
 **The coordination continues through you.**
