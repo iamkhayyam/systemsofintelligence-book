@@ -52,3 +52,9 @@ venv/
 # Node (if preview ever gets a bundler)
 node_modules/
 dist/
+
+# Claude Code local session files
+.claude/
+
+# Proof editor access tokens (keep push.py tracked, docs.json local)
+_meta/proof/docs.json
