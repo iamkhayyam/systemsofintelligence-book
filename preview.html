@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
 <style>
+  :root{--reading-scale:1}
   html,body{margin:0;padding:0;background:#f4f1ec;color:#1a1a1a;font-family:'EB Garamond',Georgia,serif}
   *{box-sizing:border-box}
   .layout{display:grid;grid-template-columns:240px 1fr;height:100vh;overflow:hidden}
@@ -33,18 +34,26 @@
   header h2{margin:0;font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#5a5a5a}
   header button{font-family:'Barlow Condensed',sans-serif;font-size:10px;padding:4px 10px;border:1px solid #8a7a62;background:#fff;cursor:pointer;letter-spacing:0.05em;text-transform:uppercase;color:#5a4a30}
   header button:hover{background:#5a4a30;color:#fff}
+  .font-ctrl{display:inline-flex;gap:2px;border:1px solid #8a7a62;border-radius:3px;overflow:hidden}
+  .font-ctrl button{border:none;border-radius:0;padding:4px 8px;font-family:'EB Garamond',Georgia,serif;color:#5a4a30;background:#fff;cursor:pointer;line-height:1;letter-spacing:0}
+  .font-ctrl button:not(:last-child){border-right:1px solid #d0c8b4}
+  .font-ctrl button.active{background:#5a4a30;color:#fff}
+  .font-ctrl button:hover:not(.active){background:#f4ede0;color:#5a4a30}
+  .font-ctrl .fs-s{font-size:11px}
+  .font-ctrl .fs-m{font-size:14px}
+  .font-ctrl .fs-l{font-size:17px}
   #count{margin-left:auto;font-size:10px;font-family:monospace;color:#7a6a50}
 
   /* 6×9 book simulation: ~4.5" text block at 96dpi ≈ 540px */
   main{max-width:540px;margin:0 auto;padding:56px 40px 120px;background:#fff;min-height:100vh;box-shadow:0 0 40px rgba(0,0,0,0.06)}
-  #content h1{font-size:28px;font-weight:600;margin:1.5em 0 0.4em;line-height:1.2}
-  #content h2{font-size:21px;font-weight:600;margin:2em 0 0.5em;line-height:1.2;border-bottom:1px solid #c0b8a8;padding-bottom:4px}
-  #content h3{font-size:17px;font-weight:600;margin:1.8em 0 0.4em}
-  #content p{font-size:15px;line-height:1.7;margin:0.8em 0}
-  #content blockquote{border-left:3px solid #c0b8a8;padding:4px 14px;margin:1em 0;color:#4a4030;font-style:italic;font-size:14px}
-  #content ul,#content ol{font-size:15px;line-height:1.7}
-  #content code{font-family:'SF Mono',monospace;background:#ece6d8;padding:1px 4px;border-radius:2px;font-size:12px}
-  #content pre{background:#ece6d8;padding:12px;overflow:auto;font-size:11px;border-radius:4px}
+  #content h1{font-size:calc(28px * var(--reading-scale));font-weight:600;margin:1.5em 0 0.4em;line-height:1.2}
+  #content h2{font-size:calc(21px * var(--reading-scale));font-weight:600;margin:2em 0 0.5em;line-height:1.2;border-bottom:1px solid #c0b8a8;padding-bottom:4px}
+  #content h3{font-size:calc(17px * var(--reading-scale));font-weight:600;margin:1.8em 0 0.4em}
+  #content p{font-size:calc(15px * var(--reading-scale));line-height:1.7;margin:0.8em 0}
+  #content blockquote{border-left:3px solid #c0b8a8;padding:4px 14px;margin:1em 0;color:#4a4030;font-style:italic;font-size:calc(14px * var(--reading-scale))}
+  #content ul,#content ol{font-size:calc(15px * var(--reading-scale));line-height:1.7}
+  #content code{font-family:'SF Mono',monospace;background:#ece6d8;padding:1px 4px;border-radius:2px;font-size:calc(12px * var(--reading-scale))}
+  #content pre{background:#ece6d8;padding:12px;overflow:auto;font-size:calc(11px * var(--reading-scale));border-radius:4px}
   #content strong{font-weight:600;color:#0a0a0a}
   #content hr{border:none;border-top:1px solid #c0b8a8;margin:2em 0}
   /* Inline em stays inline — italics in running text */
@@ -52,9 +61,9 @@
   /* Figure images */
   #content img{max-width:100%;width:100%;height:auto;display:block;margin:1.5em auto;background:#fff;border:1px solid #c0b8a8;padding:8px;box-shadow:0 1px 4px rgba(0,0,0,0.06)}
   /* Figure captions: a <p> whose only child is an <em> starting with "Figure" */
-  #content p.caption{text-align:center;font-size:12px;color:#5a4a30;margin-top:-0.5em;margin-bottom:2em;line-height:1.4}
-  #content p.caption em{font-style:italic;font-size:12px}
-  #content table{border-collapse:collapse;margin:1em 0;font-size:13px}
+  #content p.caption{text-align:center;font-size:calc(12px * var(--reading-scale));color:#5a4a30;margin-top:-0.5em;margin-bottom:2em;line-height:1.4}
+  #content p.caption em{font-style:italic;font-size:calc(12px * var(--reading-scale))}
+  #content table{border-collapse:collapse;margin:1em 0;font-size:calc(13px * var(--reading-scale))}
   #content th,#content td{border:1px solid #c0b8a8;padding:5px 8px;text-align:left}
   #content th{background:#ece6d8;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;font-size:10px;letter-spacing:0.05em}
   .missing-img{display:inline-block;padding:40px 20px;background:#fff0f0;color:#7a1a1a;border:2px dashed #7a1a1a;font-family:monospace;font-size:12px;text-align:center;margin:1.5em auto}
@@ -165,6 +174,11 @@
       <button id="reload">↻ Reload</button>
       <button id="raw" title="View source markdown">Raw</button>
       <button id="proof" title="Open in Proof (Ch01 only for now)">On Proof ↗</button>
+      <div class="font-ctrl" title="Font size (keyboard: - / 0 / + or Ctrl/Cmd+- Ctrl/Cmd+0 Ctrl/Cmd+=)">
+        <button class="fs-s" data-scale="0.875" aria-label="Small">A</button>
+        <button class="fs-m" data-scale="1" aria-label="Medium">A</button>
+        <button class="fs-l" data-scale="1.2" aria-label="Large">A</button>
+      </div>
       <span id="count"></span>
       <button class="ann-badge" id="ann-toggle"><span class="dot"></span> <span id="ann-count">0</span> Notes</button>
       <div class="pg">
@@ -403,6 +417,34 @@ async function load(i){
     content.innerHTML = `<div id='err'>Failed to load ${sec.path}: ${e.message}</div>`;
   }
 }
+
+// ── Font size control ───────────────────────────────────────────────
+const FONT_KEY = "soi-reading-scale";
+const SCALES = [0.875, 1, 1.2];
+function applyScale(scale){
+  document.documentElement.style.setProperty("--reading-scale", scale);
+  localStorage.setItem(FONT_KEY, String(scale));
+  document.querySelectorAll(".font-ctrl button").forEach(b=>{
+    const s = parseFloat(b.dataset.scale);
+    b.classList.toggle("active", Math.abs(s - scale) < 0.001);
+  });
+}
+function currentScale(){
+  const saved = parseFloat(localStorage.getItem(FONT_KEY));
+  return SCALES.includes(saved) ? saved : 1;
+}
+document.querySelectorAll(".font-ctrl button").forEach(b=>{
+  b.addEventListener("click", ()=>applyScale(parseFloat(b.dataset.scale)));
+});
+applyScale(currentScale());
+// Keyboard: - (small), 0 (medium), + / = (large); with or without Ctrl/Cmd
+document.addEventListener("keydown", e=>{
+  if(e.target.matches("input, textarea")) return;
+  const key = e.key;
+  if(key === "-" || key === "_"){ e.preventDefault(); applyScale(0.875); }
+  else if(key === "0"){ e.preventDefault(); applyScale(1); }
+  else if(key === "+" || key === "="){ e.preventDefault(); applyScale(1.2); }
+});
 
 document.getElementById("reload").addEventListener("click", ()=>load(currentIdx));
 document.getElementById("raw").addEventListener("click", ()=>{
