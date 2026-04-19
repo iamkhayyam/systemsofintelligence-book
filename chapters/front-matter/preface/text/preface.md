@@ -26,29 +26,29 @@ Not as abstract theory, but as practical framework you can use tomorrow in your 
 
 ## What You're Actually Reading: The Three Ware Problem
 
-**This book has three bodies:**
+**This book has three layers of depth:**
 
-**1. The Narrative** (Chapters 1-9 + Capstone)
+**1. The Chapters** (Chapters 1-9 + Capstone)
 
-- Stories, examples, case studies
-
-
-- Accessible to anyone
+- Stories, examples, and the 81 voices woven into the prose itself
 
 
-- The human layer
+- The primary reading experience — accessible to anyone
+
+
+- Where narrative and expertise coordinate as one
 
 
 
-**2. The Expert Voices** (81 perspectives)
+**2. The Full Interviews** (81 companion transcripts)
 
-- Academic, practitioner, intuitive
-
-
-- Multiple viewpoints coordinating
+- Each voice as a complete timecoded dialogue, 42+ minutes long
 
 
-- The wisdom layer
+- Available as standalone reading when a voice sparks your curiosity
+
+
+- The deep-dive layer for going further than the chapters can
 
 
 
@@ -57,7 +57,7 @@ Not as abstract theory, but as practical framework you can use tomorrow in your 
 - Mathematics, code, resources
 
 
-- Technical depth for practitioners
+- Technical depth for practitioners who need to build
 
 
 - The implementation layer
@@ -66,11 +66,11 @@ Not as abstract theory, but as practical framework you can use tomorrow in your 
 
 **All three coordinate to create understanding.**
 
-Read just the narrative: You'll grasp the pattern.
+Read the chapters: You'll grasp the pattern and meet all 81 voices in integrated form.
 
-Read narrative + expert voices: You'll see multiple perspectives coordinating.
+Add the interviews: You'll hear any voice in full, at your own pace, in their own words.
 
-Read everything including appendices: You'll be able to build coordination systems.
+Add the appendices: You'll have everything you need to build coordination systems.
 
 **The book coordinates with your needs.**
 
