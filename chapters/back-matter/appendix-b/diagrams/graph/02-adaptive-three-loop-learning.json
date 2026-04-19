@@ -1,0 +1,29 @@
+{
+  "id": "appB-02-adaptive-three-loop-learning",
+  "title": "Three nested learning loops — task, coordination, meta",
+  "summary": "Appendix B.1.3's Adaptive Coordination Pattern made visible. Three reinforcing loops stack: task models learn from outcomes (R1), the coordination function learns which combinations work (R2), and a meta-coordination process learns how to improve coordination learning itself (R3). Each outer loop operates on a slower timescale and corrects the strategy of the inner loop.",
+  "fmt": "cld",
+  "source": "Appendix B.1.3 — Adaptive Coordination Pattern (Three-Body Learning)",
+  "nodes": [
+    { "id": "n1", "label": "Task Models",           "description": "Individual models A and B learning their own tasks",                           "category": "driver",   "is_latent": false },
+    { "id": "n2", "label": "Coordination Function", "description": "C(A, B, Θ) — the learnable composition of task outputs",                       "category": "mediator", "is_latent": false },
+    { "id": "n3", "label": "Meta Coordination",     "description": "Learns which coordination strategies outperform others across episodes",       "category": "feedback", "is_latent": false },
+    { "id": "n4", "label": "Task Feedback",         "description": "Per-episode ground truth or reward",                                            "category": "driver",   "is_latent": false },
+    { "id": "n5", "label": "Coordination Quality",  "description": "Outcome quality — CQ, emergence index, user acceptance",                       "category": "outcome",  "is_latent": false }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "polarity": "positive", "description": "Task outputs feed coordination",                "has_delay": false, "is_confounding": false },
+    { "from": "n2", "to": "n5", "polarity": "positive", "description": "Coordination produces outcome quality",         "has_delay": false, "is_confounding": false },
+    { "from": "n4", "to": "n1", "polarity": "positive", "description": "Feedback updates task models (L1)",             "has_delay": true,  "is_confounding": false },
+    { "from": "n5", "to": "n2", "polarity": "positive", "description": "Quality updates coordination function (L2)",    "has_delay": true,  "is_confounding": false },
+    { "from": "n5", "to": "n3", "polarity": "positive", "description": "Outcomes feed meta-learner",                    "has_delay": true,  "is_confounding": false },
+    { "from": "n3", "to": "n2", "polarity": "positive", "description": "Meta-learner rewrites coordination strategy (L3)", "has_delay": true,  "is_confounding": false }
+  ],
+  "loops": [
+    { "type": "reinforcing", "label": "R1 — Task learning",         "nodes": ["n1","n2","n5","n4"], "minus_count": 0 },
+    { "type": "reinforcing", "label": "R2 — Coordination learning", "nodes": ["n2","n5"],           "minus_count": 0 },
+    { "type": "reinforcing", "label": "R3 — Meta-coordination",     "nodes": ["n2","n5","n3"],      "minus_count": 0 }
+  ],
+  "identifiability": "identifiable",
+  "identifiability_note": "Each loop is observable via separate metrics: task accuracy, coordination quality (CQ), and meta-strategy change rate. Confounding between loops is controllable by fixing outer-loop parameters while inner-loop learning runs."
+}
