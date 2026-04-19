@@ -40,15 +40,15 @@ Not as abstract theory, but as practical framework you can use tomorrow in your 
 
 
 
-**2. The Full Interviews** (81 companion transcripts)
+**2. The Full Interviews** (81 companion transcripts, online)
 
 - Each voice as a complete timecoded dialogue, 42+ minutes long
 
 
-- Available as standalone reading when a voice sparks your curiosity
+- Hosted at [systemsofintelligence.com](https://systemsofintelligence.com) — linkable, searchable, referenceable per voice
 
 
-- The deep-dive layer for going further than the chapters can
+- The deep-dive layer: follow any voice beyond where the chapter had room to go
 
 
 
@@ -68,7 +68,7 @@ Not as abstract theory, but as practical framework you can use tomorrow in your 
 
 Read the chapters: You'll grasp the pattern and meet all 81 voices in integrated form.
 
-Add the interviews: You'll hear any voice in full, at your own pace, in their own words.
+Follow the interviews online: You'll hear any voice in full, at your own pace, in their own words.
 
 Add the appendices: You'll have everything you need to build coordination systems.
 
