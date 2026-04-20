@@ -1,4 +1,4 @@
-# KNOWWARE: Complete Book Index
+# Systems of Intelligence: Complete Book Index
 
 **Systems of Intelligence for the 21st Century**
 *The Three Ware Problem: Ternary Coordination and Consciousness Evolution*
