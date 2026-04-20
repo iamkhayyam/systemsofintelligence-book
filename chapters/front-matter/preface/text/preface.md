@@ -22,7 +22,7 @@ Coordinate all three elements → Emergence.
 
 **This book is my attempt to show you that pattern.**
 
-Not as abstract theory, but as practical framework you can use tomorrow in your work, your organization, your life.
+Not as abstract theory, but as a practical framework you can use tomorrow in your work, your organization, your life.
 
 ## What You're Actually Reading: The Three Ware Problem
 
@@ -136,7 +136,7 @@ This book will change how you see everything. Once you see the three-body patter
 
 You'll notice coordination everywhere—in conversations, in code, in consciousness itself.
 
-**This is feature, not bug.**
+**This is a feature, not a bug.**
 
 ## How to Read This Book
 
@@ -503,7 +503,7 @@ November 2025
 
 ---
 
-**P.S.** — If you finish this book and want to coordinate with me or the growing community of coordination thinkers, reach out to : someone [at] systemsofintelligence [dot] com**
+**P.S.** — If you finish this book and want to coordinate with me or the growing community of coordination thinkers, reach out to **someone [at] systemsofintelligence [dot] com**.
 **https://systemsofintelligence.com**
 
 **The coordination continues through you.**
