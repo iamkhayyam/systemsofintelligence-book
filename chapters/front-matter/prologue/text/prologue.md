@@ -82,7 +82,7 @@ This ratio appears everywhere consciousness coordinates stability with explorati
 
 **The hypothesis:**
 
-Optimal consciousness maintains π/φ ratio between:
+Optimal consciousness maintains the π/φ ratio between:
 - Stability processes (maintaining self-coherence)
 - Exploration processes (adapting to reality)
 
@@ -231,7 +231,7 @@ This prologue is about:
 
 **But the meta-pattern is:**
 
-This prologue coordinates with the book coordinates with your consciousness to create understanding that none contains alone.
+This prologue coordinating with the book coordinating with your consciousness creates understanding that none contains alone.
 
 **The prologue is ternary:**
 - **Text** (what's written)
