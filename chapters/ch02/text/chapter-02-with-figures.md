@@ -6,7 +6,7 @@
 
 ## The Netflix Secret Nobody Saw
 
-Netflix didn't become the world's dominant streaming platform by having the best content library or the smartest algorithms. They won by mastering something their competitors never saw: three-body coordination.
+Netflix didn't become the world's dominant streaming platform by having the best content library or the smartest algorithms. It won by mastering something its competitors never saw: three-body coordination.
 
 While Blockbuster optimized real estate and inventory, while Hulu optimized content licensing, Netflix coordinated three elements simultaneously:
 
@@ -333,7 +333,7 @@ The result? Defense capabilities that seem impossible to competitors still fight
 
 ## Ancient Wisdom, Modern Mathematics
 
-Hunbatz Men is a Maya elder and Day Keeper who maintains the sacred calendar traditions that survived the Spanish conquest. For over 5,000 years, Maya civilization coordinated astronomical observation, agricultural cycles, and ceremonial practice through base-9 mathematics.
+Hunbatz Men is a Maya elder and Day Keeper who maintains the sacred calendar traditions that survived the Spanish conquest. For over 5,000 years, Maya civilization coordinated astronomical observation, agricultural cycles, and ceremonial practice through a layered system of interlocking calendars.
 
 Through his work preserving Maya sacred knowledge, Men explains that the Maya understood something modern science is rediscovering: "The universe operates in cycles of nine. Not because nine is magical, but because nine represents the coordination of three triads—the complete pattern of how forces coordinate to create manifestation."
 
@@ -354,7 +354,7 @@ The Maya Long Count calendar, the Tzolk'in sacred calendar, the Haab' solar cale
 
 These calendars, along with their sophisticated base-20 (vigesimal) number system and the concept of zero (developed independently of other civilizations), allowed the Maya to achieve astonishing feats of astronomical prediction. They accurately calculated the synodic period of Venus, predicted solar and lunar eclipses, and tracked the movements of other planets.
 
-Western science dismissed this as primitive superstition. Then we discovered they were right. The Maya calculated the lunar month as 29.5308 days. Modern astronomy: 29.53059 days—a difference of less than two seconds per month. They achieved this precision through coordinating astronomical observation with base-9/base-20 mathematics with ceremonial practice refined across generations.
+Western science dismissed this as primitive superstition. Then we discovered they were right. The Maya calculated the lunar month as 29.5308 days. Modern astronomy: 29.53059 days—a difference of about 18 seconds per month. They achieved this precision through coordinating astronomical observation with vigesimal mathematics with ceremonial practice refined across generations.
 
 What mystics described in esoteric language, modern systems theory is rediscovering in mathematical terms. The Law of Triamazikamno—Gurdjieff's principle that three forces (affirming, denying, reconciling) coordinate to create all manifestation—isn't mysticism. It's coordination mathematics encoded in sacred geometry. For modern AI, the Maya provide a powerful example of how to build robust, multi-scale temporal reasoning systems that integrate diverse data streams (astronomy, agriculture, social cycles) into a coherent, predictive model. AI often struggles with integrating information across different timescales and domains, a challenge the Maya mastered through their sophisticated coordination architecture. Their wisdom suggests that true intelligence requires not just processing data, but understanding the cyclical, recursive, and coordinated nature of reality.
 
