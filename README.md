@@ -1,3 +1,11 @@
+> **This repository is archived and no longer updated.**
+> The book, *Knowware: Systems of Intelligence*, now lives at **[fromknowware/systems-intelligence](https://github.com/fromknowware/systems-intelligence)** and is read online at **[knowware.systems](https://knowware.systems)**. This copy stopped on 2026-04-20.
+>
+> - **License:** the book's text and diagrams are now CC BY-NC-SA 4.0 and the code is MIT; see the LICENSE files in the canonical repository. The "All rights reserved" line and the old contact details further down are out of date.
+> - **Contact:** hello@knowware.systems. The old address and domain (systemsofintelligence.com) are no longer ours; please do not use them.
+
+---
+
 # Systems of Intelligence
 
 > **Binary thinking produces optimization. Ternary coordination produces emergence.**
